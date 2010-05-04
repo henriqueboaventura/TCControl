@@ -1,0 +1,41 @@
+Cadastro de Usuário
+    Nome
+    Numero de Matricula
+    E-mail
+    Twitter
+    Endereço
+    Telefone [Residencial, Celular]
+    Tipo [Professor, Coordenador, Aluno]
+    
+    Professor: 
+        Áreas de interessa [Área que o professor domina ou tem interesse em fazer um TCC]
+        
+    Aluno:
+        Controle de orientador em TCC1 e em TCC2
+        
+    Coordenador:
+        Criar as bancas; Banca tem 3 professores e uma banca tem N alunos; Dos 3, um é orientador
+
+    
+Documentação
+    Aceite:
+        Os dados do documento
+    Proposta: 
+        Os dados do documento
+        Reminders para os itens do cronograma para o professor/Aluno
+    Artigo: 
+        Versão Seminário de Andamento
+        Versão Final
+    Anexar documentos ao aceite/proposta/artigo
+    Todos os dois tem que ter versionamento e a aprovação do Orientador/Coordenador e também observações feitas pelo Orientador/Coordenador
+    
+Processo de Orientação
+    Registros de encontros
+        5 dias úteis para o Orientador/Aluno registrar depois da data
+    Trocas de Documentos
+    Liberação para a banca
+    
+Avaliação do TCC
+    Professores dão parecer sobre os TCCs que eles participem da banca
+    
+    

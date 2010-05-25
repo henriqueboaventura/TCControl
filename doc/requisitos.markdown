@@ -8,13 +8,17 @@ Requisitos Funcionais
 * O Professor Coordenador pode incluir/alterar/excluir alunos
 * Cada usuário do sistema deve poder alterar seus dados pessoais
 * O Aluno deve escolher um Professor para ser seu Orientador
+* O Professor Orientador deve aceitar ou rejeitar a orientação do Aluno
 * O Aluno deve incluir os documentos Aceite, Proposta e Artigo, assim como alterá-los
 * O sistema deve fazer o versionamento da Proposta e do Artigo, permitindo voltar para versões anteriores
 * Os documentos Proposta e Artigo devem ser aprovados pelo Professor Orientador ou Coordenador
 * O Professor Orientador pode fazer comentários/observações nos Documentos Proposta e Artigo
-* O sistema deve manter um registro com as reuniões virtuais e presenciais entre os Alunos e os Professores Orientadores
+* O sistema deve manter um histórico com as reuniões virtuais e presenciais entre os Alunos e os Professores Orientadores assim como as decisões tomadas na mesma.
 * O Professor Orientador deve liberar ou não o Trabalho de Conclusão para ir a Banca.
 * Cada Trabalho de Conclusão deve ser avaliado por 2 Professores que formaram a Banca junto com o Professor Orientador
+* O Professor Coordenador deve formar as Bancas para a avaliação dos TCCs
+* A Banca deve dar o parecer final sobre o TCC
+* O Professor Orientador deve registrar a decisão da Banca sobre o TCC
 
 Requisitos Não-Funcionais
 ----------------------

@@ -3,7 +3,8 @@ Levantamento de Requisitos
 
 Requisitos Funcionais
 -------------------
-* O Administrador pode inclur/alterar/excluir Professores
+* O Administrador pode incluir/alterar/excluir Professores
+* O Administrador pode incluir/alterar/excluir Áreas de Afinidade
 * O Professor pode incluir/alterar/excluir Áreas de Interesse
 * O Professor Coordenador pode incluir/alterar/excluir alunos
 * Cada usuário do sistema deve poder alterar seus dados pessoais

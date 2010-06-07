@@ -1,0 +1,19 @@
+Professor:
+  Professor1:
+    nome: Franz Figueroa
+    email: franzfigueroa@gmail.com
+    senha: 123456
+    matricula: 630810195
+    endereco: Dunno
+    fone_residencial: 51 555 5555
+    fone_celular: 51 555 5555
+    AreasAfinidade: [IHC, AR]
+  Professor2: 
+    nome: Adriana Reis
+    email: adriana.reis@gmail.com
+    senha: 654321
+    matricula: 630810197
+    endereco: dunno
+    fone_residencial: 51 555 5555
+    fone_celular: 51 555 5555
+    AreasAfinidade: [UML, Projetos]

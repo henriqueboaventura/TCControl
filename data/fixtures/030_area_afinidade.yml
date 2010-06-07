@@ -1,0 +1,20 @@
+AreaAfinidade:
+  Java:
+    nome: Java
+  PHP:
+    nome: PHP
+  Python:
+    nome: Python
+  BancoDados:
+    nome: Banco de Dados
+  UML:
+    nome: UML
+  Projetos:
+    nome: Projetos
+  IHC:
+    nome: Interface Homem Computador
+  AR:
+    nome: Realidade Aumentada
+  OOP:
+    nome: Programação Orientada a Objetos
+  

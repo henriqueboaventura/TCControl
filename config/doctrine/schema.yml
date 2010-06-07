@@ -1,0 +1,128 @@
+Usuario:
+  abstract: true
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    nome:
+      type: string(50)
+      notnull: true
+    email:
+      type: string(100)
+      notnull: true
+      unique: true
+    senha: 
+      type: string(128)
+      notnull: true
+
+Administrador:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  inheritance:
+    extends: Usuario
+    type: concrete
+
+Academico:
+  abstract: true
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  inheritance:
+    extends: Usuario
+    type: concrete
+  columns:
+    matricula: 
+      type: string(20)
+      notnull: true
+      unique: true
+    endereco: 
+      type: string(200)
+      notnull: true
+    fone_residencial: 
+      type: string(20)
+      notnull: true
+    fone_celular: 
+      type: string(20)
+      notnull: true
+
+Professor:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  inheritance:
+    extends: Academico
+    type: concrete
+  columns: 
+    coordenador: 
+      type: boolean
+      notnull: true
+      default: false
+  relations:
+    AreasAfinidade:
+      foreignAlias: Professores
+      class: AreaAfinidade
+      refClass: ProfessorAreaAfinidade
+          
+AreaAfinidade:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: 
+    Sluggable:
+      fields: [nome]
+  columns:
+    nome:
+      type: string(50)
+      notnull: true 
+      
+ProfessorAreaAfinidade:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8    
+  columns: 
+    professor_id:
+      type: integer(4) 
+      primary: true    
+    area_afinidade_id:
+      type: integer(4) 
+      primary: true    
+  relations:
+    Professor:
+      foreignAlias: ProfessorAreasAfinidade
+    AreaAfinidade:
+      foreignAlias: ProfessorAreasAfinidade      
+    
+AreaInteresse:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    professor_id:
+      type: integer
+      notnull: true
+    nome: 
+      type: string(50)
+      notnull: true
+  relations:
+    Professor:
+    onDelete: CASCADE
+    foreignAlias: AreasInteresse
+      
+Aluno:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  inheritance:
+    extends: Academico
+    type: concrete
+      
+    

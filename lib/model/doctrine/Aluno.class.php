@@ -12,4 +12,8 @@
  */
 class Aluno extends BaseAluno
 {
+    public function __toString()
+    {
+        return $this->getNome();
+    }
 }

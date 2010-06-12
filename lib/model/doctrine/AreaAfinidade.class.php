@@ -12,4 +12,8 @@
  */
 class AreaAfinidade extends BaseAreaAfinidade
 {
+    public function __toString()
+    {
+        return $this->getNome();
+    }
 }

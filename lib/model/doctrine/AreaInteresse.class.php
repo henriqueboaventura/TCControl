@@ -12,4 +12,8 @@
  */
 class AreaInteresse extends BaseAreaInteresse
 {
+    public function __toString()
+    {
+        return $this->getNome();
+    }
 }

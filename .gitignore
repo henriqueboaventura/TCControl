@@ -1,3 +1,4 @@
 *.kpf
 cache
 log
+nbproject

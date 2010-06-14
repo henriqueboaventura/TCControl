@@ -1,6 +1,6 @@
 <?php
 
-require_once '/home/hboaventura/projetos/symfony/lib/autoload/sfCoreAutoload.class.php';
+require_once '/home/hboaventura/projetos/TCCtrl/lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration

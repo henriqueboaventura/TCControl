@@ -1,3 +1,3 @@
-<h1>Edit Professor</h1>
+<h1><?php echo __('Alterar Professor');?></h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

@@ -10,11 +10,11 @@
       <tr>
         <td colspan="2">
           <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('aluno/index') ?>">Back to list</a>
+          &nbsp;<?php echo link_to(__('Voltar para a lista'), url_for('aluno/index')); ?>
           <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'aluno/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
+            &nbsp;<?php echo link_to(__('Excluir'), 'aluno/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
           <?php endif; ?>
-          <input type="submit" value="Save" />
+          <input type="submit" value="<?php echo __('Salvar');?>" />
         </td>
       </tr>
     </tfoot>

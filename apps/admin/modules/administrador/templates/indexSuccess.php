@@ -1,4 +1,4 @@
-<h1>Administradors List</h1>
+<h1><?php echo __('Lista de Administradores');?></h1>
 
 <table>
   <thead>
@@ -6,7 +6,6 @@
       <th>Id</th>
       <th>Nome</th>
       <th>Email</th>
-      <th>Senha</th>
     </tr>
   </thead>
   <tbody>
@@ -15,10 +14,8 @@
       <td><a href="<?php echo url_for('administrador/edit?id='.$administrador->getId()) ?>"><?php echo $administrador->getId() ?></a></td>
       <td><?php echo $administrador->getNome() ?></td>
       <td><?php echo $administrador->getEmail() ?></td>
-      <td><?php echo $administrador->getSenha() ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-
-  <a href="<?php echo url_for('administrador/new') ?>">New</a>
+<?php echo link_to(__('Novo'),url_for('administrador/new'));?>

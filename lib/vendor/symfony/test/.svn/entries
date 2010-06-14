@@ -1,43 +1,0 @@
-10
-
-dir
-29805
-http://svn.symfony-project.com/branches/1.4/test
-http://svn.symfony-project.com
-
-
-
-2010-05-30T14:38:42.215282Z
-29678
-Kris.Wallsmith
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ee427ae8-e902-0410-961c-c3ed070cd9f9
-
-unit
-dir
-
-other
-dir
-
-functional
-dir
-
-bin
-dir
-
-bootstrap
-dir
-

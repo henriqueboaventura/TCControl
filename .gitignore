@@ -1,4 +1,4 @@
 *.kpf
-cache
-log
+./cache/
+./log/
 nbproject

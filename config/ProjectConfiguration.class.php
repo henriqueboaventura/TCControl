@@ -8,5 +8,9 @@ class ProjectConfiguration extends sfProjectConfiguration
     public function setup()
     {
         $this->enablePlugins('sfDoctrinePlugin');
+        
+        //provisorio
+        sfValidatorBase::setDefaultMessage('required', 'Campo obrigatório');
+        sfValidatorBase::setDefaultMessage('invalid', 'Campo inválido');
     }
 }

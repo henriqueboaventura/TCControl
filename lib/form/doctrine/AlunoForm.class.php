@@ -14,8 +14,21 @@ class AlunoForm extends BaseAlunoForm
     {
         $this->widgetSchema['senha'] = new sfWidgetFormInputPassword();
 
-        $this->validatorSchema['email'] = new sfValidatorEmail(array('max_length' => 100));
-        $this->validatorSchema['senha'] = new sfValidatorString(array('max_length' => 128, 'min_length' => 8));
-
+        $this->validatorSchema['email'] = new sfValidatorEmail(
+            array(
+                'max_length' => 100
+            )
+        );
+        $this->validatorSchema['senha'] = new sfValidatorString(
+            array(
+                'max_length' => 128,
+                'min_length' => 8
+            ),
+            array(
+                'min_length' => 'A senha deve ter no mínimo 8 caracteres'
+            )
+        );   
+        
+        $this->widgetSchema->setFormFormatterName('none');
     }
 }

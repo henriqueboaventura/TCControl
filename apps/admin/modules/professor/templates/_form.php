@@ -12,7 +12,7 @@
           <?php echo $form->renderHiddenFields(false) ?>
           &nbsp;<?php echo link_to(__('Voltar para a lista'), url_for('professor/index')); ?>
           <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to(__('Excluir'), 'professor/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' =>  __('Você tem certeza?'))) ?>
+            &nbsp;<?php echo link_to(__('Excluir'), 'professor/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' =>  __('Você tem certeza que deseja excluir?'))) ?>
           <?php endif; ?>
           <input type="submit" value="<?php echo __('Salvar');?>" />
         </td>

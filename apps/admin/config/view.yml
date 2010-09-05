@@ -6,15 +6,15 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
+    title:        TCCtrl - Sistema de Gerenciamento e Controle de TCC
     #description:  symfony project
     #keywords:     symfony, project
-    #language:     en
+    language:     pt-br
     #robots:       index, follow
 
-  stylesheets:    [main.css]
+  stylesheets:    [screen.css, main.css, ie.css { condition: IE }, print.css { type: print }]
 
   javascripts:    []
 
   has_layout:     true
-  layout:         layout
+  layout:         sideMenuLayout

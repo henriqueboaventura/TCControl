@@ -13,15 +13,6 @@
  */
 abstract class BaseAdministrador extends Usuario
 {
-    public function setTableDefinition()
-    {
-        parent::setTableDefinition();
-        $this->setTableName('administrador');
-        $this->option('type', 'MyISAM');
-        $this->option('collate', 'utf8_unicode_ci');
-        $this->option('charset', 'utf8');
-    }
-
     public function setUp()
     {
         parent::setUp();

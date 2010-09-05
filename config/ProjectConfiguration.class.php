@@ -1,6 +1,6 @@
 <?php
 
-require_once '/home/hboaventura/projetos/TCCtrl/lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
+require_once __DIR__ . '/../lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration
@@ -12,5 +12,6 @@ class ProjectConfiguration extends sfProjectConfiguration
         //provisorio
         sfValidatorBase::setDefaultMessage('required', 'Campo obrigatório');
         sfValidatorBase::setDefaultMessage('invalid', 'Campo inválido');
-    }
+      $this->enablePlugins('doAuthPlugin');
+  }
 }

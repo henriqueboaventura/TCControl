@@ -34,3 +34,9 @@ all:
     # Enable the database manager
     use_database:           true
     standard_helpers:       [Partial, Cache, I18N]
+    
+    login_module:           login
+    login_action:           signin
+
+    secure_module:          login
+    secure_action:          secure

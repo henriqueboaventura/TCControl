@@ -35,7 +35,7 @@ class Doctrine_Core
     /**
      * VERSION
      */
-    const VERSION                   = '1.2.2';
+    const VERSION                   = '1.2.3';
 
     /**
      * ERROR CONSTANTS
@@ -1115,7 +1115,7 @@ class Doctrine_Core
             return true;
         }
 
-        if (0 !== stripos($className, 'Doctrine_') || class_exists($className, false) || interface_exists($className, false)) {
+        if (0 !== stripos($className, 'Doctrine') || class_exists($className, false) || interface_exists($className, false)) {
             return false;
         }
 

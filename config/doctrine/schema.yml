@@ -1,5 +1,5 @@
 Usuario:
-  abstract: true
+  #abstract: true
   options:
     type: MyISAM
     collate: utf8_unicode_ci
@@ -23,17 +23,23 @@ Administrador:
     charset: utf8
   inheritance:
     extends: Usuario
-    type: concrete
+    #type: concrete
+    type: column_aggregation
+    keyField: type
+    keyValue: administrador
 
 Academico:
-  abstract: true
+  #abstract: true
   options:
     type: MyISAM
     collate: utf8_unicode_ci
     charset: utf8
   inheritance:
     extends: Usuario
-    type: concrete
+    #type: concrete
+    type: column_aggregation
+    keyField: type
+    keyValue: academico
   columns:
     matricula: 
       type: string(20)
@@ -56,7 +62,10 @@ Professor:
     charset: utf8
   inheritance:
     extends: Academico
-    type: concrete
+    #type: concrete
+    type: column_aggregation
+    keyField: type
+    keyValue: professor
   columns: 
     coordenador: 
       type: boolean
@@ -123,6 +132,9 @@ Aluno:
     charset: utf8
   inheritance:
     extends: Academico
-    type: concrete
+    type: column_aggregation
+    keyField: type
+    keyValue: aluno
+    #type: concrete
       
     

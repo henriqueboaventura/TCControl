@@ -1,6 +1,18 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+home:
+  url:  /home
+  param: { module: home, action: index }
+
+signin:
+  url: /signin
+  param: { module: login, action: signin }
+
+signout:
+  url: /signout
+  param: { module: login, action: signout }
+
 # default rules
 homepage:
   url:   /

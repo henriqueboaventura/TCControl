@@ -8,13 +8,31 @@
  * @property string $nome
  * @property string $email
  * @property string $senha
+ * @property string $type
+ * @property string $matricula
+ * @property string $endereco
+ * @property string $fone_residencial
+ * @property string $fone_celular
+ * @property boolean $coordenador
  * 
- * @method string  getNome()  Returns the current record's "nome" value
- * @method string  getEmail() Returns the current record's "email" value
- * @method string  getSenha() Returns the current record's "senha" value
- * @method Usuario setNome()  Sets the current record's "nome" value
- * @method Usuario setEmail() Sets the current record's "email" value
- * @method Usuario setSenha() Sets the current record's "senha" value
+ * @method string  getNome()             Returns the current record's "nome" value
+ * @method string  getEmail()            Returns the current record's "email" value
+ * @method string  getSenha()            Returns the current record's "senha" value
+ * @method string  getType()             Returns the current record's "type" value
+ * @method string  getMatricula()        Returns the current record's "matricula" value
+ * @method string  getEndereco()         Returns the current record's "endereco" value
+ * @method string  getFoneResidencial()  Returns the current record's "fone_residencial" value
+ * @method string  getFoneCelular()      Returns the current record's "fone_celular" value
+ * @method boolean getCoordenador()      Returns the current record's "coordenador" value
+ * @method Usuario setNome()             Sets the current record's "nome" value
+ * @method Usuario setEmail()            Sets the current record's "email" value
+ * @method Usuario setSenha()            Sets the current record's "senha" value
+ * @method Usuario setType()             Sets the current record's "type" value
+ * @method Usuario setMatricula()        Sets the current record's "matricula" value
+ * @method Usuario setEndereco()         Sets the current record's "endereco" value
+ * @method Usuario setFoneResidencial()  Sets the current record's "fone_residencial" value
+ * @method Usuario setFoneCelular()      Sets the current record's "fone_celular" value
+ * @method Usuario setCoordenador()      Sets the current record's "coordenador" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -42,10 +60,59 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'notnull' => true,
              'length' => 128,
              ));
+        $this->hasColumn('type', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('matricula', 'string', 20, array(
+             'type' => 'string',
+             'notnull' => true,
+             'unique' => true,
+             'length' => 20,
+             ));
+        $this->hasColumn('endereco', 'string', 200, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 200,
+             ));
+        $this->hasColumn('fone_residencial', 'string', 20, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 20,
+             ));
+        $this->hasColumn('fone_celular', 'string', 20, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 20,
+             ));
+        $this->hasColumn('coordenador', 'boolean', null, array(
+             'type' => 'boolean',
+             'notnull' => true,
+             'default' => false,
+             ));
 
         $this->option('type', 'MyISAM');
         $this->option('collate', 'utf8_unicode_ci');
         $this->option('charset', 'utf8');
+
+        $this->setSubClasses(array(
+             'Administrador' => 
+             array(
+              'type' => 'administrador',
+             ),
+             'Academico' => 
+             array(
+              'type' => 'academico',
+             ),
+             'Professor' => 
+             array(
+              'type' => 'professor',
+             ),
+             'Aluno' => 
+             array(
+              'type' => 'aluno',
+             ),
+             ));
     }
 
     public function setUp()

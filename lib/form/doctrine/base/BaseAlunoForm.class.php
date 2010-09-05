@@ -19,10 +19,12 @@ abstract class BaseAlunoForm extends BaseFormDoctrine
       'nome'             => new sfWidgetFormInputText(),
       'email'            => new sfWidgetFormInputText(),
       'senha'            => new sfWidgetFormInputText(),
+      'type'             => new sfWidgetFormInputText(),
       'matricula'        => new sfWidgetFormInputText(),
       'endereco'         => new sfWidgetFormInputText(),
       'fone_residencial' => new sfWidgetFormInputText(),
       'fone_celular'     => new sfWidgetFormInputText(),
+      'coordenador'      => new sfWidgetFormInputCheckbox(),
     ));
 
     $this->setValidators(array(
@@ -30,10 +32,12 @@ abstract class BaseAlunoForm extends BaseFormDoctrine
       'nome'             => new sfValidatorString(array('max_length' => 50)),
       'email'            => new sfValidatorString(array('max_length' => 100)),
       'senha'            => new sfValidatorString(array('max_length' => 128)),
+      'type'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'matricula'        => new sfValidatorString(array('max_length' => 20)),
       'endereco'         => new sfValidatorString(array('max_length' => 200)),
       'fone_residencial' => new sfValidatorString(array('max_length' => 20)),
       'fone_celular'     => new sfValidatorString(array('max_length' => 20)),
+      'coordenador'      => new sfValidatorBoolean(array('required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(

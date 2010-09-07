@@ -17,11 +17,19 @@ header{
             float:right;
         }
             header div#tool_box ul{
-
-                list-style:none;
+                background-color:#fff;
+                display:none;
+                position:absolute;
+                list-style:none;                
                 margin:0px;
                 padding:0px;
+                width:120px;
             }
+                header div#tool_box ul li{
+                    border:1px solid #ccc;
+                    margin-top:-1px;
+                    padding:2px 5px;
+                }
 
 
 /* forms */

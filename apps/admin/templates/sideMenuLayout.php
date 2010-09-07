@@ -15,6 +15,7 @@
                 <small>Sistema de Controle e Gerenciamento de TCC</small>
                 <div id="tool_box">
                     Olá, <span class="name"><?php echo $sf_user->getAttribute('nome','John Doe','usuario');?></span>
+                    <?php echo image_tag('/images/cog.png');?>
                     <ul>
                         <li><?php echo link_to('Alterar Perfil','@homepage');?></li>
                         <li><?php echo link_to('Alterar Senha','@homepage');?></li>

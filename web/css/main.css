@@ -17,15 +17,18 @@ header{
             float:right;
         }
             header div#tool_box ul{
-                background-color:#fff;
                 display:none;
                 position:absolute;
                 list-style:none;                
-                margin:0px;
-                padding:0px;
-                width:120px;
+                margin:-20px 0px 0px 11px;
+                padding:20px 0px 0px 0px;
+                width:150px;
+            }
+            header div#tool_box ul.show{
+                display:block;
             }
                 header div#tool_box ul li{
+                    background-color:#fff;
                     border:1px solid #ccc;
                     margin-top:-1px;
                     padding:2px 5px;
@@ -37,15 +40,43 @@ input[type=text],
 input[type=password],
 textarea{
     border-radius:5px;
+    clear:left;
+    float:left;
     font-size:18px;
     padding:5px;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
 }
 label{
+    clear:both;
+    float:left;
     font-size:16px;
 }
-
+input[type=text].field_error,
+input[type=password].field_error,
+textarea.field_error{
+    border-radius:5px 0px 0px 5px;    
+    border-color:#fbc2c4;
+    -moz-border-radius:5px 0px 0px 5px;
+    -webkit-border-radius:5px 0px 0px 5px;
+}
+input.button{
+    clear:both;
+    float:left;
+}
+ul.error_list{
+    background:#fbe3e4;
+    border:1px solid #fbc2c4;
+    border-left:none;
+    border-radius:0px 5px 5px 0px;
+    color:#8a1f11;
+    float:left;
+    list-style: none;
+    margin:9px 0 0 0;
+    padding:7px;
+    -moz-border-radius:0px 5px 5px 0px;
+    -webkit-border-radius:0px 5px 5px 0px;
+}
 
 /* login */
 div#content form#login fieldset{

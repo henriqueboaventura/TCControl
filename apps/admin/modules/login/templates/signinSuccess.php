@@ -9,6 +9,6 @@
             echo $form['senha']->render();
             echo $form['_csrf_token']->render();
         ?>
-    <input type="submit" value="Login" />
+    <input type="submit" value="Login" class="button" />
     </fieldset>
 </form>

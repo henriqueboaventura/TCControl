@@ -10,7 +10,7 @@
  */
 class UsuarioForm extends BaseUsuarioForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+    }
 }

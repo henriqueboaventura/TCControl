@@ -24,12 +24,20 @@ class profileActions extends sfActions
                 $usuario = Doctrine::getTable('Usuario')->find($values['id']);
                 $usuario->senha = $values['nova_senha'];
                 $usuario->save();
-                $this->getUser()->setFlash('success','Senha alterada com sucesso!');
+                $this->getUser()->setFlash('success',__('Senha alterada com sucesso!'));
                 $this->redirect('profile/senha');
             } else {
-                $this->getUser()->setFlash('error', 'O formulário contém erros!');
+                $this->getUser()->setFlash('error', __('O formulário contém erros!'));
             }
             
         }
+    }
+
+    public function executeAtualizar(sfWebRequest $request)
+    {
+        $usuario = Doctrine::getTable('Usuario')->find($this->getUser()->getAttribute('id',null,'usuario'));
+
+        $formName = get_class($usuario) . 'Form';
+        $this->form = new $formName;
     }
 }

@@ -44,7 +44,7 @@ Academico:
     matricula: 
       type: string(20)
       notnull: true
-      unique: true
+      #unique: true
     endereco: 
       type: string(200)
       notnull: true

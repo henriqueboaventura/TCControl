@@ -67,7 +67,6 @@ abstract class BaseUsuario extends sfDoctrineRecord
         $this->hasColumn('matricula', 'string', 20, array(
              'type' => 'string',
              'notnull' => true,
-             'unique' => true,
              'length' => 20,
              ));
         $this->hasColumn('endereco', 'string', 200, array(

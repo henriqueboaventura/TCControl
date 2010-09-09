@@ -41,10 +41,7 @@ abstract class BaseUsuarioForm extends BaseFormDoctrine
     ));
 
     $this->validatorSchema->setPostValidator(
-      new sfValidatorAnd(array(
-        new sfValidatorDoctrineUnique(array('model' => 'Usuario', 'column' => array('email'))),
-        new sfValidatorDoctrineUnique(array('model' => 'Usuario', 'column' => array('matricula'))),
-      ))
+      new sfValidatorDoctrineUnique(array('model' => 'Usuario', 'column' => array('email')))
     );
 
     $this->widgetSchema->setNameFormat('usuario[%s]');

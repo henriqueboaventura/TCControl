@@ -1,3 +1,8 @@
+/* gerais */
+a{
+    outline:none;
+}
+
 header{
     border-bottom:1px solid #ccc;
     padding-bottom:10px;
@@ -61,7 +66,6 @@ textarea.field_error{
     -webkit-border-radius:5px 0px 0px 5px;
 }
 input.button{
-    clear:both;
     float:left;
 }
 ul.error_list{
@@ -77,6 +81,13 @@ ul.error_list{
     -moz-border-radius:0px 5px 5px 0px;
     -webkit-border-radius:0px 5px 5px 0px;
 }
+span#actions_bar{
+    clear:both;
+    float:left;
+}
+    span#actions_bar a{
+        float:left;
+    }
 
 /* login */
 div#content form#login fieldset{
@@ -85,6 +96,35 @@ div#content form#login fieldset{
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
 }
+
+/* listagem */
+table tfoot tr td.results{
+    text-align:right;
+}
+table tbody tr td a.user_edit,
+table tbody tr td a.user_delete{
+    background:transparent url(/images/user_edit.png) no-repeat top left;
+    clear:none;
+    float:left;
+    height:16px;
+    margin: 0px 5px;
+    outline:none;
+    text-indent: -1999em;
+    width:16px;
+}
+table tbody tr td a.user_delete{
+    background-image: url(/images/user_delete.png);
+}
+
+/* pager */
+div.pagination{
+    clear:both;
+    text-align:center;
+    
+}
+    div.pagination img{
+        vertical-align:middle;
+    }
 
 /* footer */
 footer{

@@ -10,64 +10,71 @@
  */
 class administradorActions extends sfActions
 {
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->administradors = Doctrine::getTable('Administrador')
-      ->createQuery('a')
-      ->execute();
-  }
-
-  public function executeNew(sfWebRequest $request)
-  {
-    $this->form = new AdministradorForm();
-  }
-
-  public function executeCreate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new AdministradorForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
-  }
-
-  public function executeEdit(sfWebRequest $request)
-  {
-    $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AdministradorForm($administrador);
-  }
-
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AdministradorForm($administrador);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
-
-  public function executeDelete(sfWebRequest $request)
-  {
-    $request->checkCSRFProtection();
-
-    $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
-    $administrador->delete();
-
-    $this->redirect('administrador/index');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
+    public function executeIndex(sfWebRequest $request)
     {
-      $administrador = $form->save();
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        $query = Doctrine_Core::getTable('Administrador')->createQuery('a');
+        $this->pager = new sfDoctrinePager('Administrador', sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
 
-      $this->redirect('administrador/edit?id='.$administrador->getId());
+        $this->administradors= $this->pager->getResults();
+
     }
-  }
+
+    public function executeNew(sfWebRequest $request)
+    {
+        $this->form = new AdministradorForm();
+    }
+
+    public function executeCreate(sfWebRequest $request)
+    {
+        $this->forward404Unless($request->isMethod(sfRequest::POST));
+
+        $this->form = new AdministradorForm();
+
+        $this->processForm($request, $this->form);
+
+        $this->setTemplate('new');
+    }
+
+    public function executeEdit(sfWebRequest $request)
+    {
+        $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
+        $this->form = new AdministradorForm($administrador);
+    }
+
+    public function executeUpdate(sfWebRequest $request)
+    {
+        $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
+        $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
+        $this->form = new AdministradorForm($administrador);
+
+        $this->processForm($request, $this->form);
+
+        $this->setTemplate('edit');
+    }
+
+    public function executeDelete(sfWebRequest $request)
+    {
+        $request->checkCSRFProtection();
+
+        $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
+        $administrador->delete();
+
+        $this->redirect('administrador/index');
+    }
+
+    protected function processForm(sfWebRequest $request, sfForm $form)
+    {
+        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        if ($form->isValid()) {
+            $administrador = $form->save();
+            $this->getUser()->setFlash('success','Administrador alterado com sucesso!');
+            $this->redirect('administrador/edit?id='.$administrador->getId());
+        } else {
+            $this->getUser()->setFlash('error', 'O formulário contém erros!');
+        }
+    }
 }

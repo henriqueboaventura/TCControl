@@ -11,22 +11,17 @@
 class AdministradorForm extends BaseAdministradorForm
 {
     public function configure()
-    {       
-        $this->widgetSchema['senha'] = new sfWidgetFormInputPassword();
+    {
+        parent::configure();
 
-        $this->validatorSchema['email'] = new sfValidatorEmail(
-            array(
-                'max_length' => 100
-            )
+        unset (
+            $this['matricula'],
+            $this['endereco'],
+            $this['fone_residencial'],
+            $this['fone_celular'],
+            $this['coordenador']
         );
-        $this->validatorSchema['senha'] = new sfValidatorString(
-            array(
-                'max_length' => 128,
-                'min_length' => 8
-            ),
-            array(
-                'min_length' => 'A senha deve ter no mínimo 8 caracteres'
-            )
-        );
+
+        $this->setDefault('type', 'administrador');
     }
 }

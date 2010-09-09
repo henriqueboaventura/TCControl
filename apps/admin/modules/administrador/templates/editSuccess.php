@@ -1,3 +1,11 @@
-<h1><?php echo __('Alterar Administrador');?></h1>
-
-<?php include_partial('form', array('form' => $form)) ?>
+<h2><?php echo __('Administrador');?></h2>
+<h3><?php echo __('Alterar');?></h3>
+<?php
+    include_partial(
+        'global/form',
+        array(
+            'form' => $form,
+            'module' => $sf_context->getModuleName()
+        )
+    );
+?>

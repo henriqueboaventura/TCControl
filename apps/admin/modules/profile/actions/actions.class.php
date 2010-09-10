@@ -13,7 +13,7 @@ class profileActions extends sfActions
     public function executeSenha(sfWebRequest $request)
     {
         $this->form = new PasswordForm(array('id' => $this->getUser()->getAttribute('id',null,'usuario')));
-        if($request->isMethod(sfRequest::PUT)){
+        if($request->isMethod(sfRequest::POST)){
             $this->form->bind(
                 $request->getParameter($this->form->getName()),
                 $request->getFiles($this->form->getName())
@@ -24,10 +24,10 @@ class profileActions extends sfActions
                 $usuario = Doctrine::getTable('Usuario')->find($values['id']);
                 $usuario->senha = $values['nova_senha'];
                 $usuario->save();
-                $this->getUser()->setFlash('success',__('Senha alterada com sucesso!'));
+                $this->getUser()->setFlash('success','Senha alterada com sucesso!');
                 $this->redirect('profile/senha');
             } else {
-                $this->getUser()->setFlash('error', __('O formulário contém erros!'));
+                $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
             }
             
         }
@@ -38,6 +38,6 @@ class profileActions extends sfActions
         $usuario = Doctrine::getTable('Usuario')->find($this->getUser()->getAttribute('id',null,'usuario'));
 
         $formName = get_class($usuario) . 'Form';
-        $this->form = new $formName;
+        $this->form = new $formName($usuario);
     }
 }

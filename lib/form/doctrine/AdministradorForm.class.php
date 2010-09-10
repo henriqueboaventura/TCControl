@@ -22,6 +22,10 @@ class AdministradorForm extends BaseAdministradorForm
             $this['coordenador']
         );
 
+        if(!$this->isNew()){
+            unset($this['senha']);
+        }
+
         $this->setDefault('type', 'administrador');
     }
 }

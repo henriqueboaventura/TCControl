@@ -17,8 +17,8 @@
                     Olá, <span class="name"><?php echo $sf_user->getAttribute('nome','John Doe','usuario');?></span>
                     <?php echo image_tag('/images/cog.png');?>
                     <ul>
-                        <li><?php echo link_to('Alterar Dados Pessoais','@homepage');?></li>
-                        <li><?php echo link_to('Alterar Senha','@homepage');?></li>
+                        <li><?php echo link_to('Alterar Dados Pessoais','profile/atualizar');?></li>
+                        <li><?php echo link_to('Alterar Senha','profile/senha');?></li>
                         <li><?php echo link_to('Preferências','@homepage');?></li>
                         <li><?php echo link_to('Sair','@signout');?></li>
                     </ul>

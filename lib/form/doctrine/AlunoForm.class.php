@@ -12,23 +12,13 @@ class AlunoForm extends BaseAlunoForm
 {
     public function configure()
     {
-        $this->widgetSchema['senha'] = new sfWidgetFormInputPassword();
+        parent::configure();
 
-        $this->validatorSchema['email'] = new sfValidatorEmail(
-            array(
-                'max_length' => 100
-            )
+        unset (
+            $this['coordenador'],
+            $this['senha']
         );
-        $this->validatorSchema['senha'] = new sfValidatorString(
-            array(
-                'max_length' => 128,
-                'min_length' => 8
-            ),
-            array(
-                'min_length' => 'A senha deve ter no mínimo 8 caracteres'
-            )
-        );   
-        
-        $this->widgetSchema->setFormFormatterName('none');
+
+        $this->setDefault('type', 'aluno');
     }
 }

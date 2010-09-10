@@ -10,11 +10,8 @@
  */
 class AcademicoForm extends BaseAcademicoForm
 {
-  /**
-   * @see UsuarioForm
-   */
-  public function configure()
-  {
-    parent::configure();
-  }
+    public function configure()
+    {
+        parent::configure();
+    }
 }

@@ -19,12 +19,9 @@ class AdministradorForm extends BaseAdministradorForm
             $this['endereco'],
             $this['fone_residencial'],
             $this['fone_celular'],
-            $this['coordenador']
+            $this['coordenador'],
+            $this['senha']
         );
-
-        if(!$this->isNew()){
-            unset($this['senha']);
-        }
 
         $this->setDefault('type', 'administrador');
     }

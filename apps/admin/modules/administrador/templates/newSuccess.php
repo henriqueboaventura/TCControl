@@ -5,7 +5,8 @@
         'global/form',
         array(
             'form' => $form,
-            'module' => $sf_context->getModuleName()
+            'module' => $sf_context->getModuleName(),
+            'back_list' => true
         )
     );
 ?>

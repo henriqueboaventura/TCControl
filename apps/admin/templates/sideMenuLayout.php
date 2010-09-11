@@ -25,7 +25,7 @@
                 </div>
             </header>
             <div id="nav_menu" class="span-5">
-                menu
+            <?php include_component('home','menu'); ?>
             </div>
             <div id="content" class="span-19 last">
             <?php echo $sf_content ?>

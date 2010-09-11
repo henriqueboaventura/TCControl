@@ -39,5 +39,19 @@ class profileActions extends sfActions
 
         $formName = get_class($usuario) . 'Form';
         $this->form = new $formName($usuario);
+        if($request->isMethod(sfRequest::PUT)){
+            $this->form->bind(
+                $request->getParameter($this->form->getName()),
+                $request->getFiles($this->form->getName())
+            );
+
+            if($this->form->isValid()){
+                $this->form->save();
+                $this->getUser()->setFlash('success','Dados alterados com sucesso!');
+                $this->redirect('profile/atualizar');
+            } else {
+                $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
+            }
+        }
     }
 }

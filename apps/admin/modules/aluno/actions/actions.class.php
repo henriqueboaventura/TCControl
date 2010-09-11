@@ -10,64 +10,71 @@
  */
 class alunoActions extends sfActions
 {
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->alunos = Doctrine::getTable('Aluno')
-      ->createQuery('a')
-      ->execute();
-  }
-
-  public function executeNew(sfWebRequest $request)
-  {
-    $this->form = new AlunoForm();
-  }
-
-  public function executeCreate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new AlunoForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
-  }
-
-  public function executeEdit(sfWebRequest $request)
-  {
-    $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AlunoForm($aluno);
-  }
-
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
-    $this->form = new AlunoForm($aluno);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
-
-  public function executeDelete(sfWebRequest $request)
-  {
-    $request->checkCSRFProtection();
-
-    $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
-    $aluno->delete();
-
-    $this->redirect('aluno/index');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
+    public function executeIndex(sfWebRequest $request)
     {
-      $aluno = $form->save();
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        $query = Doctrine_Core::getTable('Aluno')->createQuery('a');
+        $this->pager = new sfDoctrinePager('Aluno', sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
 
-      $this->redirect('aluno/edit?id='.$aluno->getId());
+        $this->alunos = $this->pager->getResults();
     }
-  }
+
+    public function executeNew(sfWebRequest $request)
+    {
+        $this->form = new AlunoForm();
+    }
+
+    public function executeCreate(sfWebRequest $request)
+    {
+        $this->forward404Unless($request->isMethod(sfRequest::POST));
+
+        $this->form = new AlunoForm();
+
+        $this->processForm($request, $this->form);
+
+        $this->setTemplate('new');
+    }
+
+    public function executeEdit(sfWebRequest $request)
+    {
+        $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
+        $this->form = new AlunoForm($aluno);
+    }
+
+    public function executeUpdate(sfWebRequest $request)
+    {
+        $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
+        $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
+        $this->form = new AlunoForm($aluno);
+
+        $this->processForm($request, $this->form);
+
+        $this->setTemplate('edit');
+    }
+
+    public function executeDelete(sfWebRequest $request)
+    {
+        $request->checkCSRFProtection();
+
+        $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
+        $aluno->delete();
+
+        $this->redirect('aluno/index');
+    }
+
+    protected function processForm(sfWebRequest $request, sfForm $form)
+    {
+        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        if ($form->isValid()){
+            $aluno = $form->save();
+            $this->getUser()->setFlash('success','Aluno alterado com sucesso!');
+            $this->redirect('aluno/edit?id='.$aluno->getId());
+        } else {
+            $this->getUser()->setFlash('error', 'O formulário contém erros!');
+        }
+
+    }
 }

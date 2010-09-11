@@ -19,7 +19,7 @@ class administradorActions extends sfActions
         $this->pager->setPage($page);
         $this->pager->init();
 
-        $this->administradors= $this->pager->getResults();
+        $this->administradors = $this->pager->getResults();
 
     }
 

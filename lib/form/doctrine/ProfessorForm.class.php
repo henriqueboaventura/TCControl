@@ -12,21 +12,12 @@ class ProfessorForm extends BaseProfessorForm
 {
     public function configure()
     {
-        $this->widgetSchema['senha'] = new sfWidgetFormInputPassword();
-
-        $this->validatorSchema['email'] = new sfValidatorEmail(
-            array(
-                'max_length' => 100
-            )
-        );
-        $this->validatorSchema['senha'] = new sfValidatorString(
-            array(
-                'max_length' => 128,
-                'min_length' => 8
-            ),
-            array(
-                'min_length' => 'A senha deve ter no mínimo 8 caracteres'
-            )
+        parent::configure();
+        
+        unset (
+            $this['coordenador'],
+            $this['senha'],
+            $this['areas_afinidade_list']
         );
     }
 }

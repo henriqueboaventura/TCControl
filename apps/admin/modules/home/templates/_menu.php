@@ -35,4 +35,14 @@
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('professor')): ?>
+<h4>Definições</h4>
+<ul>
+    <li>Orientandos
+        <ul>
+            <li><?php echo link_to('Aguardando Aprovação(0)','@orientandos_list?filtro=aguardando');?></li>
+        </ul>
+    </li>
+</ul>
+
 <?php endif; ?>
+

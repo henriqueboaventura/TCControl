@@ -17,7 +17,8 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
     </thead>
     <tbody>
         <?php foreach ($professors as $professor): ?>
-        <tr <?php echo ($professor->Orientandos->count() == $sf_user->getAttribute('alunos_por_professor', 0, 'configuracao')) ? 'class="over_limit"' : ''; ?>>
+        <tr <?php echo ($professor->getOrientacaoCount(true) == $sf_user->getAttribute('alunos_por_professor', 0, 'configuracao')) ? 'class="over_limit"' : ''; ?>>
+
             <td><?php echo $professor->getNome() ?></td>            
             <td>
                 <ul>
@@ -26,7 +27,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
                 <?php endforeach;?>
                 </ul>
             </td>
-            <td><?php echo $professor->Orientandos->count() ?></td>
+            <td><?php echo $professor->getOrientacaoCount(true) ?></td>
             <td>
                 <?php echo link_to(__('Solicitar Orientação'),'@orientador_solicitar?professor_id=' . $professor->getId(), array('class' => 'user_orientacao', 'title' => 'Solicitar Orientação'));?>
             </td>

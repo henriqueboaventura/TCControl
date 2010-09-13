@@ -17,13 +17,13 @@ abstract class BaseOrientacaoForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'aluno_id'     => new sfWidgetFormInputHidden(),
       'professor_id' => new sfWidgetFormInputHidden(),
-      'aceito'       => new sfWidgetFormInputCheckbox(),
+      'status'       => new sfWidgetFormChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2))),
     ));
 
     $this->setValidators(array(
       'aluno_id'     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('aluno_id')), 'empty_value' => $this->getObject()->get('aluno_id'), 'required' => false)),
       'professor_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('professor_id')), 'empty_value' => $this->getObject()->get('professor_id'), 'required' => false)),
-      'aceito'       => new sfValidatorBoolean(array('required' => false)),
+      'status'       => new sfValidatorChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('orientacao[%s]');

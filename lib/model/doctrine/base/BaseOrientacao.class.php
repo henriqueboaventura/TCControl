@@ -7,14 +7,14 @@
  * 
  * @property integer $aluno_id
  * @property integer $professor_id
- * @property boolean $aceito
+ * @property enum $status
  * 
  * @method integer    getAlunoId()      Returns the current record's "aluno_id" value
  * @method integer    getProfessorId()  Returns the current record's "professor_id" value
- * @method boolean    getAceito()       Returns the current record's "aceito" value
+ * @method enum       getStatus()       Returns the current record's "status" value
  * @method Orientacao setAlunoId()      Sets the current record's "aluno_id" value
  * @method Orientacao setProfessorId()  Sets the current record's "professor_id" value
- * @method Orientacao setAceito()       Sets the current record's "aceito" value
+ * @method Orientacao setStatus()       Sets the current record's "status" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -34,8 +34,15 @@ abstract class BaseOrientacao extends sfDoctrineRecord
              'type' => 'integer',
              'primary' => true,
              ));
-        $this->hasColumn('aceito', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('status', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+              2 => 2,
+             ),
+             'default' => 0,
              ));
 
         $this->option('type', 'MyISAM');

@@ -11,7 +11,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
         <tr>
             <th><?php echo __('Nome');?></th>
             <th><?php echo __('E-mail');?></th>
-            <th><?php echo __('Ações');?></th>
+            <th class="actions"><?php echo __('Ações');?></th>
         </tr>
     </thead>
     <tfoot>
@@ -24,7 +24,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
         <tr>
             <td><?php echo $administrador->getNome() ?></td>
             <td><?php echo $administrador->getEmail() ?></td>
-            <td>
+            <td class="actions">
                 <?php echo link_to(__('Alterar'),'administrador/edit?id=' . $administrador->getId(), array('class' => 'user_edit'));?>
                 <?php echo link_to(__('Excluir'),'administrador/delete?id=' . $administrador->getId(), array('class' => 'user_delete'));?>
             </td>

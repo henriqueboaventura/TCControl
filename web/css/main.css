@@ -143,9 +143,7 @@ table tbody tr td{
 table tfoot tr td.results{
     text-align:right;
 }
-    table tbody tr td a.user_edit,
-    table tbody tr td a.user_delete,
-    table tbody tr td a.user_orientacao{
+    table tbody tr td.actions a{
         background:transparent url(/images/user_edit.png) no-repeat top left;
         clear:none;
         float:left;
@@ -160,6 +158,12 @@ table tfoot tr td.results{
     }
     table tbody tr td a.user_orientacao{
         background-image: url(/images/group_go.png);
+    }
+    table tbody tr td a.user_orientacao_accept{
+        background-image: url(/images/group_link.png);
+    }
+    table tbody tr td a.user_orientacao_deny{
+        background-image: url(/images/group_delete.png);
     }
 
 /* pager */

@@ -25,7 +25,7 @@ class orientacaoActions extends sfActions
     public function executeOrientandosList(sfWebRequest $request)
     {
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao($this->getUser()->getAttribute('id',null,'usuario'),null,false);
+        $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao($this->getUser()->getAttribute('id',null,'usuario'),array(0),false);
         $this->pager = new sfDoctrinePager('Orientacao',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);
@@ -45,8 +45,8 @@ class orientacaoActions extends sfActions
             $orientacao->save();
             $this->getUser()->setFlash('success', 'Orientação solicitada com sucesso! Aguarde a decisão do professor.');
         } else {
-            if($orientacao->aceito == null){
-                $this->getUser()->setFlash('error', 'Você não pode solicitar uma nova orientação porque você já tem uma aguardando aceitoção');
+            if($orientacao->status == 0){
+                $this->getUser()->setFlash('error', 'Você não pode solicitar uma nova orientação porque você já tem uma aguardando aceitação');
             } else {
                 $this->getUser()->setFlash('error', 'Você não pode solicitar uma nova orientação porque você já está sendo orientado por um professor');
             }
@@ -55,4 +55,23 @@ class orientacaoActions extends sfActions
 
         $this->redirect('@orientador_list');
     }
-}
+    
+    public function executeUpdateStatus(sfWebRequest $request)
+    {
+        $orientacao = Doctrine_Core::getTable('Orientacao')->findOrientacao(
+            $this->getUser()->getAttribute('id',null,'usuario'), 
+            $request->getParameter('aluno_id')
+        );
+        
+        if($request->getParameter('acao') == 'aceitar'){
+            $orientacao->status = 1;
+            $this->getUser()->setFlash('success','Solicitação de orientação aceita com sucesso!');
+        } else {
+            $orientacao->status = 2;
+            $this->getUser()->setFlash('success','Solicitação de orientação rejeitada com sucesso!');
+        }
+        
+        $orientacao->save();
+        $this->redirect('@orientandos_list');
+    }
+}   

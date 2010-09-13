@@ -12,7 +12,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
             <th>Nome</th>            
             <th>Areas de Afinidade</th>
             <th>Qtde. Orientandos</th>
-            <th>Ações</th>
+            <th class="actions">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
                 </ul>
             </td>
             <td><?php echo $professor->getOrientacaoCount(true) ?></td>
-            <td>
+            <td class="actions">
                 <?php echo link_to(__('Solicitar Orientação'),'@orientador_solicitar?professor_id=' . $professor->getId(), array('class' => 'user_orientacao', 'title' => 'Solicitar Orientação'));?>
             </td>
         </tr>

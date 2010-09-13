@@ -19,7 +19,7 @@ orientandos_list:
   
 orientacao_action:
   url: /orientacao/orientando/:acao
-  param: { module: orientacao, action: orientacao }  
+  param: { module: orientacao, action: updateStatus }  
 
 orientador_list:
   url: /orientacao/orientadores

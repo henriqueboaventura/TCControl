@@ -39,7 +39,7 @@
 <ul>
     <li>Orientandos
         <ul>
-            <li><?php echo link_to('Aguardando Aprovação(0)','@orientandos_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aguardando Aprovação(' . $orientacoesPendentes->count() . ')','@orientandos_list?filtro=aguardando');?></li>
         </ul>
     </li>
 </ul>

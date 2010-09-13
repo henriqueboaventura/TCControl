@@ -13,11 +13,11 @@ abstract class BaseOrientacaoFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'aceito'       => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'status'       => new sfWidgetFormChoice(array('choices' => array('' => '', 0 => 0, 1 => 1, 2 => 2))),
     ));
 
     $this->setValidators(array(
-      'aceito'       => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'status'       => new sfValidatorChoice(array('required' => false, 'choices' => array(0 => 0, 1 => 1, 2 => 2))),
     ));
 
     $this->widgetSchema->setNameFormat('orientacao_filters[%s]');
@@ -39,7 +39,7 @@ abstract class BaseOrientacaoFormFilter extends BaseFormFilterDoctrine
     return array(
       'aluno_id'     => 'Number',
       'professor_id' => 'Number',
-      'aceito'       => 'Boolean',
+      'status'       => 'Enum',
     );
   }
 }

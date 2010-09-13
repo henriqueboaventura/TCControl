@@ -17,11 +17,11 @@ class Professor extends BaseProfessor
         return $this->getNome();
     }
     
-    public function getOrientacaoCount($aceito = false)
+    public function getOrientacaoCount()
     {
         $count = 0;
         foreach($this->Orientacao as $orientacao){
-            if($orientacao->aceito) {
+            if($orientacao->status == 1) {
                 $count++;
             }
         }

@@ -12,6 +12,10 @@ class ConfiguracaoForm extends BaseConfiguracaoForm
 {
     public function configure()
     {
+        unset(
+            $this['created_at'],
+            $this['updated_at']
+        );
         $this->widgetSchema->setLabels(array(
             'instituicao' => 'Instituição',
             'email'       => 'E-mail'

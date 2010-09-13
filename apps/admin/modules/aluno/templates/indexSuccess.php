@@ -12,7 +12,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
             <th>Nome</th>
             <th>Email</th>
             <th>Matricula</th>
-            <th>Ações</th>
+            <th class="actions">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
             <td><?php echo $aluno->getNome() ?></td>
             <td><?php echo $aluno->getEmail() ?></td>
             <td><?php echo $aluno->getMatricula() ?></td>
-            <td>
+            <td class="actions">
                 <?php echo link_to(__('Alterar'),'aluno/edit?id=' . $aluno->getId(), array('class' => 'user_edit'));?>
                 <?php echo link_to(__('Excluir'),'aluno/delete?id=' . $aluno->getId(), array('class' => 'user_delete'));?>
             </td>

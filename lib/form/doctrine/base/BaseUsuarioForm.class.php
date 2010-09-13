@@ -25,6 +25,8 @@ abstract class BaseUsuarioForm extends BaseFormDoctrine
       'fone_residencial' => new sfWidgetFormInputText(),
       'fone_celular'     => new sfWidgetFormInputText(),
       'coordenador'      => new sfWidgetFormInputCheckbox(),
+      'created_at'       => new sfWidgetFormDateTime(),
+      'updated_at'       => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -38,6 +40,8 @@ abstract class BaseUsuarioForm extends BaseFormDoctrine
       'fone_residencial' => new sfValidatorString(array('max_length' => 20)),
       'fone_celular'     => new sfValidatorString(array('max_length' => 20)),
       'coordenador'      => new sfValidatorBoolean(array('required' => false)),
+      'created_at'       => new sfValidatorDateTime(),
+      'updated_at'       => new sfValidatorDateTime(),
     ));
 
     $this->validatorSchema->setPostValidator(

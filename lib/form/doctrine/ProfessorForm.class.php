@@ -13,11 +13,13 @@ class ProfessorForm extends BaseProfessorForm
     public function configure()
     {
         parent::configure();
-        
+
         unset (
             $this['coordenador'],
             $this['senha'],
-            $this['areas_afinidade_list']
+            $this['areas_afinidade_list'],
+            $this['orientando_list']
         );
+
     }
 }

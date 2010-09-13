@@ -57,11 +57,9 @@ class alunoActions extends sfActions
 
     public function executeDelete(sfWebRequest $request)
     {
-        $request->checkCSRFProtection();
-
         $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
         $aluno->delete();
-
+        $this->getUser()->setFlash('success', 'Aluno excluído com sucesso!');
         $this->redirect('aluno/index');
     }
 
@@ -73,7 +71,7 @@ class alunoActions extends sfActions
             $this->getUser()->setFlash('success','Aluno alterado com sucesso!');
             $this->redirect('aluno/edit?id='.$aluno->getId());
         } else {
-            $this->getUser()->setFlash('error', 'O formulário contém erros!');
+            $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
         }
 
     }

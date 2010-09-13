@@ -58,11 +58,10 @@ class administradorActions extends sfActions
 
     public function executeDelete(sfWebRequest $request)
     {
-        $request->checkCSRFProtection();
-
         $this->forward404Unless($administrador = Doctrine::getTable('Administrador')->find(array($request->getParameter('id'))), sprintf('Object administrador does not exist (%s).', $request->getParameter('id')));
         $administrador->delete();
 
+        $this->getUser()->setFlash('success', 'Administrador excluído com sucesso!');
         $this->redirect('administrador/index');
     }
 
@@ -74,7 +73,7 @@ class administradorActions extends sfActions
             $this->getUser()->setFlash('success','Administrador alterado com sucesso!');
             $this->redirect('administrador/edit?id='.$administrador->getId());
         } else {
-            $this->getUser()->setFlash('error', 'O formulário contém erros!');
+            $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
         }
     }
 }

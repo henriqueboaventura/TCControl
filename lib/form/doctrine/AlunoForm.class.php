@@ -16,7 +16,8 @@ class AlunoForm extends BaseAlunoForm
 
         unset (
             $this['coordenador'],
-            $this['senha']
+            $this['senha'],
+            $this['orientador_list']
         );
 
         $this->setDefault('type', 'aluno');

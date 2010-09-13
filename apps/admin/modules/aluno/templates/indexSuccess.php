@@ -1,5 +1,10 @@
 <h2><?php echo __('Aluno');?></h2>
 <h3><?php echo __('Listagem');?></h3>
+<?php
+if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
+    printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
+}
+?>
 <?php echo link_to(__('Novo'),url_for('aluno/new'));?>
 <table>
     <thead>
@@ -18,7 +23,7 @@
             <td><?php echo $aluno->getMatricula() ?></td>
             <td>
                 <?php echo link_to(__('Alterar'),'aluno/edit?id=' . $aluno->getId(), array('class' => 'user_edit'));?>
-                <?php echo link_to(__('Excluir'),'aluno/edit?id=' . $aluno->getId(), array('class' => 'user_delete'));?>
+                <?php echo link_to(__('Excluir'),'aluno/delete?id=' . $aluno->getId(), array('class' => 'user_delete'));?>
             </td>
         </tr>
         <?php endforeach; ?>

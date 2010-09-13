@@ -25,14 +25,14 @@ class professorActions extends sfActions
 
     public function executeNew(sfWebRequest $request)
     {
-        $this->form = new ProfessorForm();
+        $this->form = new ProfessorCoordenadorForm();
     }
 
     public function executeCreate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-        $this->form = new ProfessorForm();
+        $this->form = new ProfessorCoordenadorForm();
 
         $this->processForm($request, $this->form);
 
@@ -42,14 +42,14 @@ class professorActions extends sfActions
     public function executeEdit(sfWebRequest $request)
     {
         $this->forward404Unless($professor = Doctrine::getTable('Professor')->find(array($request->getParameter('id'))), sprintf('Object professor does not exist (%s).', $request->getParameter('id')));
-        $this->form = new ProfessorForm($professor);
+        $this->form = new ProfessorCoordenadorForm($professor);
     }
 
     public function executeUpdate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
         $this->forward404Unless($professor = Doctrine::getTable('Professor')->find(array($request->getParameter('id'))), sprintf('Object professor does not exist (%s).', $request->getParameter('id')));
-        $this->form = new ProfessorForm($professor);
+        $this->form = new ProfessorCoordenadorForm($professor);
 
         $this->processForm($request, $this->form);
 
@@ -58,11 +58,10 @@ class professorActions extends sfActions
 
     public function executeDelete(sfWebRequest $request)
     {
-        $request->checkCSRFProtection();
-
         $this->forward404Unless($professor = Doctrine::getTable('Professor')->find(array($request->getParameter('id'))), sprintf('Object professor does not exist (%s).', $request->getParameter('id')));
         $professor->delete();
 
+        $this->getUser()->setFlash('success', 'Professor excluído com sucesso!');
         $this->redirect('professor/index');
     }
 
@@ -74,7 +73,7 @@ class professorActions extends sfActions
             $this->getUser()->setFlash('success','Professor alterado com sucesso!');
             $this->redirect('professor/edit?id='.$professor->getId());
         } else {
-            $this->getUser()->setFlash('error', 'O formulário contém erros!');
+            $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
         }        
     }
 }

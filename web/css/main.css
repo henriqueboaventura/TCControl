@@ -3,6 +3,14 @@ a{
     outline:none;
 }
 
+ul, ol {
+    list-style-position: inside;
+    margin:0px;
+    padding:0px;
+}
+
+/* header */
+
 header{
     border-bottom:1px solid #ccc;
     padding-bottom:10px;
@@ -21,6 +29,9 @@ header{
         header div#tool_box{
             float:right;
         }
+            header div#tool_box img{
+                cursor:pointer;
+            }
             header div#tool_box ul{
                 display:none;
                 position:absolute;
@@ -36,13 +47,35 @@ header{
                     background-color:#fff;
                     border:1px solid #ccc;
                     margin-top:-1px;
-                    padding:2px 5px;
+                }
+                header div#tool_box ul li:hover{
+                    background-color:#dedede;
+                }
+                    header div#tool_box ul li a{
+                        display:block;
+                        padding:2px 5px;
+
+                    }
+
+/* menu */ 
+div#nav_menu{
+    
+}
+    div#nav_menu ul{
+    }
+        div#nav_menu ul li{            
+        }
+            div#nav_menu ul li ul{
+            }
+                div#nav_menu ul li ul li{
+                    margin-left:15px;
                 }
 
 
 /* forms */
 input[type=text],
 input[type=password],
+select,
 textarea{
     border-radius:5px;
     clear:left;
@@ -51,6 +84,12 @@ textarea{
     padding:5px;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
+}
+input[type=checkbox]{
+    clear:none;
+    float:left;
+    font-size:18px;
+    padding:5px;
 }
 label{
     clear:both;
@@ -98,23 +137,30 @@ div#content form#login fieldset{
 }
 
 /* listagem */
+table tbody tr td{
+    vertical-align:top;
+}
 table tfoot tr td.results{
     text-align:right;
 }
-table tbody tr td a.user_edit,
-table tbody tr td a.user_delete{
-    background:transparent url(/images/user_edit.png) no-repeat top left;
-    clear:none;
-    float:left;
-    height:16px;
-    margin: 0px 5px;
-    outline:none;
-    text-indent: -1999em;
-    width:16px;
-}
-table tbody tr td a.user_delete{
-    background-image: url(/images/user_delete.png);
-}
+    table tbody tr td a.user_edit,
+    table tbody tr td a.user_delete,
+    table tbody tr td a.user_orientacao{
+        background:transparent url(/images/user_edit.png) no-repeat top left;
+        clear:none;
+        float:left;
+        height:16px;
+        margin: 0px 5px;
+        outline:none;
+        text-indent: -1999em;
+        width:16px;
+    }
+    table tbody tr td a.user_delete{
+        background-image: url(/images/user_delete.png);
+    }
+    table tbody tr td a.user_orientacao{
+        background-image: url(/images/group_go.png);
+    }
 
 /* pager */
 div.pagination{

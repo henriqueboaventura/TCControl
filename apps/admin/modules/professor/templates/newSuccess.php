@@ -1,5 +1,5 @@
 <h2><?php echo __('Professor');?></h2>
-<h3><?php echo __('Alterar');?></h3>
+<h3><?php echo __('Novo');?></h3>
 <?php
     include_partial(
         'global/form',

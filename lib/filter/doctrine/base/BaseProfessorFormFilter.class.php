@@ -17,6 +17,9 @@ abstract class BaseProfessorFormFilter extends AcademicoFormFilter
     $this->widgetSchema   ['areas_afinidade_list'] = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'AreaAfinidade'));
     $this->validatorSchema['areas_afinidade_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'AreaAfinidade', 'required' => false));
 
+    $this->widgetSchema   ['orientandos_list'] = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Aluno'));
+    $this->validatorSchema['orientandos_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Aluno', 'required' => false));
+
     $this->widgetSchema->setNameFormat('professor_filters[%s]');
   }
 
@@ -38,6 +41,24 @@ abstract class BaseProfessorFormFilter extends AcademicoFormFilter
     ;
   }
 
+  public function addOrientandosListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.Orientacao Orientacao')
+      ->andWhereIn('Orientacao.aluno_id', $values)
+    ;
+  }
+
   public function getModelName()
   {
     return 'Professor';
@@ -47,6 +68,7 @@ abstract class BaseProfessorFormFilter extends AcademicoFormFilter
   {
     return array_merge(parent::getFields(), array(
       'areas_afinidade_list' => 'ManyKey',
+      'orientandos_list' => 'ManyKey',
     ));
   }
 }

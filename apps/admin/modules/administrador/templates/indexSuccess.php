@@ -1,5 +1,10 @@
 <h2><?php echo __('Administrador');?></h2>
 <h3><?php echo __('Listagem');?></h3>
+<?php
+if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
+    printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
+}
+?>
 <?php echo link_to(__('Novo'),url_for('administrador/new'));?>
 <table>
     <thead>
@@ -21,7 +26,7 @@
             <td><?php echo $administrador->getEmail() ?></td>
             <td>
                 <?php echo link_to(__('Alterar'),'administrador/edit?id=' . $administrador->getId(), array('class' => 'user_edit'));?>
-                <?php echo link_to(__('Excluir'),'administrador/edit?id=' . $administrador->getId(), array('class' => 'user_delete'));?>
+                <?php echo link_to(__('Excluir'),'administrador/delete?id=' . $administrador->getId(), array('class' => 'user_delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

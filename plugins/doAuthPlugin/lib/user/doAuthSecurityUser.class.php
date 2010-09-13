@@ -73,15 +73,15 @@ class doAuthSecurityUser extends sfBasicSecurityUser
       return true;
     }
 
-    if (!$this->getAccount())
-    {
-      return false;
-    }
-
-    if ($this->getAccount()->getIsSuperAdmin())
-    {
-      return true;
-    }
+//    if (!$this->getAccount())
+//    {
+//      return false;
+//    }
+//
+//    if ($this->getAccount()->getIsSuperAdmin())
+//    {
+//      return true;
+//    }
 
     return parent::hasCredential($credential, $useAnd);
   }
@@ -166,7 +166,7 @@ class doAuthSecurityUser extends sfBasicSecurityUser
   {
     if (!$this->user && $id = $this->getAttribute('user_id', null, 'doUser'))
     {
-      $this->user = Doctrine::getTable('User')->find($id);
+      $this->user = Doctrine::getTable('Usuario')->find($id);
 
       if (!$this->user)
       {

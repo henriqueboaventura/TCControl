@@ -12,8 +12,20 @@ class UsuarioForm extends BaseUsuarioForm
 {
     public function configure()
     {
+        unset(
+           $this['created_at'],
+           $this['updated_at']
+        );
+
         $this->widgetSchema['type'] = new sfWidgetFormInputHidden();
         $this->widgetSchema['senha'] = new sfWidgetFormInputPassword();
+
+        $this->widgetSchema->setLabels(array(
+            'email'    => 'E-mail',
+            'endereco' => 'Endereço',
+            'fone_residencial' => 'Telefone (Residencial)',
+            'fone_celular' => 'Telefone (Celular)'
+        ));
 
         $this->validatorSchema['email'] = new sfValidatorEmail(
             array(

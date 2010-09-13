@@ -13,6 +13,14 @@ signout:
   url: /signout
   param: { module: login, action: signout }
 
+orientador_list:
+  url: /orientacao/orientadores
+  param: { module: orientacao, action: orientadorList }
+
+orientador_solicitar:
+  url: /orientacao/solicitar/:professor_id
+  param: { module: orientacao, action: solicitar}
+
 # default rules
 homepage:
   url:   /

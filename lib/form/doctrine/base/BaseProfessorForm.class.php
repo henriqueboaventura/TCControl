@@ -19,6 +19,9 @@ abstract class BaseProfessorForm extends AcademicoForm
     $this->widgetSchema   ['areas_afinidade_list'] = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'AreaAfinidade'));
     $this->validatorSchema['areas_afinidade_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'AreaAfinidade', 'required' => false));
 
+    $this->widgetSchema   ['orientandos_list'] = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Aluno'));
+    $this->validatorSchema['orientandos_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Aluno', 'required' => false));
+
     $this->widgetSchema->setNameFormat('professor[%s]');
   }
 
@@ -36,11 +39,17 @@ abstract class BaseProfessorForm extends AcademicoForm
       $this->setDefault('areas_afinidade_list', $this->object->AreasAfinidade->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['orientandos_list']))
+    {
+      $this->setDefault('orientandos_list', $this->object->Orientandos->getPrimaryKeys());
+    }
+
   }
 
   protected function doSave($con = null)
   {
     $this->saveAreasAfinidadeList($con);
+    $this->saveOrientandosList($con);
 
     parent::doSave($con);
   }
@@ -80,6 +89,44 @@ abstract class BaseProfessorForm extends AcademicoForm
     if (count($link))
     {
       $this->object->link('AreasAfinidade', array_values($link));
+    }
+  }
+
+  public function saveOrientandosList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['orientandos_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Orientandos->getPrimaryKeys();
+    $values = $this->getValue('orientandos_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Orientandos', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Orientandos', array_values($link));
     }
   }
 

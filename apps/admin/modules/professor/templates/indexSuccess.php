@@ -1,6 +1,11 @@
 <h2><?php echo __('Professor');?></h2>
 <h3><?php echo __('Listagem');?></h3>
-<?php echo link_to(__('Novo'),url_for('aluno/new'));?>
+<?php
+if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
+    printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
+}
+?>
+<?php echo link_to(__('Novo'),url_for('professor/new'));?>
 <table>
     <thead>
         <tr>
@@ -20,7 +25,7 @@
             <td><?php echo ($professor->getCoordenador()) ? 'Sim' : 'Não' ?></td>
             <td>
                 <?php echo link_to(__('Alterar'),'professor/edit?id=' . $professor->getId(), array('class' => 'user_edit'));?>
-                <?php echo link_to(__('Excluir'),'professor/edit?id=' . $professor->getId(), array('class' => 'user_delete'));?>
+                <?php echo link_to(__('Excluir'),'professor/delete?id=' . $professor->getId(), array('class' => 'user_delete'));?>
             </td>
         </tr>
         <?php endforeach; ?>

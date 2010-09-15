@@ -25,11 +25,29 @@ class OrientacaoTable extends Doctrine_Table
     public function findOrientacao($professor, $aluno)
     {
         $q = $this->createQuery()
-           ->from('Orientacao o')
+           ->from('Orientacao o')           
            ->where('o.professor_id = ?', $professor)
            ->andWhere('o.aluno_id = ?', $aluno)
-           ->fetchone();
+           ->fetchOne();
            
         return $q;
+    }
+    
+    public function findOrientacoes($professor = null, $aluno = null, $status = null)
+    {
+        $q = $this->createQuery()
+           ->from('Orientacao o');
+        if(!is_null($professor)){
+            $q->andWhere('o.professor_id = ?', $professor);
+        } 
+        if(!is_null($aluno)){
+            $q->andWhere('o.aluno_id = ?', $aluno);
+        }
+        if(!is_null($status)){
+            $q->andWhere('o.status = ?', $status);
+        }
+        
+           
+        return $q->execute();
     }
 }

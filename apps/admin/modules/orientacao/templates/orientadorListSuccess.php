@@ -1,11 +1,7 @@
 <h2>Orientador</h2>
 <h3>Listagem</h3>
 <p>Os professores em destaque já atingiram o limite máximo de orientandos. A orientação necessita de aprovação do Coordenador do curso.</p>
-<?php
-if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
-    printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
-}
-?>
+<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <table>
     <thead>
         <tr>
@@ -17,7 +13,7 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
     </thead>
     <tbody>
         <?php foreach ($professors as $professor): ?>
-        <tr <?php echo ($professor->getOrientacaoCount(true) == $sf_user->getAttribute('alunos_por_professor', 0, 'configuracao')) ? 'class="over_limit"' : ''; ?>>
+        <tr <?php echo ($professor->getOrientacaoCount(true) >= $sf_user->getAttribute('alunos_por_professor', 0, 'configuracao')) ? 'class="over_limit"' : ''; ?>>
 
             <td><?php echo $professor->getNome() ?></td>            
             <td>

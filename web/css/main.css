@@ -165,6 +165,10 @@ table tfoot tr td.results{
     table tbody tr td a.user_orientacao_deny{
         background-image: url(/images/group_delete.png);
     }
+    
+    table tbody tr.over_limit{
+        background-color:#ffc;
+    }
 
 /* pager */
 div.pagination{

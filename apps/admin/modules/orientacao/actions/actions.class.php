@@ -43,7 +43,14 @@ class orientacaoActions extends sfActions
             $orientacao->aluno_id = $this->getUser()->getAttribute('id', null, 'usuario');
             $orientacao->professor_id = $request->getParameter('professor_id');
             $orientacao->save();
-            $this->getUser()->setFlash('success', 'Orientação solicitada com sucesso! Aguarde a decisão do professor.');
+            
+            //recupera o numero de orientacoes que o professor tem
+            $orientacoes = Doctrine_Core::getTable('Orientacao')->findOrientacoes($request->getParameter('professor_id'),null,1);
+            if(count($orientacoes) > $this->getUser()->getAttribute('alunos_por_professor',0,'configuracao')){            
+                $this->getUser()->setFlash('warning', 'O número de orientandos do professor excedeu o limite máximo. Sua solicitação será analisada pelo coordenador do curso.');
+            } else {
+                $this->getUser()->setFlash('success', 'Orientação solicitada com sucesso! Aguarde a decisão do professor.');
+            }
         } else {
             if($orientacao->status == 0){
                 $this->getUser()->setFlash('error', 'Você não pode solicitar uma nova orientação porque você já tem uma aguardando aceitação');

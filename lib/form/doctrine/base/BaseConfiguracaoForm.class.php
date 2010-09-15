@@ -20,6 +20,7 @@ abstract class BaseConfiguracaoForm extends BaseFormDoctrine
       'email'                => new sfWidgetFormInputText(),
       'telefone'             => new sfWidgetFormInputText(),
       'alunos_por_professor' => new sfWidgetFormInputText(),
+      'url'                  => new sfWidgetFormInputText(),
       'created_at'           => new sfWidgetFormDateTime(),
       'updated_at'           => new sfWidgetFormDateTime(),
     ));
@@ -30,6 +31,7 @@ abstract class BaseConfiguracaoForm extends BaseFormDoctrine
       'email'                => new sfValidatorString(array('max_length' => 100)),
       'telefone'             => new sfValidatorString(array('max_length' => 50)),
       'alunos_por_professor' => new sfValidatorInteger(),
+      'url'                  => new sfValidatorString(array('max_length' => 100)),
       'created_at'           => new sfValidatorDateTime(),
       'updated_at'           => new sfValidatorDateTime(),
     ));

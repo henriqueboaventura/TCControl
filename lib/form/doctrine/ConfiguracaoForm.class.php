@@ -18,9 +18,11 @@ class ConfiguracaoForm extends BaseConfiguracaoForm
         );
         $this->widgetSchema->setLabels(array(
             'instituicao' => 'Instituição',
-            'email'       => 'E-mail'
+            'email'       => 'E-mail',
+            'url'         => 'URL do sistema'
         ));
 
         $this->setValidator('email', new sfValidatorEmail());
+        $this->setValidator('url', new sfValidatorURL());
     }
 }

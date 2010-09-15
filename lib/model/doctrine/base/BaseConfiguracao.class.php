@@ -9,15 +9,18 @@
  * @property string $email
  * @property string $telefone
  * @property integer $alunos_por_professor
+ * @property string $url
  * 
  * @method string       getInstituicao()          Returns the current record's "instituicao" value
  * @method string       getEmail()                Returns the current record's "email" value
  * @method string       getTelefone()             Returns the current record's "telefone" value
  * @method integer      getAlunosPorProfessor()   Returns the current record's "alunos_por_professor" value
+ * @method string       getUrl()                  Returns the current record's "url" value
  * @method Configuracao setInstituicao()          Sets the current record's "instituicao" value
  * @method Configuracao setEmail()                Sets the current record's "email" value
  * @method Configuracao setTelefone()             Sets the current record's "telefone" value
  * @method Configuracao setAlunosPorProfessor()   Sets the current record's "alunos_por_professor" value
+ * @method Configuracao setUrl()                  Sets the current record's "url" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -47,6 +50,11 @@ abstract class BaseConfiguracao extends sfDoctrineRecord
         $this->hasColumn('alunos_por_professor', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             ));
+        $this->hasColumn('url', 'string', 100, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 100,
              ));
 
         $this->option('type', 'MyISAM');

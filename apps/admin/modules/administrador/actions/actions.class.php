@@ -20,7 +20,6 @@ class administradorActions extends sfActions
         $this->pager->init();
 
         $this->administradors = $this->pager->getResults();
-
     }
 
     public function executeNew(sfWebRequest $request)
@@ -70,7 +69,22 @@ class administradorActions extends sfActions
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()) {
             $administrador = $form->save();
-            $this->getUser()->setFlash('success','Administrador alterado com sucesso!');
+            if($request->isMethod(sfRequest::POST)){
+                $senha = Util::generatePassword(8);
+                $administrador->senha = $senha;
+                $administrador->save();
+                //envia a senha por e-mail
+                $email = new SenhaMail(
+                    $administrador->email,
+                    array(
+                        'sender' => $this->getUser()->getAttribute('email',null,'configuracao'),
+                        'senha'  => $senha,
+                        'url'    => $this->getUser()->getAttribute('url',null,'configuracao')
+                    )
+                );
+                $email->send();
+            }
+            $this->getUser()->setFlash('success','Administrador ' . ($form->isNew() ? 'incluído' : 'alterado') . ' com sucesso!');
             $this->redirect('administrador/edit?id='.$administrador->getId());
         } else {
             $this->getUser()->setFlash('error', 'O formulário contém erros!',false);

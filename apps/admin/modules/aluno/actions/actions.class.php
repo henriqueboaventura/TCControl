@@ -68,7 +68,23 @@ class alunoActions extends sfActions
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()){
             $aluno = $form->save();
-            $this->getUser()->setFlash('success','Aluno alterado com sucesso!');
+            if($request->isMethod(sfRequest::POST)){
+                $senha = Util::generatePassword(8);
+                $aluno->senha = $senha;
+                $aluno->save();
+                //envia a senha por e-mail
+                $email = new SenhaMail(
+                    $aluno->email,
+                    array(
+                        'sender' => $this->getUser()->getAttribute('email',null,'configuracao'),
+                        'senha'  => $senha,
+                        'url'    => $this->getUser()->getAttribute('url',null,'configuracao')
+                    )
+                );
+                $email->send();
+            }            
+            
+            $this->getUser()->setFlash('success','Aluno ' . ($form->isNew() ? 'incluído' : 'alterado') . ' com sucesso!');
             $this->redirect('aluno/edit?id='.$aluno->getId());
         } else {
             $this->getUser()->setFlash('error', 'O formulário contém erros!',false);

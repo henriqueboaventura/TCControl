@@ -70,7 +70,22 @@ class professorActions extends sfActions
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()){
             $professor = $form->save();
-            $this->getUser()->setFlash('success','Professor alterado com sucesso!');
+            if($request->isMethod(sfRequest::POST)){
+                $senha = Util::generatePassword(8);
+                $professor->senha = $senha;
+                $professor->save();
+                //envia a senha por e-mail
+                $email = new SenhaMail(
+                    $professor->email,
+                    array(
+                        'sender' => $this->getUser()->getAttribute('email',null,'configuracao'),
+                        'senha'  => $senha,
+                        'url'    => $this->getUser()->getAttribute('url',null,'configuracao')
+                    )
+                );
+                $email->send();
+            }
+            $this->getUser()->setFlash('success','Professor ' . ($form->isNew() ? 'incluído' : 'alterado') . ' com sucesso!');
             $this->redirect('professor/edit?id='.$professor->getId());
         } else {
             $this->getUser()->setFlash('error', 'O formulário contém erros!',false);

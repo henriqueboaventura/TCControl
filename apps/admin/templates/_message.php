@@ -17,7 +17,7 @@ if($sf_user->hasFlash('error')){
     );
 }
 
-if(count($message) > 0 AND $message != ''){
+if(count($message) > 0 AND $message[1] != ''){
     echo vsprintf('<p class="%s">%s</p>',$message);
 }
 

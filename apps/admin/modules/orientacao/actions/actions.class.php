@@ -32,6 +32,15 @@ class orientacaoActions extends sfActions
         $this->pager->init();
 
         $this->alunos = $this->pager->getResults();
+
+        $this->showActions = true;
+        if(!$this->getUser()->getAttribute('coordenador',false,'professor')){
+            $orientacoes = Doctrine_Core::getTable('Orientacao')->findOrientacoes($this->getUser()->getAttribute('id',null,'usuario'),null,1);
+            if(count($orientacoes) >= $this->getUser()->getAttribute('alunos_por_professor',0,'configuracao')){
+                $this->getUser()->setFlash('warning', 'Seu número de orientandos atingiu o valor máximo definido pelo professor coordenador, o aceite deverá ser efetuado por ele.');
+                $this->showActions = false;
+            }
+        } 
     }
 
     public function executeSolicitar(sfWebRequest $request)

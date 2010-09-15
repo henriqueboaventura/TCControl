@@ -7,6 +7,7 @@ Aluno:
     endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
     fone_residencial: 51 30299971
     fone_celular: 51 96799981
+    Orientador: [Professor1]
   Aluno2: 
     nome: Carolina Alves Martins
     email: carol@litoralmania.com.br
@@ -15,3 +16,4 @@ Aluno:
     endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
     fone_residencial: 51 30299971
     fone_celular: 51 96799981
+    Orientador: [Professor1]

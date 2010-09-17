@@ -30,7 +30,8 @@
     </li>
     <li>Plano de Trabalho
         <ul>
-            <li><?php echo link_to('Definir Proposta', '@home'); ?></li>
+            <li><?php echo link_to('Definir Proposta', '@proposta'); ?></li>
+            <li><?php echo link_to('Definir Cronograma', 'cronograma/index'); ?></li>
         </ul>
     </li>
 </ul>

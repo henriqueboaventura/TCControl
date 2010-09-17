@@ -1,10 +1,6 @@
 <h2><?php echo __('Curso');?></h2>
 <h3><?php echo __('Listagem');?></h3>
-<?php
-if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
-    printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
-}
-?>
+<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <?php echo link_to(__('Novo'),url_for('curso/new'));?>
 <table>
     <thead>

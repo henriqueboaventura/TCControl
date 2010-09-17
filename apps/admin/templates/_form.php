@@ -1,7 +1,6 @@
 <?php
-    if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
-        printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
-    }
+    include_partial('global/message',array('sf_user',$sf_user));    
+    
     if(isset($action)){
         $url = $action;
     } else {

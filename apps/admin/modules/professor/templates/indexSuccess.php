@@ -1,10 +1,6 @@
 <h2><?php echo __('Professor');?></h2>
 <h3><?php echo __('Listagem');?></h3>
-<?php
-if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
-    printf('<p class="%s">%s</p>',($sf_user->hasFlash('error') ? 'error' : 'success') ,($sf_user->getFlash('error') ?: $sf_user->getFlash('success')));
-}
-?>
+<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <?php echo link_to(__('Novo'),url_for('professor/new'));?>
 <table>
     <thead>
@@ -16,6 +12,11 @@ if($sf_user->getFlash('error') != '' OR $sf_user->getFlash('success') != ''){
             <th class="actions">Ações</th>
         </tr>
     </thead>
+    <tfoot>
+        <tr>
+            <td colspan="5" class="results"><?php echo $pager->getNbResults();?> <?php echo __('registro(s)');?></td>
+        </tr>
+    </tfoot>
     <tbody>
         <?php foreach ($professors as $professor): ?>
         <tr>

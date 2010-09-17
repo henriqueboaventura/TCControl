@@ -80,7 +80,8 @@ textarea{
     border-radius:5px;
     clear:left;
     float:left;
-    font-size:18px;
+    font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;    
+    font-size:18px;    
     padding:5px;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
@@ -91,6 +92,9 @@ input[type=checkbox]{
     font-size:18px;
     padding:5px;
 }
+textarea{
+    width:auto;
+}
 label{
     clear:both;
     float:left;
@@ -98,6 +102,7 @@ label{
 }
 input[type=text].field_error,
 input[type=password].field_error,
+select.field_error,
 textarea.field_error{
     border-radius:5px 0px 0px 5px;    
     border-color:#fbc2c4;
@@ -127,6 +132,23 @@ span#actions_bar{
     span#actions_bar a{
         float:left;
     }
+fieldset span{
+    clear:left;
+    float:left;    
+    margin-bottom:10px;
+}
+    fieldset span span{
+        clear:none;
+        float:left;
+    }
+
+span.cke_browser_gecko
+{
+    width:700px!important;    
+}
+table.cke_editor{
+    width:690px!important;
+}
 
 /* login */
 div#content form#login fieldset{

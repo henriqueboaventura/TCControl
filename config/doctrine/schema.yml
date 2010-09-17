@@ -218,11 +218,13 @@ Proposta:
   columns:
     aluno_id:
       type: integer
+      notnull: true
     curso_id:
       type: integer
+      notnull: true
     titulo:
       type: string(255)
-      notnull: true
+      notnull: true      
     titulo:
       type: string(255)
       notnull: true

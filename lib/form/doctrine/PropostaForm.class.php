@@ -10,7 +10,21 @@
  */
 class PropostaForm extends BasePropostaForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        unset(
+            $this['created_at'],
+            $this['updated_at']
+        );
+        
+        $this->widgetSchema['aluno_id'] = new sfWidgetFormInputHidden();
+        $this->widgetSchema['descricao_problema'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));
+        $this->widgetSchema['descricao_solucao'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));
+        $this->widgetSchema['objetivos'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));
+        
+        $this->widgetSchema->setLabels(array(
+            'descricao_problema' => 'Descrição do Problema',
+            'descricao_solucao' => 'Descrição da Solução'
+        )); 
+    }
 }

@@ -46,9 +46,11 @@ abstract class BaseProposta extends sfDoctrineRecord
         $this->setTableName('proposta');
         $this->hasColumn('aluno_id', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
              ));
         $this->hasColumn('curso_id', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
              ));
         $this->hasColumn('titulo', 'string', 255, array(
              'type' => 'string',

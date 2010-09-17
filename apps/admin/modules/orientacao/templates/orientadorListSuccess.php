@@ -11,6 +11,11 @@
             <th class="actions">Ações</th>
         </tr>
     </thead>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="results"><?php echo $pager->getNbResults();?> <?php echo __('registro(s)');?></td>
+        </tr>
+    </tfoot>
     <tbody>
         <?php foreach ($professors as $professor): ?>
         <tr <?php echo ($professor->getOrientacaoCount(true) >= $sf_user->getAttribute('alunos_por_professor', 0, 'configuracao')) ? 'class="over_limit"' : ''; ?>>

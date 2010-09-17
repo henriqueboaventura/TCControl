@@ -4,3 +4,13 @@
 # default values
 all:
   registers_per_page : 10
+  ckeditor:
+    basePath:         /js/ckeditor/
+    default_config: 
+      jsoptions:
+        bodyClass: ckeditor
+        height: 320px
+        language: pt-br
+        resize_enabled: false
+        removePlugins: elementspath
+        toolbar: Basic

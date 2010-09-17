@@ -13,6 +13,10 @@ signout:
   url: /signout
   param: { module: login, action: signout }
 
+proposta:
+    url: /proposta
+    param: { module: proposta, action: edit }
+
 orientandos_list:
   url: /orientacao/orientandos/:filtro
   param: { module: orientacao, action: orientandosList, filtro: false }

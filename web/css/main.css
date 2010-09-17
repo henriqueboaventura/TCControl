@@ -153,6 +153,12 @@ table tfoot tr td.results{
         text-indent: -1999em;
         width:16px;
     }
+    table tbody tr td a.list_delete{
+        background-image: url(/images/delete.png);
+    }
+    table tbody tr td a.list_edit{
+        background-image: url(/images/edit.png);
+    }
     table tbody tr td a.user_delete{
         background-image: url(/images/user_delete.png);
     }

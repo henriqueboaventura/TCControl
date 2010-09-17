@@ -5,6 +5,7 @@
     <li>Sistema
         <ul>
             <li><?php echo link_to('Configurações', 'configuracao/index'); ?></li>
+            <li><?php echo link_to('Cursos', 'curso/index'); ?></li>
         </ul>
     </li>
     <?php endif; ?>

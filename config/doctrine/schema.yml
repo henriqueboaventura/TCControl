@@ -22,6 +22,22 @@ Configuracao:
       type: string(100)
       notnull: true
 
+Curso:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    nome:
+      type: string(100)
+      notnull: true
+  relations:
+    Propostas:
+      type: many
+      class: Proposta
+      local: id
+      foreign: curso_id
+
 Usuario:
   actAs:
     Timestampable: ~
@@ -166,6 +182,9 @@ Aluno:
     keyField: type
     keyValue: aluno
   relations:
+    Proposta:
+      local: id
+      foreign: aluno_id
     Orientador:
       class: Professor
       local: aluno_id
@@ -189,3 +208,72 @@ Orientacao:
       values: [0, 1, 2]
       default: 0
       
+Proposta:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    aluno_id:
+      type: integer
+    curso_id:
+      type: integer
+    titulo:
+      type: string(255)
+      notnull: true
+    titulo:
+      type: string(255)
+      notnull: true
+    descricao_problema:
+      type: string
+      notnull: true
+    descricao_solucao:
+      type: string
+      notnull: true
+    objetivos:
+      type: string
+      notnull: true
+  relations:
+    Aluno:
+      local: aluno_id
+      foreign: id
+    Curso:
+      local: curso_id
+      foreign: id
+    Cronogramas:
+      type: many
+      class: Cronogramas
+      local: id
+      foreign: proposta_id
+
+Cronograma:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    proposta_id:
+      type: integer
+    etapa:
+      type: enum
+      values: [1,2]
+    atividade:
+      type: string(255)
+      notnull: true
+    produto:
+      type: string(100)
+      notnull: true
+    data_entrega:
+      type: date
+      notnull: true
+    detalhamento:
+      type: string
+      notnull: false
+  relations:
+    Proposta:
+      local: proposta_id
+      foreign: id

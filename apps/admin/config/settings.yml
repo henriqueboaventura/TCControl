@@ -40,3 +40,6 @@ all:
 
     secure_module:          login
     secure_action:          secure
+    
+    default_culture:        pt_BR
+    charset: utf-8

@@ -237,6 +237,10 @@ Proposta:
     objetivos:
       type: string
       notnull: true
+    status:
+      type: enum
+      values: [0, 1, 2]
+      default: 0
   relations:
     Aluno:
       local: aluno_id

@@ -31,7 +31,7 @@ class administradorActions extends sfActions
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-        $this->form = new AdministradorForm();
+        $this->form = new AdministradorForm();        
 
         $this->processForm($request, $this->form);
 

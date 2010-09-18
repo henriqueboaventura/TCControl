@@ -11,6 +11,7 @@
  * @property string $descricao_problema
  * @property string $descricao_solucao
  * @property string $objetivos
+ * @property enum $status
  * @property Aluno $Aluno
  * @property Curso $Curso
  * @property Doctrine_Collection $Cronograma
@@ -21,6 +22,7 @@
  * @method string              getDescricaoProblema()  Returns the current record's "descricao_problema" value
  * @method string              getDescricaoSolucao()   Returns the current record's "descricao_solucao" value
  * @method string              getObjetivos()          Returns the current record's "objetivos" value
+ * @method enum                getStatus()             Returns the current record's "status" value
  * @method Aluno               getAluno()              Returns the current record's "Aluno" value
  * @method Curso               getCurso()              Returns the current record's "Curso" value
  * @method Doctrine_Collection getCronograma()         Returns the current record's "Cronograma" collection
@@ -30,6 +32,7 @@
  * @method Proposta            setDescricaoProblema()  Sets the current record's "descricao_problema" value
  * @method Proposta            setDescricaoSolucao()   Sets the current record's "descricao_solucao" value
  * @method Proposta            setObjetivos()          Sets the current record's "objetivos" value
+ * @method Proposta            setStatus()             Sets the current record's "status" value
  * @method Proposta            setAluno()              Sets the current record's "Aluno" value
  * @method Proposta            setCurso()              Sets the current record's "Curso" value
  * @method Proposta            setCronograma()         Sets the current record's "Cronograma" collection
@@ -68,6 +71,16 @@ abstract class BaseProposta extends sfDoctrineRecord
         $this->hasColumn('objetivos', 'string', null, array(
              'type' => 'string',
              'notnull' => true,
+             ));
+        $this->hasColumn('status', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+              2 => 2,
+             ),
+             'default' => 0,
              ));
 
         $this->option('type', 'MyISAM');

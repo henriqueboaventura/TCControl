@@ -1,3 +1,4 @@
+<?php use_helper('Date'); ?>
 <h2><?php echo __('Cronograma');?></h2>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <h3><?php echo __('Listagem');?></h3>
@@ -8,19 +9,21 @@
         <tr>
             <th><?php echo __('Atividade');?></th>
             <th><?php echo __('Produto');?></th>
-            <th><?php echo __('Data de Entrega');?></th>
+            <th><?php echo __('Entrega');?></th>
             <th><?php echo __('Detalhamento');?></th>
             <th class="actions"><?php echo __('Ações');?></th>
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($cronogramas as $cronograma): ?>
+    <?php foreach ($cronogramasTCC1 as $cronograma): ?>
         <tr>
-            <td><?php echo $cronograma->getNome() ?></td>
-            <td><?php echo $cronograma->getEmail() ?></td>
+            <td><?php echo $cronograma->getAtividade() ?></td>
+            <td><?php echo $cronograma->getProduto() ?></td>
+            <td><?php echo format_date($cronograma->getDataEntrega(),'dd/MM/yyyy'); ?></td>
+            <td><?php echo $cronograma->getDetalhamento() ?></td>
             <td class="actions">
-                <?php echo link_to(__('Alterar'),'administrador/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'administrador/delete?id=' . $cronograma->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Alterar'),'cronograma/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
+                <?php echo link_to(__('Excluir'),'cronograma/delete?id=' . $cronograma->getId(), array('class' => 'list_delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>
@@ -32,19 +35,21 @@
         <tr>
             <th><?php echo __('Atividade');?></th>
             <th><?php echo __('Produto');?></th>
-            <th><?php echo __('Data de Entrega');?></th>
+            <th><?php echo __('Entrega');?></th>
             <th><?php echo __('Detalhamento');?></th>
             <th class="actions"><?php echo __('Ações');?></th>
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($cronogramas as $cronograma): ?>
+    <?php foreach ($cronogramasTCC2 as $cronograma): ?>
         <tr>
-            <td><?php echo $cronograma->getNome() ?></td>
-            <td><?php echo $cronograma->getEmail() ?></td>
+            <td><?php echo $cronograma->getAtividade() ?></td>
+            <td><?php echo $cronograma->getProduto() ?></td>
+            <td><?php echo format_date($cronograma->getDataEntrega(),'dd/MM,yyyy'); ?></td>
+            <td><?php echo $cronograma->getDetalhamento() ?></td>
             <td class="actions">
-                <?php echo link_to(__('Alterar'),'administrador/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'administrador/delete?id=' . $cronograma->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Alterar'),'cronograma/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
+                <?php echo link_to(__('Excluir'),'cronograma/delete?id=' . $cronograma->getId(), array('class' => 'list_delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

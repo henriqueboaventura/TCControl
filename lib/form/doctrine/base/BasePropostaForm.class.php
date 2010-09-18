@@ -22,6 +22,7 @@ abstract class BasePropostaForm extends BaseFormDoctrine
       'descricao_problema' => new sfWidgetFormTextarea(),
       'descricao_solucao'  => new sfWidgetFormTextarea(),
       'objetivos'          => new sfWidgetFormTextarea(),
+      'status'             => new sfWidgetFormChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2))),
       'created_at'         => new sfWidgetFormDateTime(),
       'updated_at'         => new sfWidgetFormDateTime(),
     ));
@@ -34,6 +35,7 @@ abstract class BasePropostaForm extends BaseFormDoctrine
       'descricao_problema' => new sfValidatorString(),
       'descricao_solucao'  => new sfValidatorString(),
       'objetivos'          => new sfValidatorString(),
+      'status'             => new sfValidatorChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2), 'required' => false)),
       'created_at'         => new sfValidatorDateTime(),
       'updated_at'         => new sfValidatorDateTime(),
     ));

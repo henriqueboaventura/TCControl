@@ -22,7 +22,7 @@ class ProfessorCoordenadorForm extends BaseProfessorForm
         unset (            
             $this['senha'],
             $this['areas_afinidade_list'],
-            $this['orientando_list']
+            $this['orientandos_list']
         );
 
         $this->setWidget('coordenador', new sfWidgetFormChoice(array(

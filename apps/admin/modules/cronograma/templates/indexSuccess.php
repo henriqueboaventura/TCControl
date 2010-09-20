@@ -1,7 +1,7 @@
 <?php use_helper('Date'); ?>
 <h2><?php echo __('Cronograma');?></h2>
-<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <h3><?php echo __('Listagem');?></h3>
+<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <?php echo link_to(__('Novo'),url_for('cronograma/new'));?>
 <h4>TCC 1</h4>
 <table>
@@ -19,7 +19,7 @@
         <tr>
             <td><?php echo $cronograma->getAtividade() ?></td>
             <td><?php echo $cronograma->getProduto() ?></td>
-            <td><?php echo format_date($cronograma->getDataEntrega(),'dd/MM/yyyy'); ?></td>
+            <td><?php echo format_date($cronograma->getDataEntrega(),'dd/MM/yy'); ?></td>
             <td><?php echo $cronograma->getDetalhamento() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'cronograma/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
@@ -45,7 +45,7 @@
         <tr>
             <td><?php echo $cronograma->getAtividade() ?></td>
             <td><?php echo $cronograma->getProduto() ?></td>
-            <td><?php echo format_date($cronograma->getDataEntrega(),'dd/MM,yyyy'); ?></td>
+            <td><?php echo format_date($cronograma->getDataEntrega(),'dd/MM/yy'); ?></td>
             <td><?php echo $cronograma->getDetalhamento() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'cronograma/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>

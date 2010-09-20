@@ -21,6 +21,8 @@ class CronogramaTable extends Doctrine_Table
             $q->andWhere('c.etapa = ?', $etapa);
         }
 
+        $q->orderBy('c.data_entrega');
+
         return $q->execute();
     }
 }

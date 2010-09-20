@@ -13,15 +13,15 @@ abstract class BaseAreaAfinidadeFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'nome'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'slug'             => new sfWidgetFormFilterInput(),
-      'professores_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Professor')),
+      'nome'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'slug'           => new sfWidgetFormFilterInput(),
+      'professor_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Professor')),
     ));
 
     $this->setValidators(array(
-      'nome'             => new sfValidatorPass(array('required' => false)),
-      'slug'             => new sfValidatorPass(array('required' => false)),
-      'professores_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Professor', 'required' => false)),
+      'nome'           => new sfValidatorPass(array('required' => false)),
+      'slug'           => new sfValidatorPass(array('required' => false)),
+      'professor_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Professor', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('area_afinidade_filters[%s]');
@@ -33,7 +33,7 @@ abstract class BaseAreaAfinidadeFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addProfessoresListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addProfessorListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -59,10 +59,10 @@ abstract class BaseAreaAfinidadeFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'               => 'Number',
-      'nome'             => 'Text',
-      'slug'             => 'Text',
-      'professores_list' => 'ManyKey',
+      'id'             => 'Number',
+      'nome'           => 'Text',
+      'slug'           => 'Text',
+      'professor_list' => 'ManyKey',
     );
   }
 }

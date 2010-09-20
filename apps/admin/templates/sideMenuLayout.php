@@ -27,7 +27,7 @@
             <div id="nav_menu" class="span-5">
             <?php include_component('home','menu'); ?>
             </div>
-            <div id="content" class="span-19 last">
+            <div id="content" class="span-19 <?php echo $sf_context->getModuleName(); ?> last">
             <?php echo $sf_content ?>
             </div>
             <footer class="clear">Desenvolvido por Henrique Boaventura</footer>

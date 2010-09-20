@@ -16,4 +16,29 @@ class PropostaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Proposta');
     }
+
+    public function findPropostaByProfessor($professor, $status = array(0,1,2), $execute = true) {
+        $q = $this->createQuery()
+           ->from('Proposta p')
+           ->innerJoin('p.Aluno a')
+           ->innerJoin('a.Orientacao o')
+           ->where('o.professor_id = ?', $professor)
+           ->andWhere('p.status IN ?',$status);
+        if($execute){
+            return $q->execute();
+        } else {
+            return $q;
+        }
+    }
+
+    public function findPropostaCronogramas($proposta)
+    {
+        $q = $this->createQuery()
+           ->from('Proposta p')
+           ->innerJoin('p.Cronograma c')
+           ->where('p.id = ?', $proposta)
+           ->orderBy('c.etapa ASC, c.data_entrega ASC');
+
+        return $q->fetchOne();
+    }
 }

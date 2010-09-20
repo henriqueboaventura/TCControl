@@ -19,8 +19,13 @@
         <tr>
             <td><?php echo $areaAfinidade->getNome() ?></td>
             <td class="actions">
-                <?php echo link_to(__('Alterar'),'areaAfinidade/edit?id=' . $areaAfinidade->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'areaAfinidade/delete?id=' . $areaAfinidade->getId(), array('class' => 'list_delete'));?>
+                <?php
+                    if($areaAfinidade->Professor[0]->id != false){
+                        echo link_to(__('Desvincular'),'@area_afinidade_action?action=desvincular&id=' . $areaAfinidade->getId(), array('class' => 'list_deny', 'title' => 'Desvincular'));
+                    } else {
+                        echo link_to(__('Vincular'),'@area_afinidade_action?action=vincular&id=' . $areaAfinidade->getId(), array('class' => 'list_accept', 'title' => 'Vincular'));
+                    }
+                ?>
             </td>
         </tr>
     <?php endforeach; ?>

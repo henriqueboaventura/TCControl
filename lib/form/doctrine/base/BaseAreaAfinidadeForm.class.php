@@ -15,17 +15,17 @@ abstract class BaseAreaAfinidadeForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'               => new sfWidgetFormInputHidden(),
-      'nome'             => new sfWidgetFormInputText(),
-      'slug'             => new sfWidgetFormInputText(),
-      'professores_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Professor')),
+      'id'             => new sfWidgetFormInputHidden(),
+      'nome'           => new sfWidgetFormInputText(),
+      'slug'           => new sfWidgetFormInputText(),
+      'professor_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Professor')),
     ));
 
     $this->setValidators(array(
-      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nome'             => new sfValidatorString(array('max_length' => 50)),
-      'slug'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'professores_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Professor', 'required' => false)),
+      'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'nome'           => new sfValidatorString(array('max_length' => 50)),
+      'slug'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'professor_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Professor', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -50,28 +50,28 @@ abstract class BaseAreaAfinidadeForm extends BaseFormDoctrine
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['professores_list']))
+    if (isset($this->widgetSchema['professor_list']))
     {
-      $this->setDefault('professores_list', $this->object->Professores->getPrimaryKeys());
+      $this->setDefault('professor_list', $this->object->Professor->getPrimaryKeys());
     }
 
   }
 
   protected function doSave($con = null)
   {
-    $this->saveProfessoresList($con);
+    $this->saveProfessorList($con);
 
     parent::doSave($con);
   }
 
-  public function saveProfessoresList($con = null)
+  public function saveProfessorList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['professores_list']))
+    if (!isset($this->widgetSchema['professor_list']))
     {
       // somebody has unset this widget
       return;
@@ -82,8 +82,8 @@ abstract class BaseAreaAfinidadeForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->Professores->getPrimaryKeys();
-    $values = $this->getValue('professores_list');
+    $existing = $this->object->Professor->getPrimaryKeys();
+    $values = $this->getValue('professor_list');
     if (!is_array($values))
     {
       $values = array();
@@ -92,13 +92,13 @@ abstract class BaseAreaAfinidadeForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('Professores', array_values($unlink));
+      $this->object->unlink('Professor', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('Professores', array_values($link));
+      $this->object->link('Professor', array_values($link));
     }
   }
 

@@ -18,7 +18,7 @@ class ProfessorForm extends BaseProfessorForm
             $this['coordenador'],
             $this['senha'],
             $this['areas_afinidade_list'],
-            $this['orientando_list']
+            $this['orientandos_list']
         );
 
     }

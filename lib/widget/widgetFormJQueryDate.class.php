@@ -49,8 +49,9 @@ class widgetFormJQueryDate extends sfWidgetFormInput
 			$image = sprintf(', buttonImage: %s, buttonImageOnly: true', $this->getOption('image'));
 		}
                 use_helper('Date');
-                $value = format_date($value,'dd/MM/yyyy');
-
+                if($value != ''){
+                    $value = format_date($value,'dd/MM/yyyy');
+                }
 		return parent::render($name, $value, $attributes, $errors).
 		sprintf(<<<EOF
 <script type="text/javascript">

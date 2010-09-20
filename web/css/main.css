@@ -166,7 +166,7 @@ table tfoot tr td.results{
     text-align:right;
 }
 table tbody tr td.actions{
-    width:50px;
+    width:70px;
 }
     table tbody tr td.actions a{
         background:transparent url(/images/user_edit.png) no-repeat top left;
@@ -184,6 +184,15 @@ table tbody tr td.actions{
     table tbody tr td a.list_edit{
         background-image: url(/images/edit.png);
     }
+    table tbody tr td a.list_view{
+        background-image: url(/images/zoom.png);
+    }
+    table tbody tr td a.list_accept{
+        background-image: url(/images/tick.png);
+    }
+    table tbody tr td a.list_deny{
+        background-image: url(/images/cross.png);
+    }
     table tbody tr td a.user_delete{
         background-image: url(/images/user_delete.png);
     }
@@ -200,6 +209,18 @@ table tbody tr td.actions{
     table tbody tr.over_limit{
         background-color:#ffc;
     }
+
+/* proposta */
+div#content.proposta{
+
+}
+    div#content.proposta dl{
+    }
+        div#content.proposta dl dt{
+            
+        }
+        div#content.proposta dl dd{
+        }
 
 /* pager */
 div.pagination{

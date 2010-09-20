@@ -10,7 +10,11 @@
  */
 class AreaAfinidadeForm extends BaseAreaAfinidadeForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        unset(
+            $this['professores_list'],
+            $this['slug']
+        );
+    }
 }

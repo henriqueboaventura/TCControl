@@ -10,7 +10,8 @@
  */
 class AreaInteresseForm extends BaseAreaInteresseForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        $this->widgetSchema['professor_id'] = new sfWidgetFormInputHidden();
+    }
 }

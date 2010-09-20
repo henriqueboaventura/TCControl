@@ -24,8 +24,23 @@ class orientacaoActions extends sfActions
     
     public function executeOrientandosList(sfWebRequest $request)
     {
+        switch($request->getParameter('filtro')){
+        case 'aguardando':
+            $status = 0;
+
+            break;
+        case 'aprovado':
+            $status = 1;
+
+            break;
+        case 'rejeitado':
+            $status = 2;
+
+            break;
+        }
+        
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao($this->getUser()->getAttribute('id',null,'usuario'),array(0),false);
+        $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao($this->getUser()->getAttribute('id',null,'usuario'),array($status),false);
         $this->pager = new sfDoctrinePager('Orientacao',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);
@@ -40,7 +55,9 @@ class orientacaoActions extends sfActions
                 $this->getUser()->setFlash('warning', 'Seu número de orientandos atingiu o valor máximo definido pelo professor coordenador, o aceite deverá ser efetuado por ele.');
                 $this->showActions = false;
             }
-        } 
+        } else if(in_array($status,array(1,2))){
+            $this->showActions = false;
+        }
     }
 
     public function executeSolicitar(sfWebRequest $request)
@@ -88,6 +105,6 @@ class orientacaoActions extends sfActions
         }
         
         $orientacao->save();
-        $this->redirect('@orientandos_list');
+        $this->redirect('@orientandos_list?filtro=aguardando');
     }
 }   

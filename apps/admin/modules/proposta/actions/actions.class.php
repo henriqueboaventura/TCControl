@@ -18,7 +18,7 @@ class propostaActions extends sfActions
     public function executeEdit(sfWebRequest $request)
     {                
         $aluno = $this->getUser()->getAttribute('id', null, 'usuario');
-        
+
         $proposta = Doctrine_Core::getTable('Proposta')->findOneByAlunoId($aluno);
         
         if($proposta){
@@ -42,5 +42,59 @@ class propostaActions extends sfActions
             }
             
         } 
+    }
+
+    public function executeList(sfWebRequest $request)
+    {
+        switch($request->getParameter('filtro')){
+        case 'aguardando':
+            $status = 0;
+
+            break;
+        case 'aprovado':
+            $status = 1;
+
+            break;
+        case 'rejeitado':
+            $status = 2;
+
+            break;
+        }
+        
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),array($status),false);
+        $this->pager = new sfDoctrinePager('Proposta',sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
+
+        $this->propostas = $this->pager->getResults();
+    }
+
+    public function executeView(sfWebRequest $request)
+    {
+        $this->proposta = Doctrine::getTable('Proposta')->findPropostaCronogramas($request->getParameter('id'));
+
+        $this->etapa = array();
+        foreach($this->proposta->Cronograma as $cronograma){
+            $this->etapa[$cronograma->etapa][] = $cronograma;
+        }
+    }
+
+    public function executeUpdateStatus(sfWebRequest $request)
+    {
+        $proposta = Doctrine::getTable('Proposta')->find($request->getParameter('id'));
+
+        if($request->getParameter('acao') == 'aceitar'){
+            $proposta->status = 1;
+            $this->getUser()->setFlash('success','Proposta aceita com sucesso!');
+        } else {
+            $proposta->status = 2;
+            $this->getUser()->setFlash('success','Proposta rejeitada com sucesso!');
+        }
+        
+        $proposta->save();
+        $this->redirect('@proposta_list?filtro=aguardando');
+
     }
 }

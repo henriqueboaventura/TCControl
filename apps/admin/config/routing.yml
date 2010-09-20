@@ -13,16 +13,32 @@ signout:
   url: /signout
   param: { module: login, action: signout }
 
+area_afinidade_action:
+  url: /areaAfinidade/:id/:action
+  param: { module: areaAfinidade }
+
 proposta:
     url: /proposta
     param: { module: proposta, action: edit }
+
+proposta_list:
+    url: /propostas/:filtro
+    param: { module: proposta, action: list, filtro: false }
+
+proposta_view:
+    url: /proposta/visualizar/:id
+    param: { module: proposta, action: view }
+
+proposta_action:
+  url: /proposta/:id/:acao
+  param: { module: proposta, action: updateStatus }
 
 orientandos_list:
   url: /orientacao/orientandos/:filtro
   param: { module: orientacao, action: orientandosList, filtro: false }
   
 orientacao_action:
-  url: /orientacao/orientando/:acao
+  url: /orientacao/orientando/:aluno_id/:acao
   param: { module: orientacao, action: updateStatus }  
 
 orientador_list:

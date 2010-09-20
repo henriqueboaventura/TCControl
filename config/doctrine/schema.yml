@@ -134,7 +134,12 @@ AreaAfinidade:
   columns:
     nome:
       type: string(50)
-      notnull: true 
+      notnull: true
+  relations:
+    Professor:
+      foreignAlias: AreasAfinidade
+      class: Professor
+      refClass: ProfessorAreaAfinidade
       
 ProfessorAreaAfinidade:
   options:

@@ -28,6 +28,7 @@ class CronogramaForm extends BaseCronogramaForm
             'config'  => '{}',
             'culture' => 'pt-BR'
         ));
+        $this->widgetSchema['detalhamento'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));
 
         $this->validatorSchema['data_entrega'] = new sfValidatorDate(array(
             'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~',

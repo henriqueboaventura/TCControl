@@ -6,6 +6,7 @@
         <ul>
             <li><?php echo link_to('Configurações', 'configuracao/index'); ?></li>
             <li><?php echo link_to('Cursos', 'curso/index'); ?></li>
+            <li><?php echo link_to('Areas de Afinidade','areaAfinidade/index');?></li>
         </ul>
     </li>
     <?php endif; ?>
@@ -39,9 +40,28 @@
 <?php if($sf_user->hasCredential('professor')): ?>
 <h4>Definições</h4>
 <ul>
+    <li>Professor
+        <ul>
+            <li><?php echo link_to('Areas de Afinidade','areaAfinidade/index');?></li>
+            <li><?php echo link_to('Areas de Interesse','areaInteresse/index');?></li>
+        </ul>
+    </li>
     <li>Orientandos
         <ul>
-            <li><?php echo link_to('Aguardando Aprovação(' . $orientacoesPendentes->count() . ')','@orientandos_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aguardando Aceitação(' . $orientacoesPendentes->count() . ')','@orientandos_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aprovados','@orientandos_list?filtro=aprovado');?></li>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
+            <li><?php echo link_to('Rejeitados','@orientandos_list?filtro=rejeitado');?></li>
+            <?php endif; ?>
+        </ul>
+    </li>
+    <li>Propostas
+        <ul>
+            <li><?php echo link_to('Aguardando Aprovação(' . $propostasPendentes->count() . ')','@proposta_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aprovadas','@proposta_list?filtro=aprovado');?></li>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
+            <li><?php echo link_to('Rejeitadas','@proposta_list?filtro=rejeitado');?></li>
+            <?php endif; ?>
         </ul>
     </li>
 </ul>

@@ -24,7 +24,7 @@ abstract class BaseUsuarioForm extends BaseFormDoctrine
       'endereco'         => new sfWidgetFormInputText(),
       'fone_residencial' => new sfWidgetFormInputText(),
       'fone_celular'     => new sfWidgetFormInputText(),
-      'coordenador'      => new sfWidgetFormInputCheckbox(),
+      'curso_id'         => new sfWidgetFormInputText(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
     ));
@@ -39,7 +39,7 @@ abstract class BaseUsuarioForm extends BaseFormDoctrine
       'endereco'         => new sfValidatorString(array('max_length' => 200)),
       'fone_residencial' => new sfValidatorString(array('max_length' => 20)),
       'fone_celular'     => new sfValidatorString(array('max_length' => 20)),
-      'coordenador'      => new sfValidatorBoolean(array('required' => false)),
+      'curso_id'         => new sfValidatorInteger(array('required' => false)),
       'created_at'       => new sfValidatorDateTime(),
       'updated_at'       => new sfValidatorDateTime(),
     ));

@@ -41,5 +41,6 @@ class UsuarioForm extends BaseUsuarioForm
                 'min_length' => 'A senha deve ter no mínimo 8 caracteres'
             )
         );
+        
     }
 }

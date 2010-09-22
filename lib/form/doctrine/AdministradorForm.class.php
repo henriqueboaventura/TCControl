@@ -20,7 +20,8 @@ class AdministradorForm extends BaseAdministradorForm
             $this['fone_residencial'],
             $this['fone_celular'],
             $this['coordenador'],
-            $this['senha']
+            $this['senha'],
+            $this['curso_id']
         );
 
         $this->setDefault('type', 'administrador');

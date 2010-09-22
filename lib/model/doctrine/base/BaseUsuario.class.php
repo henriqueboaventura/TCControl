@@ -13,7 +13,7 @@
  * @property string $endereco
  * @property string $fone_residencial
  * @property string $fone_celular
- * @property boolean $coordenador
+ * @property integer $curso_id
  * 
  * @method string  getNome()             Returns the current record's "nome" value
  * @method string  getEmail()            Returns the current record's "email" value
@@ -23,7 +23,7 @@
  * @method string  getEndereco()         Returns the current record's "endereco" value
  * @method string  getFoneResidencial()  Returns the current record's "fone_residencial" value
  * @method string  getFoneCelular()      Returns the current record's "fone_celular" value
- * @method boolean getCoordenador()      Returns the current record's "coordenador" value
+ * @method integer getCursoId()          Returns the current record's "curso_id" value
  * @method Usuario setNome()             Sets the current record's "nome" value
  * @method Usuario setEmail()            Sets the current record's "email" value
  * @method Usuario setSenha()            Sets the current record's "senha" value
@@ -32,7 +32,7 @@
  * @method Usuario setEndereco()         Sets the current record's "endereco" value
  * @method Usuario setFoneResidencial()  Sets the current record's "fone_residencial" value
  * @method Usuario setFoneCelular()      Sets the current record's "fone_celular" value
- * @method Usuario setCoordenador()      Sets the current record's "coordenador" value
+ * @method Usuario setCursoId()          Sets the current record's "curso_id" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -84,10 +84,8 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'notnull' => true,
              'length' => 20,
              ));
-        $this->hasColumn('coordenador', 'boolean', null, array(
-             'type' => 'boolean',
-             'notnull' => true,
-             'default' => false,
+        $this->hasColumn('curso_id', 'integer', null, array(
+             'type' => 'integer',
              ));
 
         $this->option('type', 'MyISAM');

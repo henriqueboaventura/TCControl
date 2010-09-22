@@ -8,6 +8,7 @@ Aluno:
     fone_residencial: 51 30299971
     fone_celular: 51 96799981
     Orientador: [Professor1]
+    Curso: ADS
   Aluno2: 
     nome: Carolina Alves Martins
     email: carol@litoralmania.com.br
@@ -17,3 +18,4 @@ Aluno:
     fone_residencial: 51 30299971
     fone_celular: 51 96799981
     Orientador: [Professor1]
+    Curso: Moda

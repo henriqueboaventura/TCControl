@@ -14,7 +14,6 @@ abstract class BasePropostaFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'aluno_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Aluno'), 'add_empty' => true)),
-      'curso_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true)),
       'titulo'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'descricao_problema' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'descricao_solucao'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -26,7 +25,6 @@ abstract class BasePropostaFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'aluno_id'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Aluno'), 'column' => 'id')),
-      'curso_id'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Curso'), 'column' => 'id')),
       'titulo'             => new sfValidatorPass(array('required' => false)),
       'descricao_problema' => new sfValidatorPass(array('required' => false)),
       'descricao_solucao'  => new sfValidatorPass(array('required' => false)),
@@ -55,7 +53,6 @@ abstract class BasePropostaFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                 => 'Number',
       'aluno_id'           => 'ForeignKey',
-      'curso_id'           => 'ForeignKey',
       'titulo'             => 'Text',
       'descricao_problema' => 'Text',
       'descricao_solucao'  => 'Text',

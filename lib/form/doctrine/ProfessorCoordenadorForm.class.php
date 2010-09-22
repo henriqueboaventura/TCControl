@@ -25,8 +25,14 @@ class ProfessorCoordenadorForm extends BaseProfessorForm
             $this['orientandos_list']
         );
 
-        $this->setWidget('coordenador', new sfWidgetFormChoice(array(
-            'choices'     => $choices,
-        )));
+        $this->widgetSchema['curso_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true));
+
+        $this->validatorSchema['curso_id'] = new sfValidatorInteger(
+            array(
+                'required' => false
+            )
+        );
+        
+        $this->widgetSchema->setLabel('curso_id','Coordenador');
     }
 }

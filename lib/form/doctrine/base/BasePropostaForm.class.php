@@ -17,7 +17,6 @@ abstract class BasePropostaForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                 => new sfWidgetFormInputHidden(),
       'aluno_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Aluno'), 'add_empty' => false)),
-      'curso_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => false)),
       'titulo'             => new sfWidgetFormInputText(),
       'descricao_problema' => new sfWidgetFormTextarea(),
       'descricao_solucao'  => new sfWidgetFormTextarea(),
@@ -30,7 +29,6 @@ abstract class BasePropostaForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                 => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'aluno_id'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Aluno'))),
-      'curso_id'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'))),
       'titulo'             => new sfValidatorString(array('max_length' => 255)),
       'descricao_problema' => new sfValidatorString(),
       'descricao_solucao'  => new sfValidatorString(),

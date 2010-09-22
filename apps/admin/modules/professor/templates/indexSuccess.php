@@ -23,7 +23,7 @@
             <td><?php echo $professor->getNome() ?></td>
             <td><?php echo $professor->getEmail() ?></td>
             <td><?php echo $professor->getMatricula() ?></td>
-            <td><?php echo ($professor->getCoordenador()) ? 'Sim' : 'Não' ?></td>
+            <td><?php echo !is_null($professor->Curso->id) ? 'Sim' : 'Não' ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'professor/edit?id=' . $professor->getId(), array('class' => 'user_edit'));?>
                 <?php echo link_to(__('Excluir'),'professor/delete?id=' . $professor->getId(), array('class' => 'user_delete'));?>

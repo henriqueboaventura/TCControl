@@ -32,9 +32,14 @@ Curso:
       type: string(100)
       notnull: true
   relations:
-    Propostas:
+    Professores:
       type: many
-      class: Proposta
+      class: Professor
+      local: id
+      foreign: curso_id 
+    Alunos:
+      type: many
+      class: Aluno
       local: id
       foreign: curso_id
 
@@ -108,10 +113,8 @@ Professor:
     keyField: type
     keyValue: professor
   columns: 
-    coordenador: 
-      type: boolean
-      notnull: true
-      default: false
+    curso_id:
+      type: integer
   relations:
     AreasAfinidade:
       foreignAlias: Professores
@@ -122,6 +125,12 @@ Professor:
       local: professor_id
       foreign: aluno_id      
       refClass: Orientacao
+    Curso: 
+      local: curso_id
+      foreign: id
+    ProfessorCoordenador:
+      local: id
+      foreign: professor_id
           
 AreaAfinidade:
   options:
@@ -186,15 +195,21 @@ Aluno:
     type: column_aggregation
     keyField: type
     keyValue: aluno
+  columns: 
+    curso_id:
+      type: integer      
   relations:
     Proposta:
       local: id
       foreign: aluno_id
+    Curso: 
+      local: curso_id
+      foreign: id
     Orientador:
       class: Professor
       local: aluno_id
       foreign: professor_id
-      refClass: Orientacao
+      refClass: Orientacao    
       
 Orientacao:
   options:
@@ -224,9 +239,6 @@ Proposta:
     aluno_id:
       type: integer
       notnull: true
-    curso_id:
-      type: integer
-      notnull: true
     titulo:
       type: string(255)
       notnull: true      
@@ -249,9 +261,6 @@ Proposta:
   relations:
     Aluno:
       local: aluno_id
-      foreign: id
-    Curso:
-      local: curso_id
       foreign: id
     Cronogramas:
       type: many

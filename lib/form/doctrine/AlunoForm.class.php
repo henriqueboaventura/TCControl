@@ -19,6 +19,14 @@ class AlunoForm extends BaseAlunoForm
             $this['senha'],
             $this['orientador_list']
         );
+        
+        $this->widgetSchema['curso_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true));
+
+        $this->validatorSchema['curso_id'] = new sfValidatorInteger(
+            array(
+                'required' => true
+            )
+        );
 
         $this->setDefault('type', 'aluno');
     }

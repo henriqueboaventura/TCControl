@@ -15,11 +15,11 @@ class ProfessorForm extends BaseProfessorForm
         parent::configure();
 
         unset (
-            $this['coordenador'],
+            $this['curso_id'],
             $this['senha'],
             $this['areas_afinidade_list'],
             $this['orientandos_list']
         );
-
+        
     }
 }

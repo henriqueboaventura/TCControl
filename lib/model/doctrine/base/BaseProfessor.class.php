@@ -7,15 +7,18 @@
  * 
  * @property Doctrine_Collection $AreasAfinidade
  * @property Doctrine_Collection $Orientandos
+ * @property Curso $Curso
  * @property Doctrine_Collection $ProfessorAreasAfinidade
  * @property Doctrine_Collection $AreaInteresse
  * 
  * @method Doctrine_Collection getAreasAfinidade()          Returns the current record's "AreasAfinidade" collection
  * @method Doctrine_Collection getOrientandos()             Returns the current record's "Orientandos" collection
+ * @method Curso               getCurso()                   Returns the current record's "Curso" value
  * @method Doctrine_Collection getProfessorAreasAfinidade() Returns the current record's "ProfessorAreasAfinidade" collection
  * @method Doctrine_Collection getAreaInteresse()           Returns the current record's "AreaInteresse" collection
  * @method Professor           setAreasAfinidade()          Sets the current record's "AreasAfinidade" collection
  * @method Professor           setOrientandos()             Sets the current record's "Orientandos" collection
+ * @method Professor           setCurso()                   Sets the current record's "Curso" value
  * @method Professor           setProfessorAreasAfinidade() Sets the current record's "ProfessorAreasAfinidade" collection
  * @method Professor           setAreaInteresse()           Sets the current record's "AreaInteresse" collection
  * 
@@ -38,6 +41,10 @@ abstract class BaseProfessor extends Academico
              'refClass' => 'Orientacao',
              'local' => 'professor_id',
              'foreign' => 'aluno_id'));
+
+        $this->hasOne('Curso', array(
+             'local' => 'curso_id',
+             'foreign' => 'id'));
 
         $this->hasMany('ProfessorAreaAfinidade as ProfessorAreasAfinidade', array(
              'local' => 'id',

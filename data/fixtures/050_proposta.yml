@@ -1,7 +1,6 @@
 Proposta:
   Proposta1:
     Aluno: Aluno1
-    Curso: ADS
     titulo: TCCtrl
     descricao_problema: "<p>\r\n	Um dos grandes problemas no processo de desenvoltimento do TCC &eacute; a falta de centraliza&ccedil;&atilde;o de informa&ccedil;&otilde;es. Geralmente o processo inteiro &eacute; feito na base de troca de e-mails entre orientador/aluno e com limitadas reuni&otilde;es presenciais. Hoje em dia o processo de desenvolvimento de um TCC &eacute; repleto de vari&aacute;veis (documenta&ccedil;&atilde;o, versionamento, revis&otilde;es, avalia&ccedil;&otilde;es, agendamento, etc) tornando-o muito dif&iacute;cil e complexo, acarretando problemas no cumprimento das reuni&otilde;es e das entregas de documenta&ccedil;&atilde;o.</p>"
     descricao_solucao: "<p>\r\n	Desenvolver um sistema que controle todo o fluxo de trabalho, fornecendo informa&ccedil;&otilde;es necess&aacute;rias para cada etapa do processo e para cada usu&aacute;rio (Docentes, Discentes e Coordenadores). Para desenvolver o sistema, ser&aacute; feito o uso das seguintes ferramentas:</p>\r\n<ul>\r\n	<li>\r\n		Linguagem de Programa&ccedil;&atilde;o PHP, uttilizando o Symfony Framework</li>\r\n	<li>\r\n		Biblioteca jQuery, para requisi&ccedil;&otilde;es AJAX e para manipula&ccedil;&atilde;o DOM</li>\r\n	<li>\r\n		Blueprint CSS, para estrutura&ccedil;&atilde;o e estiliza&ccedil;&atilde;o.</li>\r\n</ul>"

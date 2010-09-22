@@ -40,7 +40,20 @@ class orientacaoActions extends sfActions
         }
         
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao($this->getUser()->getAttribute('id',null,'usuario'),array($status),false);
+        if($this->getUser()->getAttribute('coordenador',false,'professor')){
+            $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacaoCurso(
+                $this->getUser()->getAttribute('curso',null,'usuario'),
+                $this->getUser()->getAttribute('id',null,'usuario'),
+                array($status),
+                false
+            );
+        } else {
+            $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao(
+                $this->getUser()->getAttribute('id',null,'usuario'),
+                array($status),
+                false
+            );
+        }
         $this->pager = new sfDoctrinePager('Orientacao',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);

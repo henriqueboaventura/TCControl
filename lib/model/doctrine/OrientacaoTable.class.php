@@ -21,7 +21,20 @@ class OrientacaoTable extends Doctrine_Table
             return $q;
         }
     }
-    
+
+    public function findAlunosOrientacaoCurso($curso, $professor, $status = array(0,1,2), $execute = true) {
+        $q = $this->createQuery()
+           ->from('Aluno a')
+           ->innerJoin('a.Orientacao o')
+           ->where('(a.curso_id = ? OR o.professor_id = ?)', array($curso, $professor))
+           ->andWhere('o.status IN ?',$status);
+        if($execute){
+            return $q->execute();
+        } else {
+            return $q;
+        }
+    }
+
     public function findOrientacao($professor, $aluno)
     {
         $q = $this->createQuery()

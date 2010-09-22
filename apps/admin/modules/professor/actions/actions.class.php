@@ -25,14 +25,14 @@ class professorActions extends sfActions
 
     public function executeNew(sfWebRequest $request)
     {
-        $this->form = new ProfessorCoordenadorForm();
+        $this->form = $this->buildForm();
     }
 
     public function executeCreate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-        $this->form = new ProfessorCoordenadorForm();
+        $this->form = $this->buildForm();
 
         $this->processForm($request, $this->form);
 
@@ -42,14 +42,14 @@ class professorActions extends sfActions
     public function executeEdit(sfWebRequest $request)
     {
         $this->forward404Unless($professor = Doctrine::getTable('Professor')->find(array($request->getParameter('id'))), sprintf('Object professor does not exist (%s).', $request->getParameter('id')));
-        $this->form = new ProfessorCoordenadorForm($professor);
+        $this->form = $this->buildForm($professor);
     }
 
     public function executeUpdate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
         $this->forward404Unless($professor = Doctrine::getTable('Professor')->find(array($request->getParameter('id'))), sprintf('Object professor does not exist (%s).', $request->getParameter('id')));
-        $this->form = new ProfessorCoordenadorForm($professor);
+        $this->form = $this->buildForm($professor);
 
         $this->processForm($request, $this->form);
 
@@ -90,5 +90,14 @@ class professorActions extends sfActions
         } else {
             $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
         }        
+    }
+
+    private function buildForm($object = null)
+    {
+        if($this->getUser()->hasCredential('administrador')){
+            return new ProfessorCoordenadorForm($object);
+        } else {
+            return new ProfessorForm($object);
+        }
     }
 }

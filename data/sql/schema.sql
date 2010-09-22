@@ -10,7 +10,7 @@ CREATE TABLE professor_area_afinidade (professor_id INT, area_afinidade_id INT, 
 CREATE TABLE proposta (id BIGINT AUTO_INCREMENT, aluno_id BIGINT NOT NULL, titulo VARCHAR(255) NOT NULL, descricao_problema TEXT NOT NULL, descricao_solucao TEXT NOT NULL, objetivos TEXT NOT NULL, status VARCHAR(255) DEFAULT '0', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX aluno_id_idx (aluno_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = MyISAM;
 CREATE TABLE usuario (id BIGINT AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, email VARCHAR(100) NOT NULL UNIQUE, senha VARCHAR(128) NOT NULL, type VARCHAR(255), matricula VARCHAR(20) NOT NULL, endereco VARCHAR(200) NOT NULL, fone_residencial VARCHAR(20) NOT NULL, fone_celular VARCHAR(20) NOT NULL, curso_id BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX usuario_type_idx (type), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = MyISAM;
 ALTER TABLE usuario ADD CONSTRAINT usuario_curso_id_curso_id FOREIGN KEY (curso_id) REFERENCES curso(id);
-ALTER TABLE area_interesse ADD CONSTRAINT area_interesse_professor_id_usuario_id FOREIGN KEY (professor_id) REFERENCES usuario(id);
+ALTER TABLE area_interesse ADD CONSTRAINT area_interesse_professor_id_usuario_id FOREIGN KEY (professor_id) REFERENCES usuario(id) ON DELETE CASCADE;
 ALTER TABLE cronograma ADD CONSTRAINT cronograma_proposta_id_proposta_id FOREIGN KEY (proposta_id) REFERENCES proposta(id);
 ALTER TABLE orientacao ADD CONSTRAINT orientacao_professor_id_usuario_id FOREIGN KEY (professor_id) REFERENCES usuario(id);
 ALTER TABLE orientacao ADD CONSTRAINT orientacao_aluno_id_usuario_id FOREIGN KEY (aluno_id) REFERENCES usuario(id);

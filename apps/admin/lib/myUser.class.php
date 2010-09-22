@@ -7,7 +7,7 @@ class myUser extends doAuthSecurityUser
         parent::signIn($user, $remember, $con);
         $this->setAttribute('id', $user->id, 'usuario');
         $this->setAttribute('email', $user->email, 'usuario');
-        $this->setAttribute('nome', $user->nome, 'usuario');
+        $this->setAttribute('nome', $user->nome, 'usuario');        
         if(!is_null($user->curso_id)){
             $this->setAttribute('curso', $user->curso_id, 'usuario');
             if(strtolower(get_class($user)) == 'professor'){
@@ -20,5 +20,13 @@ class myUser extends doAuthSecurityUser
         }
 
         $this->addCredential(strtolower(get_class($user)));
+    }
+
+    public function signOut() {
+        parent::signOut();
+        
+        $this->getAttributeHolder()->removeNamespace('configuracao');
+        $this->getAttributeHolder()->removeNamespace('professor');
+        $this->getAttributeHolder()->removeNamespace('usuario');
     }
 }

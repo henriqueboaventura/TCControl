@@ -12,7 +12,7 @@
  * @property string $objetivos
  * @property enum $status
  * @property Aluno $Aluno
- * @property Doctrine_Collection $Cronograma
+ * @property Doctrine_Collection $Cronogramas
  * 
  * @method integer             getAlunoId()            Returns the current record's "aluno_id" value
  * @method string              getTitulo()             Returns the current record's "titulo" value
@@ -21,7 +21,7 @@
  * @method string              getObjetivos()          Returns the current record's "objetivos" value
  * @method enum                getStatus()             Returns the current record's "status" value
  * @method Aluno               getAluno()              Returns the current record's "Aluno" value
- * @method Doctrine_Collection getCronograma()         Returns the current record's "Cronograma" collection
+ * @method Doctrine_Collection getCronogramas()        Returns the current record's "Cronogramas" collection
  * @method Proposta            setAlunoId()            Sets the current record's "aluno_id" value
  * @method Proposta            setTitulo()             Sets the current record's "titulo" value
  * @method Proposta            setDescricaoProblema()  Sets the current record's "descricao_problema" value
@@ -29,7 +29,7 @@
  * @method Proposta            setObjetivos()          Sets the current record's "objetivos" value
  * @method Proposta            setStatus()             Sets the current record's "status" value
  * @method Proposta            setAluno()              Sets the current record's "Aluno" value
- * @method Proposta            setCronograma()         Sets the current record's "Cronograma" collection
+ * @method Proposta            setCronogramas()        Sets the current record's "Cronogramas" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -85,7 +85,7 @@ abstract class BaseProposta extends sfDoctrineRecord
              'local' => 'aluno_id',
              'foreign' => 'id'));
 
-        $this->hasMany('Cronograma', array(
+        $this->hasMany('Cronograma as Cronogramas', array(
              'local' => 'id',
              'foreign' => 'proposta_id'));
 

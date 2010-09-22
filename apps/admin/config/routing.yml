@@ -38,7 +38,7 @@ orientandos_list:
   param: { module: orientacao, action: orientandosList, filtro: false }
   
 orientacao_action:
-  url: /orientacao/orientando/:aluno_id/:acao
+  url: /orientacao/orientando/:aluno_id/:professor_id/:acao
   param: { module: orientacao, action: updateStatus }  
 
 orientador_list:

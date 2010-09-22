@@ -46,6 +46,7 @@ abstract class BaseAreaInteresse extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Professor', array(
              'local' => 'professor_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

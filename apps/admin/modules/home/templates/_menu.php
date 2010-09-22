@@ -13,7 +13,7 @@
     <li>Usuários
         <ul>
             <?php if($sf_user->hasCredential('administrador')): ?>
-            <li><?php echo link_to('Administradores', 'administrador/index'); ?></li>
+            <li><?php echo link_to('Administradores', 'administrador/list'); ?></li>
             <?php endif; ?>
             <li><?php echo link_to('Professores', 'professor/index'); ?></li>
             <li><?php echo link_to('Alunos', 'aluno/index'); ?></li>

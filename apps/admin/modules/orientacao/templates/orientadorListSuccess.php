@@ -7,6 +7,7 @@
         <tr>
             <th>Nome</th>            
             <th>Areas de Afinidade</th>
+            <th>Areas de Interesse</th>
             <th>Qtde. Orientandos</th>
             <th class="actions">Ações</th>
         </tr>
@@ -25,6 +26,13 @@
                 <ul>
                 <?php foreach($professor->AreasAfinidade as $areaAfinidade): ?>
                     <li><?php echo $areaAfinidade->nome;?></li>
+                <?php endforeach;?>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                <?php foreach($professor->AreasInteresse as $areaInteresse): ?>
+                    <li><?php echo $areaInteresse->nome;?></li>
                 <?php endforeach;?>
                 </ul>
             </td>

@@ -120,6 +120,11 @@ Professor:
       foreignAlias: Professores
       class: AreaAfinidade
       refClass: ProfessorAreaAfinidade
+    AreasInteresse:
+      type: many
+      class: AreaInteresse
+      local: id
+      foreign: professor_id
     Orientandos:
       class: Aluno
       local: professor_id
@@ -182,8 +187,8 @@ AreaInteresse:
       notnull: true
   relations:
     Professor:
-    onDelete: CASCADE
-    foreignAlias: AreasInteresse
+      onDelete: CASCADE
+      foreignAlias: AreasInteresse
       
 Aluno:
   options:
@@ -264,7 +269,7 @@ Proposta:
       foreign: id
     Cronogramas:
       type: many
-      class: Cronogramas
+      class: Cronograma
       local: id
       foreign: proposta_id
 

@@ -20,7 +20,7 @@ class alunoActions extends sfActions
         $this->pager->init();
 
         $this->alunos = $this->pager->getResults();
-    }
+    }    
 
     public function executeNew(sfWebRequest $request)
     {

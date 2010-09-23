@@ -8,13 +8,19 @@
  * @property integer $aluno_id
  * @property integer $professor_id
  * @property enum $status
+ * @property Aluno $Aluno
+ * @property Professor $Professor
  * 
  * @method integer    getAlunoId()      Returns the current record's "aluno_id" value
  * @method integer    getProfessorId()  Returns the current record's "professor_id" value
  * @method enum       getStatus()       Returns the current record's "status" value
+ * @method Aluno      getAluno()        Returns the current record's "Aluno" value
+ * @method Professor  getProfessor()    Returns the current record's "Professor" value
  * @method Orientacao setAlunoId()      Sets the current record's "aluno_id" value
  * @method Orientacao setProfessorId()  Sets the current record's "professor_id" value
  * @method Orientacao setStatus()       Sets the current record's "status" value
+ * @method Orientacao setAluno()        Sets the current record's "Aluno" value
+ * @method Orientacao setProfessor()    Sets the current record's "Professor" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -53,6 +59,12 @@ abstract class BaseOrientacao extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Aluno', array(
+             'local' => 'aluno_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('Professor', array(
+             'local' => 'professor_id',
+             'foreign' => 'id'));
     }
 }

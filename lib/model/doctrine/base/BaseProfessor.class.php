@@ -10,17 +10,20 @@
  * @property Doctrine_Collection $Orientandos
  * @property Curso $Curso
  * @property Doctrine_Collection $ProfessorAreasAfinidade
+ * @property Doctrine_Collection $Orientacao
  * 
  * @method Doctrine_Collection getAreasAfinidade()          Returns the current record's "AreasAfinidade" collection
  * @method Doctrine_Collection getAreasInteresse()          Returns the current record's "AreasInteresse" collection
  * @method Doctrine_Collection getOrientandos()             Returns the current record's "Orientandos" collection
  * @method Curso               getCurso()                   Returns the current record's "Curso" value
  * @method Doctrine_Collection getProfessorAreasAfinidade() Returns the current record's "ProfessorAreasAfinidade" collection
+ * @method Doctrine_Collection getOrientacao()              Returns the current record's "Orientacao" collection
  * @method Professor           setAreasAfinidade()          Sets the current record's "AreasAfinidade" collection
  * @method Professor           setAreasInteresse()          Sets the current record's "AreasInteresse" collection
  * @method Professor           setOrientandos()             Sets the current record's "Orientandos" collection
  * @method Professor           setCurso()                   Sets the current record's "Curso" value
  * @method Professor           setProfessorAreasAfinidade() Sets the current record's "ProfessorAreasAfinidade" collection
+ * @method Professor           setOrientacao()              Sets the current record's "Orientacao" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -51,6 +54,10 @@ abstract class BaseProfessor extends Academico
              'foreign' => 'id'));
 
         $this->hasMany('ProfessorAreaAfinidade as ProfessorAreasAfinidade', array(
+             'local' => 'id',
+             'foreign' => 'professor_id'));
+
+        $this->hasMany('Orientacao', array(
              'local' => 'id',
              'foreign' => 'professor_id'));
     }

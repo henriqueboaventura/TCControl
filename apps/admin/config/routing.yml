@@ -33,6 +33,18 @@ proposta_action:
   url: /proposta/:id/:acao
   param: { module: proposta, action: updateStatus }
 
+escolher_orientador:
+  url: /orientacao/escolher_orientador/:aluno_id
+  param: { module: orientacao, action: escolherOrientador }
+
+sem_orientador_list:
+  url: /orientacao/sem_orientador
+  param: { module: orientacao, action: semOrientadorList }
+
+orientandos_coordenador_list:
+  url: /orientacao/orientandos/coordenador
+  param: { module: orientacao, action: orientandosCoordenadorList }
+    
 orientandos_list:
   url: /orientacao/orientandos/:filtro
   param: { module: orientacao, action: orientandosList, filtro: false }

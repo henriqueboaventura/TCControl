@@ -22,6 +22,58 @@ class orientacaoActions extends sfActions
         $this->professors= $this->pager->getResults();
     }
 
+    public function executeSemOrientadorList(sfWebRequest $request)
+    {
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        $query = Doctrine_Core::getTable('Aluno')->findAlunoSemOrientador($this->getUser()->getAttribute('curso',null,'usuario'));
+        $this->pager = new sfDoctrinePager('Aluno', sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
+
+        $this->alunos = $this->pager->getResults();
+    }
+    
+    public function executeEscolherOrientador(sfWebRequest $request)
+    {
+        $this->aluno = Doctrine::getTable('Aluno')->find($request->getParameter('aluno_id'));
+        
+        $this->orientacao = Doctrine::getTable('Orientacao')->findOneByAlunoId($request->getParameter('aluno_id'));
+                
+        $this->form = new OrientacaoForm($this->orientacao);        
+        if($request->isMethod(sfRequest::POST) OR $request->isMethod(sfRequest::PUT)){
+            $this->form->bind($request->getParameter($this->form->getName()), $request->getFiles($this->form->getName()));                        
+            if($this->form->isValid()){
+                
+                $this->form->save();
+                $this->getUser()->setFlash('success', 'Orientador ' . ($request->isMethod(sfRequest::POST) ? 'selecionado' : 'alterado') . ' com sucesso.', false);
+            } 
+        } else {
+            $this->form->setDefault('aluno_id', $request->getParameter('aluno_id'));
+        }
+    }
+    
+    public function executeOrientandosCoordenadorList(sfWebRequest $request)
+    {
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        
+        $query = Doctrine_Core::getTable('Orientacao')->findOrientacoesPendentes(
+            $this->getUser()->getAttribute('curso',null,'usuario'),
+            $this->getUser()->getAttribute('alunos_por_professor',null,'configuracao'),
+            false
+        );
+        
+        $this->pager = new sfDoctrinePager('Orientacao',sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
+
+        $this->orientacoes = $this->pager->getResults();
+
+        $this->showActions = true;
+        
+    }
+
     public function executeOrientandosList(sfWebRequest $request)
     {
         switch($request->getParameter('filtro')){
@@ -42,20 +94,13 @@ class orientacaoActions extends sfActions
         }
         
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        if($this->getUser()->getAttribute('coordenador',false,'professor')){
-            $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacaoCurso(
-                $this->getUser()->getAttribute('curso',null,'usuario'),
-                $this->getUser()->getAttribute('id',null,'usuario'),
-                $status,
-                false
-            );
-        } else {
-            $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao(
-                $this->getUser()->getAttribute('id',null,'usuario'),
-                $status,
-                false
-            );
-        }
+        
+        $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao(
+            $this->getUser()->getAttribute('id',null,'usuario'),
+            $status,
+            false
+        );
+        
         $this->pager = new sfDoctrinePager('Orientacao',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);
@@ -70,7 +115,7 @@ class orientacaoActions extends sfActions
                 $this->getUser()->setFlash('warning', 'Seu número de orientandos atingiu o valor máximo definido pelo professor coordenador, o aceite deverá ser efetuado por ele.', false);
                 $this->showActions = false;
             }
-        } else if(in_array($status,array(1,2))){
+        } else if(in_array(1,$status) OR in_array(2,$status)){
             $this->showActions = false;
         }
     }

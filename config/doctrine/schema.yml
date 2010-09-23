@@ -232,6 +232,13 @@ Orientacao:
       type: enum
       values: [0, 1, 2]
       default: 0
+  relations: 
+    Aluno: 
+      local: aluno_id
+      foreign: id
+    Professor: 
+      local: professor_id
+      foreign: id
       
 Proposta:
   options:

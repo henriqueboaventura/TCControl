@@ -10,7 +10,15 @@
  */
 class OrientacaoForm extends BaseOrientacaoForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {        
+        $this->widgetSchema['professor_id'] = new sfWidgetFormDoctrineChoice(array('model' => 'Professor'));
+        $this->widgetSchema['status'] = new sfWidgetFormInputHidden();
+        
+        $this->validatorSchema['aluno_id'] = new sfValidatorInteger(array('required' => true));
+        $this->validatorSchema['professor_id'] = new sfValidatorInteger(array('required' => true));
+        
+        //por padrao, deixa aprovado
+        $this->setDefault('status',1);
+    }
 }

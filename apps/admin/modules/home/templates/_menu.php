@@ -19,6 +19,12 @@
             <li><?php echo link_to('Alunos', 'aluno/index'); ?></li>
         </ul>
     </li>
+    <li>Orientandos
+        <ul>
+            <li><?php echo link_to('Sem Orientador','@sem_orientador_list');?></li>
+            <li><?php echo link_to('Aguardando Aceitação()','@orientandos_coordenador_list');?></li>
+        </ul>
+    </li>
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('aluno')): ?>
@@ -47,15 +53,10 @@
         </ul>
     </li>
     <li>Orientandos
-        <ul>
-            <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
-            <li><?php echo link_to('Sem Orientador','@orientandos_list?filtro=todos');?></li>
-            <?php endif; ?>
+        <ul>            
+            
             <li><?php echo link_to('Aguardando Aceitação(' . $orientacoesPendentes->count() . ')','@orientandos_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Aprovados','@orientandos_list?filtro=aprovado');?></li>
-            <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
-            <li><?php echo link_to('Rejeitados','@orientandos_list?filtro=rejeitado');?></li>
-            <?php endif; ?>
         </ul>
     </li>
     <li>Propostas

@@ -8,13 +8,16 @@
  * @property Proposta $Proposta
  * @property Curso $Curso
  * @property Doctrine_Collection $Orientador
+ * @property Doctrine_Collection $Orientacao
  * 
  * @method Proposta            getProposta()   Returns the current record's "Proposta" value
  * @method Curso               getCurso()      Returns the current record's "Curso" value
  * @method Doctrine_Collection getOrientador() Returns the current record's "Orientador" collection
+ * @method Doctrine_Collection getOrientacao() Returns the current record's "Orientacao" collection
  * @method Aluno               setProposta()   Sets the current record's "Proposta" value
  * @method Aluno               setCurso()      Sets the current record's "Curso" value
  * @method Aluno               setOrientador() Sets the current record's "Orientador" collection
+ * @method Aluno               setOrientacao() Sets the current record's "Orientacao" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -38,5 +41,9 @@ abstract class BaseAluno extends Academico
              'refClass' => 'Orientacao',
              'local' => 'aluno_id',
              'foreign' => 'professor_id'));
+
+        $this->hasMany('Orientacao', array(
+             'local' => 'id',
+             'foreign' => 'aluno_id'));
     }
 }

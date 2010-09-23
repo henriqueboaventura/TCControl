@@ -48,6 +48,9 @@
     </li>
     <li>Orientandos
         <ul>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
+            <li><?php echo link_to('Sem Orientador','@orientandos_list?filtro=todos');?></li>
+            <?php endif; ?>
             <li><?php echo link_to('Aguardando Aceitação(' . $orientacoesPendentes->count() . ')','@orientandos_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Aprovados','@orientandos_list?filtro=aprovado');?></li>
             <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
@@ -57,11 +60,13 @@
     </li>
     <li>Propostas
         <ul>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')){ ?>
             <li><?php echo link_to('Aguardando Aprovação(' . $propostasPendentes->count() . ')','@proposta_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Aprovadas','@proposta_list?filtro=aprovado');?></li>
-            <?php if($sf_user->getAttribute('coordenador',false,'professor')): ?>
             <li><?php echo link_to('Rejeitadas','@proposta_list?filtro=rejeitado');?></li>
-            <?php endif; ?>
+            <?php } else { ?>
+            <li><?php echo link_to('Acompanhar','@proposta_list?filtro=todas');?></li>
+            <?php } ?>
         </ul>
     </li>
 </ul>

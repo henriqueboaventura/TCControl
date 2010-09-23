@@ -14,7 +14,7 @@ class OrientacaoTable extends Doctrine_Table
            ->from('Aluno a')
            ->innerJoin('a.Orientacao o')
            ->where('o.professor_id = ?', $professor)
-           ->andWhere('o.status IN ?',$status);
+           ->andWhere('o.status IN ?',implode(',',$status));
         if($execute){
             return $q->execute();
         } else {
@@ -27,7 +27,7 @@ class OrientacaoTable extends Doctrine_Table
            ->from('Aluno a')
            ->innerJoin('a.Orientacao o')
            ->where('(a.curso_id = ? OR o.professor_id = ?)', array($curso, $professor))
-           ->andWhere('o.status IN ?',$status);
+           ->andWhere('o.status IN ?',implode(',',$status));
         if($execute){
             return $q->execute();
         } else {

@@ -9,7 +9,25 @@ Aluno:
     fone_celular: 51 96799981
     Orientador: [Professor1]
     Curso: ADS
-  Aluno2: 
+  Aluno2:
+    nome: Charles Schneider
+    email: charlesschneider@gmail.com.br
+    senha: 123456
+    matricula: 630810193
+    endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
+    fone_residencial: 51 30299971
+    fone_celular: 51 96799981
+    Curso: ADS
+  Aluno3:
+    nome: Jorge Martins
+    email: jorge.martins@gmail.com.br
+    senha: 123456
+    matricula: 630810194
+    endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
+    fone_residencial: 51 30299971
+    fone_celular: 51 96799981
+    Curso: ADS
+  Aluno4:
     nome: Carolina Alves Martins
     email: carol@litoralmania.com.br
     senha: 654321

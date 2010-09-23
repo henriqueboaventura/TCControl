@@ -21,22 +21,24 @@ class orientacaoActions extends sfActions
 
         $this->professors= $this->pager->getResults();
     }
-    
+
     public function executeOrientandosList(sfWebRequest $request)
     {
         switch($request->getParameter('filtro')){
         case 'aguardando':
-            $status = 0;
+            $status = array(0);
 
             break;
         case 'aprovado':
-            $status = 1;
+            $status = array(1);
 
             break;
         case 'rejeitado':
-            $status = 2;
+            $status = array(2);
 
             break;
+        default:
+            $status = array(0,1,2);
         }
         
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
@@ -44,13 +46,13 @@ class orientacaoActions extends sfActions
             $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacaoCurso(
                 $this->getUser()->getAttribute('curso',null,'usuario'),
                 $this->getUser()->getAttribute('id',null,'usuario'),
-                array($status),
+                $status,
                 false
             );
         } else {
             $query = Doctrine_Core::getTable('Orientacao')->findAlunosOrientacao(
                 $this->getUser()->getAttribute('id',null,'usuario'),
-                array($status),
+                $status,
                 false
             );
         }
@@ -65,7 +67,7 @@ class orientacaoActions extends sfActions
         if(!$this->getUser()->getAttribute('coordenador',false,'professor')){
             $orientacoes = Doctrine_Core::getTable('Orientacao')->findOrientacoes($this->getUser()->getAttribute('id',null,'usuario'),null,1);
             if(count($orientacoes) >= $this->getUser()->getAttribute('alunos_por_professor',0,'configuracao')){
-                $this->getUser()->setFlash('warning', 'Seu número de orientandos atingiu o valor máximo definido pelo professor coordenador, o aceite deverá ser efetuado por ele.');
+                $this->getUser()->setFlash('warning', 'Seu número de orientandos atingiu o valor máximo definido pelo professor coordenador, o aceite deverá ser efetuado por ele.', false);
                 $this->showActions = false;
             }
         } else if(in_array($status,array(1,2))){

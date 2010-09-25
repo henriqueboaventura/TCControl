@@ -48,27 +48,31 @@ class propostaActions extends sfActions
     {
         switch($request->getParameter('filtro')){
         case 'aguardando':
-            $status = 0;
+            $status = array(0);
 
             break;
         case 'aprovado':
-            $status = 1;
+            $status = array(1);
 
             break;
         case 'rejeitado':
-            $status = 2;
+            $status = array(2);
 
             break;
+        default:
+            $status = array(0,1,2);
         }
-        
+
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),array($status),false);
+        $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$status,false);
         $this->pager = new sfDoctrinePager('Proposta',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);
         $this->pager->init();
 
         $this->propostas = $this->pager->getResults();
+
+        $this->coordenador = $request->getParameter('coordenador', false);
     }
 
     public function executeView(sfWebRequest $request)
@@ -76,7 +80,7 @@ class propostaActions extends sfActions
         $this->proposta = Doctrine::getTable('Proposta')->findPropostaCronogramas($request->getParameter('id'));
 
         $this->etapa = array();
-        foreach($this->proposta->Cronograma as $cronograma){
+        foreach($this->proposta->Cronogramas as $cronograma){
             $this->etapa[$cronograma->etapa][] = $cronograma;
         }
     }

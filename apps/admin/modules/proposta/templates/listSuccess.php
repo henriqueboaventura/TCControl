@@ -19,8 +19,10 @@
             <td class="actions">
                 <?php
                     echo link_to(__('Visualizar Proposta'), '@proposta_view?id=' . $proposta->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
-                    echo link_to(__('Aprovar Proposta'),'@proposta_action?id=' . $proposta->getId() . '&acao=aceitar', array('class' => 'list_accept', 'title' => 'Aprovar Proposta'));
-                    echo link_to(__('Rejeitar Proposta'),'@proposta_action?id=' . $proposta->getId()  . '&acao=rejeitar', array('class' => 'list_deny', 'title' => 'Rejeitar Proposta'));
+                    if($coordenador){
+                        echo link_to(__('Aprovar Proposta'),'@proposta_action?id=' . $proposta->getId() . '&acao=aceitar', array('class' => 'list_accept', 'title' => 'Aprovar Proposta'));
+                        echo link_to(__('Rejeitar Proposta'),'@proposta_action?id=' . $proposta->getId()  . '&acao=rejeitar', array('class' => 'list_deny', 'title' => 'Rejeitar Proposta'));
+                    }
                 ?>
             </td>
         </tr>

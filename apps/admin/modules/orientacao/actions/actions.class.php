@@ -57,7 +57,7 @@ class orientacaoActions extends sfActions
     {
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
         
-        $query = Doctrine_Core::getTable('Orientacao')->findOrientacoesPendentes(
+        $query = Doctrine::getTable('Orientacao')->findOrientacoesPendentes(
             $this->getUser()->getAttribute('curso',null,'usuario'),
             $this->getUser()->getAttribute('alunos_por_professor',null,'configuracao'),
             false

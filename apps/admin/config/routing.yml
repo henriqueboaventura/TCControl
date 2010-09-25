@@ -25,6 +25,10 @@ proposta_list:
     url: /propostas/:filtro
     param: { module: proposta, action: list, filtro: false }
 
+proposta_coordenador_list:
+  url: /propostas/coordenador/:filtro
+  param: { module: proposta, action: list, filtro: false, coordenador: true }
+
 proposta_view:
     url: /proposta/visualizar/:id
     param: { module: proposta, action: view }

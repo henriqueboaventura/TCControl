@@ -23,7 +23,8 @@ class PropostaTable extends Doctrine_Table
            ->innerJoin('p.Aluno a')
            ->innerJoin('a.Orientacao o')
            ->where('o.professor_id = ?', $professor)
-           ->andWhere('p.status IN ?',$status);
+           ->andWhere('p.status IN (' . implode(',',$status) . ')');
+        
         if($execute){
             return $q->execute();
         } else {
@@ -35,7 +36,7 @@ class PropostaTable extends Doctrine_Table
     {
         $q = $this->createQuery()
            ->from('Proposta p')
-           ->innerJoin('p.Cronograma c')
+           ->innerJoin('p.Cronogramas c')
            ->where('p.id = ?', $proposta)
            ->orderBy('c.etapa ASC, c.data_entrega ASC');
 

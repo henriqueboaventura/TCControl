@@ -19,6 +19,7 @@
             <li><?php echo link_to('Alunos', 'aluno/index'); ?></li>
         </ul>
     </li>
+    <?php if($sf_user->hasCredential('professor')):?>
     <li>Orientandos
         <ul>
             <li><?php echo link_to('Sem Orientador','@sem_orientador_list');?></li>
@@ -32,6 +33,7 @@
             <li><?php echo link_to('Rejeitadas','@proposta_coordenador_list?filtro=rejeitado');?></li>
         </ul>
     </li>
+    <?php endif; ?>
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('aluno')): ?>
@@ -55,7 +57,7 @@
 <ul>
     <li>Professor
         <ul>
-            <li><?php echo link_to('Areas de Afinidade','areaAfinidade/index');?></li>
+            <li><?php echo link_to('Areas de Afinidade','areaAfinidade/list');?></li>
             <li><?php echo link_to('Areas de Interesse','areaInteresse/index');?></li>
         </ul>
     </li>

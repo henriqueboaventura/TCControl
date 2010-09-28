@@ -253,10 +253,7 @@ Proposta:
       notnull: true
     titulo:
       type: string(255)
-      notnull: true      
-    titulo:
-      type: string(255)
-      notnull: true
+      notnull: true    
     descricao_problema:
       type: string
       notnull: true
@@ -279,7 +276,37 @@ Proposta:
       class: Cronograma
       local: id
       foreign: proposta_id
-
+    Comentarios:
+      type: many
+      class: PropostaComentario
+      local: id
+      foreign: proposta_id
+      
+PropostaComentario:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    proposta_id:
+      type: integer
+    conteudo: 
+      type: string
+      notnull: true
+    local: 
+        type: enum
+        values: [titulo, descricao_problema, descricao_solucao, objetivos]
+    lido: 
+      type: boolean
+      default: false
+      notnull: true
+  relations:
+    Proposta:
+      local: proposta_id
+      foreign: id
+    
 Cronograma:
   options:
     type: MyISAM

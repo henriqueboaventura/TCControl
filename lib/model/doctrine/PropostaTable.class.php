@@ -36,7 +36,8 @@ class PropostaTable extends Doctrine_Table
     {
         $q = $this->createQuery()
            ->from('Proposta p')
-           ->innerJoin('p.Cronogramas c')
+           ->leftJoin('p.Cronogramas c')
+           ->leftJoin('p.Comentarios co')
            ->where('p.id = ?', $proposta)
            ->orderBy('c.etapa ASC, c.data_entrega ASC');
 

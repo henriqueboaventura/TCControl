@@ -1,15 +1,16 @@
 <?php use_helper('Date');?>
 <h2>Proposta</h2>
 <h3>Visualizar</h3>
+<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <h4>Proposta de Desenvolvimento</h4>
 <dl>
-    <dt>Título do Trabalho</dt>
+    <dt><span>Título do Trabalho</span> <?php echo link_to('Adicionar Comentário','@proposta_add_comment?proposta_id=' . $proposta->id . '&local=titulo', array('class' => 'comment_add')); ?></dt>
     <dd><?php echo $proposta->titulo; ?></dd>
-    <dt>Descrição do Problema</dt>
+    <dt><span>Descrição do Problema</span> <?php echo link_to('Adicionar Comentário','@proposta_add_comment?proposta_id=' . $proposta->id . '&local=descricao_problema', array('class' => 'comment_add')); ?></dt>
     <dd><?php echo $proposta->descricao_problema; ?></dd>
-    <dt>Descrição da Solução</dt>
+    <dt><span>Descrição da Solução</span> <?php echo link_to('Adicionar Comentário','@proposta_add_comment?proposta_id=' . $proposta->id . '&local=descricao_solucao', array('class' => 'comment_add')); ?></dt>
     <dd><?php echo $proposta->descricao_solucao; ?></dd>
-    <dt>Objetivos</dt>
+    <dt><span>Objetivos</span> <?php echo link_to('Adicionar Comentário','@proposta_add_comment?proposta_id=' . $proposta->id . '&local=objetivos', array('class' => 'comment_add')); ?></dt>
     <dd><?php echo $proposta->objetivos; ?></dd>
 </dl>
 <h4>Cronograma</h4>

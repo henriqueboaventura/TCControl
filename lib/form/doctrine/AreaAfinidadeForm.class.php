@@ -13,7 +13,7 @@ class AreaAfinidadeForm extends BaseAreaAfinidadeForm
     public function configure()
     {
         unset(
-            $this['professores_list'],
+            $this['professor_list'],
             $this['slug']
         );
     }

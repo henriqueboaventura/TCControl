@@ -13,6 +13,7 @@
  * @property enum $status
  * @property Aluno $Aluno
  * @property Doctrine_Collection $Cronogramas
+ * @property Doctrine_Collection $Comentarios
  * 
  * @method integer             getAlunoId()            Returns the current record's "aluno_id" value
  * @method string              getTitulo()             Returns the current record's "titulo" value
@@ -22,6 +23,7 @@
  * @method enum                getStatus()             Returns the current record's "status" value
  * @method Aluno               getAluno()              Returns the current record's "Aluno" value
  * @method Doctrine_Collection getCronogramas()        Returns the current record's "Cronogramas" collection
+ * @method Doctrine_Collection getComentarios()        Returns the current record's "Comentarios" collection
  * @method Proposta            setAlunoId()            Sets the current record's "aluno_id" value
  * @method Proposta            setTitulo()             Sets the current record's "titulo" value
  * @method Proposta            setDescricaoProblema()  Sets the current record's "descricao_problema" value
@@ -30,6 +32,7 @@
  * @method Proposta            setStatus()             Sets the current record's "status" value
  * @method Proposta            setAluno()              Sets the current record's "Aluno" value
  * @method Proposta            setCronogramas()        Sets the current record's "Cronogramas" collection
+ * @method Proposta            setComentarios()        Sets the current record's "Comentarios" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -86,6 +89,10 @@ abstract class BaseProposta extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $this->hasMany('Cronograma as Cronogramas', array(
+             'local' => 'id',
+             'foreign' => 'proposta_id'));
+
+        $this->hasMany('PropostaComentario as Comentarios', array(
              'local' => 'id',
              'foreign' => 'proposta_id'));
 

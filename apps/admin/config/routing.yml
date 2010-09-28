@@ -18,20 +18,24 @@ area_afinidade_action:
   param: { module: areaAfinidade }
 
 proposta:
-    url: /proposta
-    param: { module: proposta, action: edit }
+  url: /proposta
+  param: { module: proposta, action: edit }
+
+proposta_add_comment:
+  url: /proposta/:proposta_id/comentario/:local/
+  param: { module: proposta, action: newComment }
 
 proposta_list:
-    url: /propostas/:filtro
-    param: { module: proposta, action: list, filtro: false }
+  url: /propostas/:filtro
+  param: { module: proposta, action: list, filtro: false }
 
 proposta_coordenador_list:
   url: /propostas/coordenador/:filtro
   param: { module: proposta, action: list, filtro: false, coordenador: true }
 
 proposta_view:
-    url: /proposta/visualizar/:id
-    param: { module: proposta, action: view }
+  url: /proposta/visualizar/:id
+  param: { module: proposta, action: view }
 
 proposta_action:
   url: /proposta/:id/:acao

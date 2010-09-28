@@ -101,4 +101,31 @@ class propostaActions extends sfActions
         $this->redirect('@proposta_list?filtro=aguardando');
 
     }
+    
+    public function executeNewComment(sfWebRequest $request)
+    {
+        $this->form = new PropostaComentarioForm();
+        $this->form->setDefaults(array(
+            'proposta_id' => $request->getParameter('proposta_id'),
+            'local'       => $request->getParameter('local'),
+            'lido'        => false,
+        ));
+        
+        if($request->isMethod(sfRequest::POST)){
+            $this->form->bind(
+                $request->getParameter($this->form->getName()), 
+                $request->getFiles($this->form->getName())
+            );
+            
+            if($this->form->isValid()){ 
+                $comentario = $request->getParameter('proposta_comentario');
+                                
+                $this->form->save();
+                $this->getUser()->setFlash('success','Comentário adicionado com sucesso!');
+                $this->redirect('@proposta_view?id=' . $comentario['proposta_id']);
+            } else {
+                $this->getUser()->setFlash('error', 'O formulário contém erros!',false);    
+            }
+        }
+    }
 }

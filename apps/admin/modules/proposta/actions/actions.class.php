@@ -104,6 +104,12 @@ class propostaActions extends sfActions
     
     public function executeNewComment(sfWebRequest $request)
     {
+        $this->comentarios = Doctrine::getTable('PropostaComentario')->getComentariosByLocal(
+            $request->getParameter('proposta_id'),
+            $request->getParameter('local')
+        );
+        
+
         $this->form = new PropostaComentarioForm();
         $this->form->setDefaults(array(
             'proposta_id' => $request->getParameter('proposta_id'),

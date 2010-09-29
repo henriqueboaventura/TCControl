@@ -243,6 +243,10 @@ div#content.proposta{
                 
                 float:left;
             }
+    div#content.proposta ul.comentarios{
+        clear:both;
+        float:left;
+    }
 
 /* pager */
 div.pagination{

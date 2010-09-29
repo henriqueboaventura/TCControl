@@ -33,7 +33,7 @@ all:
 
     # Enable the database manager
     use_database:           true
-    standard_helpers:       [Partial, Cache, I18N]
+    standard_helpers:       [Partial, Cache, I18N, Date, Number]
     
     login_module:           login
     login_action:           signin

@@ -230,8 +230,7 @@ div#content.proposta{
             margin-bottom:10px;
         }
             div#content.proposta dl dt a.comment_add{
-                background:transparent url(/images/comment_add.png) no-repeat top left;
-                
+                background:transparent url(/images/comment_add.png) no-repeat top left;                
                 float:right;
                 height:16px;
                 margin: 0px 3px;
@@ -246,6 +245,16 @@ div#content.proposta{
     div#content.proposta ul.comentarios{
         clear:both;
         float:left;
+        width:100%;
+    }
+    div#content.proposta a.comment_view{
+        background:transparent url(/images/comment.png) no-repeat top left;                
+        float:left;
+        height:16px;
+        margin: 0px 3px;
+        outline:none;
+        text-indent: -1999em;
+        width:16px;
     }
 
 /* pager */

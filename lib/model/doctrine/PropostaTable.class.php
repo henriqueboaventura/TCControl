@@ -43,4 +43,28 @@ class PropostaTable extends Doctrine_Table
 
         return $q->fetchOne();
     }
+    
+    public function findPropostaAluno($aluno, $lidos = true)
+    {
+        $q = $this->createQuery()
+           ->from('Proposta p')
+           ->leftJoin('p.Cronogramas c')
+           ->leftJoin('p.Comentarios co WITH co.lido = ?', $lidos)
+           ->where('p.aluno_id = ?', $aluno)
+           ->orderBy('c.etapa ASC, c.data_entrega ASC');
+
+        return $q->fetchOne();
+    }
+    
+    public function findPropostaComentarios($proposta, $local, $lidos = true)
+    {
+        $q = $this->createQuery()
+           ->from('Proposta p')
+           ->leftJoin('p.Cronogramas c')           
+           ->leftJoin('p.Comentarios co WITH co.local = ? AND co.lido = ?', array($local, $lidos))
+           ->where('p.id = ?', $proposta)       
+           ->orderBy('c.etapa ASC, c.data_entrega ASC');
+
+        return $q->fetchOne();
+    }
 }

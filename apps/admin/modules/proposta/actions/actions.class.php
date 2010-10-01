@@ -19,10 +19,17 @@ class propostaActions extends sfActions
     {                
         $aluno = $this->getUser()->getAttribute('id', null, 'usuario');
 
-        $proposta = Doctrine_Core::getTable('Proposta')->findOneByAlunoId($aluno);
+        $this->proposta = Doctrine_Core::getTable('Proposta')->findPropostaAluno($aluno,false);
         
-        if($proposta){
-            $this->form = new PropostaForm($proposta);
+        $comentarios = array();
+        foreach($this->proposta->Comentarios as $comentario){
+            $comentarios[$comentario->local][] = $comentario;
+        }
+        
+        $this->comentarios = $comentarios;
+        
+        if($this->proposta){
+            $this->form = new PropostaForm($this->proposta);
         } else {
             $this->form = new PropostaForm();
             $this->form->setDefault('aluno_id', $aluno);
@@ -133,5 +140,20 @@ class propostaActions extends sfActions
                 $this->getUser()->setFlash('error', 'O formulário contém erros!',false);    
             }
         }
+    }
+    
+    public function executeViewComments(sfWebRequest $request)
+    {
+        $this->proposta = Doctrine_Core::getTable('Proposta')->findPropostaComentarios($request->getParameter('proposta_id'), $request->getParameter('local'),false);
+    }
+    
+    public function executeMarkAsRead(sfWebRequest $request)
+    {
+        $comentario = Doctrine::getTable('PropostaComentario')->find($request->getParameter('comentario_id'));
+        $comentario->lido = true;
+        $comentario->save();
+        
+        $this->getUser()->setFlash('success','Comentário marcado como lido!');
+        $this->redirect('@proposta_view_comment?proposta_id=' . $request->getParameter('proposta_id') . '&local=' . $comentario->local);
     }
 }

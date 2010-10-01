@@ -21,6 +21,14 @@ proposta:
   url: /proposta
   param: { module: proposta, action: edit }
 
+proposta_comentario_read:
+  url: /proposta/:proposta_id/comentario/:comentario_id/lido
+  param: { module: proposta, action: markAsRead }
+
+proposta_view_comment:
+  url: /proposta/:proposta_id/comentarios/:local/
+  param: { module: proposta, action: viewComments }
+
 proposta_add_comment:
   url: /proposta/:proposta_id/comentario/:local/
   param: { module: proposta, action: newComment }

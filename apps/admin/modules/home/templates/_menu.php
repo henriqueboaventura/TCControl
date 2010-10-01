@@ -36,6 +36,10 @@
     <?php endif; ?>
 </ul>
 <?php endif; ?>
+<h4>Mensagens</h4>
+<ul>
+    <li><?php echo link_to('Caixa de Entrada', '@home'); ?></li>
+</ul>
 <?php if($sf_user->hasCredential('aluno')): ?>
 <h4>Definições</h4>
 <ul>

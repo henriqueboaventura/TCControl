@@ -336,3 +336,41 @@ Cronograma:
     Proposta:
       local: proposta_id
       foreign: id
+
+Mensagem:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    remetente_id:
+      type: integer
+    destinatario_id:
+      type: integer
+    original_id:
+      type: integer
+    assunto:
+      type: string(150)
+      notnull: true
+    conteudo:
+      type: string
+      notnull: true
+    lido: 
+      type: boolean
+      default: false    
+  relations:
+    Remetente:
+      class: Usuario
+      local: remetente_id
+      foreign: id 
+    Destinatario: 
+      class: Usuario
+      local: destinatario_id
+      foreign: id
+    Original: 
+      class: Mensagem
+      local: original_id
+      foreign: id 
+      

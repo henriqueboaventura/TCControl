@@ -14,25 +14,28 @@
  * @property string $fone_residencial
  * @property string $fone_celular
  * @property integer $curso_id
+ * @property Doctrine_Collection $Mensagem
  * 
- * @method string  getNome()             Returns the current record's "nome" value
- * @method string  getEmail()            Returns the current record's "email" value
- * @method string  getSenha()            Returns the current record's "senha" value
- * @method string  getType()             Returns the current record's "type" value
- * @method string  getMatricula()        Returns the current record's "matricula" value
- * @method string  getEndereco()         Returns the current record's "endereco" value
- * @method string  getFoneResidencial()  Returns the current record's "fone_residencial" value
- * @method string  getFoneCelular()      Returns the current record's "fone_celular" value
- * @method integer getCursoId()          Returns the current record's "curso_id" value
- * @method Usuario setNome()             Sets the current record's "nome" value
- * @method Usuario setEmail()            Sets the current record's "email" value
- * @method Usuario setSenha()            Sets the current record's "senha" value
- * @method Usuario setType()             Sets the current record's "type" value
- * @method Usuario setMatricula()        Sets the current record's "matricula" value
- * @method Usuario setEndereco()         Sets the current record's "endereco" value
- * @method Usuario setFoneResidencial()  Sets the current record's "fone_residencial" value
- * @method Usuario setFoneCelular()      Sets the current record's "fone_celular" value
- * @method Usuario setCursoId()          Sets the current record's "curso_id" value
+ * @method string              getNome()             Returns the current record's "nome" value
+ * @method string              getEmail()            Returns the current record's "email" value
+ * @method string              getSenha()            Returns the current record's "senha" value
+ * @method string              getType()             Returns the current record's "type" value
+ * @method string              getMatricula()        Returns the current record's "matricula" value
+ * @method string              getEndereco()         Returns the current record's "endereco" value
+ * @method string              getFoneResidencial()  Returns the current record's "fone_residencial" value
+ * @method string              getFoneCelular()      Returns the current record's "fone_celular" value
+ * @method integer             getCursoId()          Returns the current record's "curso_id" value
+ * @method Doctrine_Collection getMensagem()         Returns the current record's "Mensagem" collection
+ * @method Usuario             setNome()             Sets the current record's "nome" value
+ * @method Usuario             setEmail()            Sets the current record's "email" value
+ * @method Usuario             setSenha()            Sets the current record's "senha" value
+ * @method Usuario             setType()             Sets the current record's "type" value
+ * @method Usuario             setMatricula()        Sets the current record's "matricula" value
+ * @method Usuario             setEndereco()         Sets the current record's "endereco" value
+ * @method Usuario             setFoneResidencial()  Sets the current record's "fone_residencial" value
+ * @method Usuario             setFoneCelular()      Sets the current record's "fone_celular" value
+ * @method Usuario             setCursoId()          Sets the current record's "curso_id" value
+ * @method Usuario             setMensagem()         Sets the current record's "Mensagem" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -115,6 +118,10 @@ abstract class BaseUsuario extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Mensagem', array(
+             'local' => 'id',
+             'foreign' => 'remetente_id'));
+
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }

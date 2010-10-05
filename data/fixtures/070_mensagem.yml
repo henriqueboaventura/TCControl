@@ -1,0 +1,18 @@
+Mensagem:
+  Mensagem1:
+    Remetente: Aluno1
+    Destinatario: Professor1
+    assunto: Verificar documentação
+    conteudo: Prof. Franz, alterei a documentação conforme solicitado, favor verificar novamente. Grato
+  Mensagem2:
+    Remetente: Professor1
+    Destinatario: Aluno1
+    Original: Mensagem1
+    assunto: Verificar documentação
+    conteudo: Ok, documentação verificada, está tudo correto.
+  Mensagem3:
+    Remetente: Professor1
+    Destinatario: Aluno1
+    Original: 
+    assunto: Datas para a entrega
+    conteudo: Somente para lembrar, não esqueça das datas de entrega, após esse periodo, você não vai poder alterar mais nada

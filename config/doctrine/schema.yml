@@ -381,36 +381,41 @@ Artigo:
     charset: utf8
   actAs:
     Timestampable: ~
+    Versionable:
+      versionColumn: versao
+      className: %CLASS%Versao
+      auditLog: true
   columns:
     aluno_id:
       type: integer
     conteudo: 
-      type: string
+      type: clob
       notnull: true
   relations: 
     Aluno:
       local: aluno_id
       foreign: id
-    Versoes:
-      type: many 
-      class: ArtigoVersionamento
-      local: id
-      foreign: artigo_id
+#    Versoes:
+#      type: many 
+#      class: ArtigoVersionamento
+#      local: id
+#      foreign: artigo_id
       
-ArtigoVersionamento:
-  options:
-    type: MyISAM
-    collate: utf8_unicode_ci
-    charset: utf8
-  actAs:
-    Timestampable: ~
-  columns: 
-    artigo_id:
-      type: integer
-    conteudo:
-      type: string
-      notnull: true
-  relations:
-    Artigo: 
-      local: artigo_id
-      foreign: id
+#ArtigoVersionamento:
+#  options:
+#    type: MyISAM
+#    collate: utf8_unicode_ci
+#    charset: utf8
+#  actAs:
+#    Timestampable: ~
+#    
+#  columns: 
+#    artigo_id:
+#      type: integer
+#    conteudo:
+#      type: string
+#      notnull: true
+#  relations:
+#    Artigo: 
+#      local: artigo_id
+#      foreign: id

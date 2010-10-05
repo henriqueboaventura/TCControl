@@ -20,6 +20,7 @@ abstract class BaseArtigoForm extends BaseFormDoctrine
       'conteudo'   => new sfWidgetFormTextarea(),
       'created_at' => new sfWidgetFormDateTime(),
       'updated_at' => new sfWidgetFormDateTime(),
+      'version'    => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -28,6 +29,7 @@ abstract class BaseArtigoForm extends BaseFormDoctrine
       'conteudo'   => new sfValidatorString(),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),
+      'version'    => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('artigo[%s]');

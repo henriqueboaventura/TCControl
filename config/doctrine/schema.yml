@@ -373,4 +373,44 @@ Mensagem:
       class: Mensagem
       local: original_id
       foreign: id 
+    
+Artigo:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    aluno_id:
+      type: integer
+    conteudo: 
+      type: string
+      notnull: true
+  relations: 
+    Aluno:
+      local: aluno_id
+      foreign: id
+    Versoes:
+      type: many 
+      class: ArtigoVersionamento
+      local: id
+      foreign: artigo_id
       
+ArtigoVersionamento:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns: 
+    artigo_id:
+      type: integer
+    conteudo:
+      type: string
+      notnull: true
+  relations:
+    Artigo: 
+      local: artigo_id
+      foreign: id

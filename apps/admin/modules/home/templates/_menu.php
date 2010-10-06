@@ -51,9 +51,15 @@
     <li>Plano de Trabalho
         <ul>
             <li><?php echo link_to('Definir Proposta', '@proposta'); ?></li>
-            <li><?php echo link_to('Definir Cronograma', 'cronograma/index'); ?></li>
-        </ul>
+            <li><?php echo link_to('Definir Cronograma', 'cronograma/index'); ?></li>                                    
+        </ul>        
     </li>
+    <li>Artigo
+        <ul>
+            <li><?php echo link_to('Definir', '@artigo'); ?></li>
+            <li>Comparar versões</li> 
+        </ul>   
+    </li>    
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('professor')): ?>

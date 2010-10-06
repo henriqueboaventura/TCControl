@@ -10,7 +10,19 @@
  */
 class ArtigoForm extends BaseArtigoForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        unset(
+            $this['created_at'],
+            $this['updated_at'],
+            $this['version']
+        );
+        
+        $this->widgetSchema['aluno_id'] = new sfWidgetFormInputHidden();
+        $this->widgetSchema['conteudo'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));
+        
+        $this->widgetSchema->setLabels(array(            
+            'conteudo' => 'Conteúdo'
+        )); 
+    }
 }

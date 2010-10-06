@@ -13,6 +13,14 @@ signout:
   url: /signout
   param: { module: login, action: signout }
 
+artigo:
+  url: /artigo
+  param: { module: artigo, action: edit }
+  
+artigo_compare:
+  url: /artigo/comparar
+  param: { module: artigo, action: edit }
+
 area_afinidade_action:
   url: /areaAfinidade/:id/:action
   param: { module: areaAfinidade }

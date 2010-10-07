@@ -57,7 +57,7 @@
     <li>Artigo
         <ul>
             <li><?php echo link_to('Definir', '@artigo'); ?></li>
-            <li>Comparar versões</li> 
+            <li>Histórico de versões</li>
         </ul>   
     </li>    
 </ul>

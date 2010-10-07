@@ -1,5 +1,5 @@
-<h2><?php echo __('Plano de Trabalho');?></h2>
-<h3><?php echo ($form->isNew()) ? __('Definir Artigo') : __('Artigo - versão ') . $artigo->version;?></h3>
+<h2><?php echo __('Artigo');?></h2>
+<h3><?php echo ($form->isNew()) ? __('Definir') : __('Versão ') . $artigo->version;?></h3>
 <?php
     include_partial('global/message',array('sf_user',$sf_user));    
 ?>

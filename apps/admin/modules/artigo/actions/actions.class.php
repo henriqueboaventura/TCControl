@@ -50,4 +50,12 @@ class artigoActions extends sfActions
             
         } 
     }
+
+    public function executeCompare(sfWebRequest $request)
+    {
+        $aluno = $this->getUser()->getAttribute('id', null, 'usuario');
+        $this->artigo = Doctrine_Core::getTable('Artigo')->findArtigoAluno($aluno,false);
+
+        $this->form = new CompareForm(array('artigo_id' => $this->artigo->id));
+    }
 }

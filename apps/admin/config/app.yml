@@ -14,3 +14,14 @@ all:
         resize_enabled: false
         removePlugins: elementspath
         toolbar: Basic
+        toolbar_Basic: [[Bold],[Italic],[Strike],-,[NumberedList],[BulletedList]]
+    article_config:
+      jsoptions:
+        bodyClass: ckeditor
+        height: 320px
+        language: pt-br
+        resize_enabled: false
+        removePlugins: elementspath
+        toolbar: Article
+        toolbar_Article: [[Cut],[Copy],[Paste],-,[Bold],[Italic],[Strike],-,[NumberedList],[BulletedList],-,[Outdent],[Indent],[Blockquote],-,[JustifyLeft],[JustifyCenter],[JustifyRight],[JustifyBlock],-,[Format]]
+          

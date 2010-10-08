@@ -18,4 +18,16 @@ class ArtigoTable extends Doctrine_Table
 
         return $q->fetchOne();
     }
+    
+    public function findVersoesArtigo($artigo)
+    {
+        Doctrine_Core::initializeModels(array('Artigo'));
+        
+        $q = $this->createQuery()
+                  ->from('ArtigoVersao a')
+                  ->where('a.id = ?', $artigo)
+                  ->orderBy('a.version DESC');
+                  
+        return $q->execute();
+    }
 }

@@ -19,7 +19,7 @@ class ArtigoForm extends BaseArtigoForm
         );
         
         $this->widgetSchema['aluno_id'] = new sfWidgetFormInputHidden();
-        $this->widgetSchema['conteudo'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));
+        $this->widgetSchema['conteudo'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_article_config'));
         
         $this->widgetSchema->setLabels(array(            
             'conteudo' => 'Conteúdo'

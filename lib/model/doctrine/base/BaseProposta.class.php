@@ -97,6 +97,12 @@ abstract class BaseProposta extends sfDoctrineRecord
              'foreign' => 'proposta_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
+        $versionable0 = new Doctrine_Template_Versionable(array(
+             'versionColumn' => 'versao',
+             'className' => '%CLASS%Versao',
+             'auditLog' => true,
+             ));
         $this->actAs($timestampable0);
+        $this->actAs($versionable0);
     }
 }

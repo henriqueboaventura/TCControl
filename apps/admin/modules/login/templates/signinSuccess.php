@@ -10,5 +10,6 @@
             echo $form['_csrf_token']->render();
         ?>
     <input type="submit" value="Login" class="button" />
+    <?php echo link_to('Esqueci minha senha', '@forget_password'); ?>
     </fieldset>
 </form>

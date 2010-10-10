@@ -8,19 +8,19 @@
  * @property Proposta $Proposta
  * @property Curso $Curso
  * @property Doctrine_Collection $Orientador
+ * @property Artigo $Artigo
  * @property Doctrine_Collection $Orientacao
- * @property Doctrine_Collection $Artigo
  * 
  * @method Proposta            getProposta()   Returns the current record's "Proposta" value
  * @method Curso               getCurso()      Returns the current record's "Curso" value
  * @method Doctrine_Collection getOrientador() Returns the current record's "Orientador" collection
+ * @method Artigo              getArtigo()     Returns the current record's "Artigo" value
  * @method Doctrine_Collection getOrientacao() Returns the current record's "Orientacao" collection
- * @method Doctrine_Collection getArtigo()     Returns the current record's "Artigo" collection
  * @method Aluno               setProposta()   Sets the current record's "Proposta" value
  * @method Aluno               setCurso()      Sets the current record's "Curso" value
  * @method Aluno               setOrientador() Sets the current record's "Orientador" collection
+ * @method Aluno               setArtigo()     Sets the current record's "Artigo" value
  * @method Aluno               setOrientacao() Sets the current record's "Orientacao" collection
- * @method Aluno               setArtigo()     Sets the current record's "Artigo" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -45,11 +45,11 @@ abstract class BaseAluno extends Academico
              'local' => 'aluno_id',
              'foreign' => 'professor_id'));
 
-        $this->hasMany('Orientacao', array(
+        $this->hasOne('Artigo', array(
              'local' => 'id',
-             'foreign' => 'aluno_id'));
+             'foreign' => 'artigo_id'));
 
-        $this->hasMany('Artigo', array(
+        $this->hasMany('Orientacao', array(
              'local' => 'id',
              'foreign' => 'aluno_id'));
     }

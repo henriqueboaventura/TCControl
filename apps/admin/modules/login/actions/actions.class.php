@@ -70,8 +70,43 @@ class loginActions extends sfActions
         $this->redirect('' != $signoutUrl ? $signoutUrl : '@homepage');
     }
 
-    // use this methods in your class to extend a functionality
+    public function executeForgetPassword(sfWebRequest $request)
+    {
+        $this->form = new forgetPasswordForm();        
+        if ($request->isMethod('post')) {
+            try{
+                $this->form->bind($request->getParameter('forget_password'));
+                if(!$this->form->isValid()){
+                    throw new Exception('Preencha todos os campos');
+                }
+                $usuario = Doctrine::getTable('Usuario')->createQuery('u')
+                         ->where('u.email = ?', $this->form->getValue('email'))
+                         ->andWhere('u.matricula = ?', $this->form->getValue('matricula'))
+                         ->fetchOne();
 
+                if($usuario == false){
+                    throw new Exception('E-mail/Matricula inválido');
+                }
+
+                $this->sendPassword($usuario);
+                $request->setParameter('forget_password', null);
+                $this->setTemplate('sent');
+            } catch (Exception $e){
+                $this->getUser()->setFlash('error',$e->getMessage());
+            }
+        }
+    }
+
+    private function sendPassword($usuario)
+    {
+        $senha = Util::generatePassword();
+        $usuario->senha = $senha;
+        $usuario->save();
+
+        $mail = new NovaSenhaMail($usuario->email, array('senha' => $senha));
+        $mail->send();
+    }
+    
     protected function preSignin(sfWebRequest $request) {}
     protected function postSignin(sfWebRequest $request) {}
 
@@ -80,4 +115,5 @@ class loginActions extends sfActions
 
     protected function preActivate(sfWebRequest $request) {}
     protected function postActivate(sfWebRequest $request) {}
+
 }

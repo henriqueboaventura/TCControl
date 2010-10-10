@@ -57,7 +57,7 @@
     <li>Artigo
         <ul>
             <li><?php echo link_to('Definir', '@artigo'); ?></li>
-            <li>Histórico de versões</li>
+            <li><?php echo link_to('Histórico de versões', '@artigo_history');?></li>
         </ul>   
     </li>    
 </ul>
@@ -81,6 +81,11 @@
     <li>Propostas
         <ul>
             <li><?php echo link_to('Acompanhar','@proposta_list?filtro=todas');?></li>
+        </ul>
+    </li>
+    <li>Artigo
+        <ul>
+            <li><?php echo link_to('Acompanhar','@artigo_list?filtro=todas');?></li>
         </ul>
     </li>
 </ul>

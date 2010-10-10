@@ -14,6 +14,6 @@ class ProjectConfiguration extends sfProjectConfiguration
         sfValidatorBase::setDefaultMessage('invalid', 'Campo inválido');
         $this->enablePlugins('doAuthPlugin');
         $this->enablePlugins('sfCKEditorPlugin');
-    $this->enablePlugins('sfFormExtraPlugin');
+        $this->enablePlugins('sfFormExtraPlugin');
   }
 }

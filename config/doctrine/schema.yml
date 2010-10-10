@@ -214,7 +214,10 @@ Aluno:
       class: Professor
       local: aluno_id
       foreign: professor_id
-      refClass: Orientacao    
+      refClass: Orientacao
+    Artigo:
+      local: id
+      foreign: artigo_id
       
 Orientacao:
   options:
@@ -247,6 +250,10 @@ Proposta:
     charset: utf8
   actAs:
     Timestampable: ~
+    Versionable:
+      versionColumn: versao
+      className: %CLASS%Versao
+      auditLog: true
   columns:
     aluno_id:
       type: integer
@@ -391,8 +398,38 @@ Artigo:
     conteudo: 
       type: clob
       notnull: true
-    #avaliacao:
+    status:
+      type: enum
+      values: [0, 1, 2]
+      default: 0
   relations: 
     Aluno:
       local: aluno_id
+      foreign: id
+    Comentarios:
+      type: many
+      class: ArtigoComentario
+      local: id
+      foreign: artigo_id
+
+ArtigoComentario:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    artigo_id:
+      type: integer
+    conteudo:
+      type: string
+      notnull: true    
+    lido:
+      type: boolean
+      default: false
+      notnull: true
+  relations:
+    ARtigo:
+      local: artigo_id
       foreign: id

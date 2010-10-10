@@ -13,13 +13,37 @@ signout:
   url: /signout
   param: { module: login, action: signout }
 
+forget_password:
+  url: /esqueciSenha
+  param: { module: login, action: forgetPassword }
+
 artigo:
   url: /artigo
   param: { module: artigo, action: edit }
+
+artigo_add_comment:
+  url: /artigo/:artigo_id/comentario
+  param: { module: artigo, action: newComment }
+
+artigo_comentario_read:
+  url: /artigo/:artigo_id/comentario/lido
+  param: { module: artigo, action: markAsRead }
+
+artigo_view_comment:
+  url: /artigo/:artigo_id/comentarios
+  param: { module: artigo, action: viewComments }
+
+artigo_view:
+  url: /artigo/visualizar/:id
+  param: { module: artigo, action: view }
   
-artigo_compare:
-  url: /artigo/comparar
-  param: { module: artigo, action: edit }
+artigo_history:
+  url: /artigo/historico
+  param: { module: artigo, action: historico }
+
+artigo_list:
+  url: /artigo/:filtro
+  param: { module: artigo, action: list, filtro: false }
 
 area_afinidade_action:
   url: /areaAfinidade/:id/:action

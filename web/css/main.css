@@ -157,6 +157,10 @@ div#content form#login fieldset{
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
 }
+div#content form#login fieldset a{
+    float:left;
+    margin:5px 10px;
+}
 
 /* listagem */
 table tbody tr td{
@@ -242,12 +246,14 @@ div#content.proposta{
                 
                 float:left;
             }
-    div#content.proposta ul.comentarios{
+    div#content.proposta ul.comentarios,
+    div#content.artigo ul.comentarios,{
         clear:both;
         float:left;
         width:100%;
     }
-    div#content.proposta a.comment_view{
+    div#content.proposta a.comment_view,
+    div#content.artigo a.comment_view{
         background:transparent url(/images/comment.png) no-repeat top left;                
         float:left;
         height:16px;
@@ -255,6 +261,29 @@ div#content.proposta{
         outline:none;
         text-indent: -1999em;
         width:16px;
+    }
+
+/* artigo */
+div#content.artigo ins, div#content.artigo ins *{
+    background-color:#cfc;
+    text-decoration:none;
+}
+div#content.artigo del, div#content.artigo del *{
+    background:#fcc;
+    text-decoration:none;
+}
+div#content.artigo ol.versions{
+    border:1px solid #000;
+    height:80px;
+    list-style:none;
+    overflow: auto;    
+    width:400px;
+}
+    div#content.artigo ol.versions li{
+        padding:1px 5px;
+    }
+    div#content.artigo ol.versions li.selected{
+        background-color:#d5edf8;
     }
 
 /* pager */

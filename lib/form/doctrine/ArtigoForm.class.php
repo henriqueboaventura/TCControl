@@ -15,7 +15,8 @@ class ArtigoForm extends BaseArtigoForm
         unset(
             $this['created_at'],
             $this['updated_at'],
-            $this['version']
+            $this['version'],
+            $this['status']
         );
         
         $this->widgetSchema['aluno_id'] = new sfWidgetFormInputHidden();

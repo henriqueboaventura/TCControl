@@ -12,4 +12,21 @@
  */
 class Artigo extends BaseArtigo
 {
+    public function getStatusDescricao()
+    {
+        switch($this->status){
+        case 0:
+            return 'Aguardando Aceitação';
+
+            break;
+        case 1:
+            return 'Aceito';
+
+            break;
+        case 2:
+            return 'Rejeitado';
+
+            break;
+        }
+    }
 }

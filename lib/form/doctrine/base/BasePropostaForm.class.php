@@ -24,6 +24,7 @@ abstract class BasePropostaForm extends BaseFormDoctrine
       'status'             => new sfWidgetFormChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2))),
       'created_at'         => new sfWidgetFormDateTime(),
       'updated_at'         => new sfWidgetFormDateTime(),
+      'version'            => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -36,6 +37,7 @@ abstract class BasePropostaForm extends BaseFormDoctrine
       'status'             => new sfValidatorChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2), 'required' => false)),
       'created_at'         => new sfValidatorDateTime(),
       'updated_at'         => new sfValidatorDateTime(),
+      'version'            => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('proposta[%s]');

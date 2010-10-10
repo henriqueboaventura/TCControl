@@ -7,14 +7,20 @@
  * 
  * @property integer $aluno_id
  * @property clob $conteudo
+ * @property enum $status
  * @property Aluno $Aluno
+ * @property Doctrine_Collection $Comentarios
  * 
- * @method integer getAlunoId()  Returns the current record's "aluno_id" value
- * @method clob    getConteudo() Returns the current record's "conteudo" value
- * @method Aluno   getAluno()    Returns the current record's "Aluno" value
- * @method Artigo  setAlunoId()  Sets the current record's "aluno_id" value
- * @method Artigo  setConteudo() Sets the current record's "conteudo" value
- * @method Artigo  setAluno()    Sets the current record's "Aluno" value
+ * @method integer             getAlunoId()     Returns the current record's "aluno_id" value
+ * @method clob                getConteudo()    Returns the current record's "conteudo" value
+ * @method enum                getStatus()      Returns the current record's "status" value
+ * @method Aluno               getAluno()       Returns the current record's "Aluno" value
+ * @method Doctrine_Collection getComentarios() Returns the current record's "Comentarios" collection
+ * @method Artigo              setAlunoId()     Sets the current record's "aluno_id" value
+ * @method Artigo              setConteudo()    Sets the current record's "conteudo" value
+ * @method Artigo              setStatus()      Sets the current record's "status" value
+ * @method Artigo              setAluno()       Sets the current record's "Aluno" value
+ * @method Artigo              setComentarios() Sets the current record's "Comentarios" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -33,6 +39,16 @@ abstract class BaseArtigo extends sfDoctrineRecord
              'type' => 'clob',
              'notnull' => true,
              ));
+        $this->hasColumn('status', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+              2 => 2,
+             ),
+             'default' => 0,
+             ));
 
         $this->option('type', 'MyISAM');
         $this->option('collate', 'utf8_unicode_ci');
@@ -45,6 +61,10 @@ abstract class BaseArtigo extends sfDoctrineRecord
         $this->hasOne('Aluno', array(
              'local' => 'aluno_id',
              'foreign' => 'id'));
+
+        $this->hasMany('ArtigoComentario as Comentarios', array(
+             'local' => 'id',
+             'foreign' => 'artigo_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $versionable0 = new Doctrine_Template_Versionable(array(

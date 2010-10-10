@@ -167,7 +167,6 @@ class sfCoreAutoload
         $classes .= sprintf("    '%s' => '%s',\n", strtolower($class), substr(str_replace($libDir, '', $file), 1));
       }
     }
-
     $content = preg_replace('/protected \$classes = array *\(.*?\);/s', sprintf("protected \$classes = array(\n%s  );", $classes), file_get_contents(__FILE__));
 
     file_put_contents(__FILE__, $content);

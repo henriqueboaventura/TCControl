@@ -13,19 +13,16 @@
             foreach($form as $nome => $field){                
                 if(!$field->isHidden()){
                     echo $field->renderLabel();
-                    /*if(array_key_exists($nome, $comentarios)){
-                        echo link_to(
-                            'Ver Comentários (' . count($comentarios[$nome]) . ')', 
-                            '@proposta_view_comment?proposta_id=' . $proposta->id . '&local=' . $nome,
-                            array(
-                                'class' => 'comment_view',
-                                'title' => 'Ver Comentários (' . count($comentarios[$nome]) . ')'
-                            )
-                        );
-                    }*/
-                    echo $field->render(array('class' => ($field->hasError()) ? 'field_error' : ''));
-                    echo $field->renderError();
+                    echo link_to(
+                        'Ver Comentários (' . count($artigo->Comentarios) . ')',
+                        '@artigo_view_comment?artigo_id=' . $artigo->id,
+                        array(
+                            'class' => 'comment_view',
+                            'title' => 'Ver Comentários (' . count($artigo->Comentarios) . ')'
+                    ));
                 }
+                echo $field->render(array('class' => ($field->hasError()) ? 'field_error' : ''));
+                echo $field->renderError();
             }
             echo $form->renderHiddenFields(false);
         ?>

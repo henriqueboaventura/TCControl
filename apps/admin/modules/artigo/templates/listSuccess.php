@@ -1,0 +1,36 @@
+<h2>Artigo</h2>
+<h3>Listagem</h3>
+<?php include_partial('global/message',array('sf_user',$sf_user)); ?>
+<table>
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Titulo</th>
+            <th>Status</th>
+            <th class="actions">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($artigos as $artigo): ?>
+        <tr>
+            <td><?php echo $artigo->Aluno->getNome() ?></td>
+            <td><?php echo $artigo->Aluno->Proposta->titulo;?></td>
+            <td><?php echo $artigo->getStatusDescricao();?></td>
+            <td class="actions">
+                <?php
+                    echo link_to(__('Visualizar Artigo'), '@artigo_view?id=' . $artigo->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
+                    if($coordenador){
+                        //echo link_to(__('Aprovar Proposta'),'@artigo_action?id=' . $artigo->getId() . '&acao=aceitar', array('class' => 'list_accept', 'title' => 'Aprovar Proposta'));
+                        //echo link_to(__('Rejeitar Proposta'),'@artigo_action?id=' . $artigo->getId()  . '&acao=rejeitar', array('class' => 'list_deny', 'title' => 'Rejeitar Proposta'));
+                    }
+                ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php
+    include_partial('global/pager',array(
+        'pager' => $pager,
+    ));
+?>

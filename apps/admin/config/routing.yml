@@ -36,7 +36,11 @@ artigo_view_comment:
 artigo_view:
   url: /artigo/visualizar/:id
   param: { module: artigo, action: view }
-  
+
+artigo_history_back:
+  url: /artigo/historico/voltar/:versao
+  param: { module: artigo, action: backHistory }
+
 artigo_history:
   url: /artigo/historico
   param: { module: artigo, action: historico }
@@ -52,6 +56,10 @@ area_afinidade_action:
 proposta:
   url: /proposta
   param: { module: proposta, action: edit }
+
+proposta_parecer:
+  url: /proposta/:id/parecer/:acao
+  param: { module: proposta, action: parecer }
 
 proposta_comentario_read:
   url: /proposta/:proposta_id/comentario/:comentario_id/lido

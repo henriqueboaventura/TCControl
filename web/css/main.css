@@ -272,18 +272,29 @@ div#content.artigo del, div#content.artigo del *{
     background:#fcc;
     text-decoration:none;
 }
-div#content.artigo ol.versions{
+div#content.artigo ol#versions{
     border:1px solid #000;
     height:80px;
     list-style:none;
     overflow: auto;    
-    width:400px;
+    width:460px;
 }
-    div#content.artigo ol.versions li{
-        padding:1px 5px;
+    div#content.artigo ol#versions li{
+        padding:1px 7px;
     }
-    div#content.artigo ol.versions li.selected{
-        background-color:#d5edf8;
+        div#content.artigo ol#versions li a.voltar_versao{
+            display:none;
+        }
+    div#content.artigo ol#versions li.selected{
+        background-color:#9FE1FF;
+    }
+        div#content.artigo ol#versions li.selected a.voltar_versao{
+            display:inline;
+            float:right;
+        }
+    div#content.artigo ol#versions li.selected_next{
+        border-left: 5px solid #9FE1FF;
+        padding-left:2px;
     }
 
 /* pager */

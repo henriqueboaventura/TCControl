@@ -53,25 +53,8 @@ class propostaActions extends sfActions
 
     public function executeList(sfWebRequest $request)
     {
-        switch($request->getParameter('filtro')){
-        case 'aguardando':
-            $status = array(0);
-
-            break;
-        case 'aprovado':
-            $status = array(1);
-
-            break;
-        case 'rejeitado':
-            $status = array(2);
-
-            break;
-        default:
-            $status = array(0,1,2);
-        }
-
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$status,false);
+        $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$request->getParameter('filtro'),false);
         $this->pager = new sfDoctrinePager('Proposta',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);
@@ -92,21 +75,33 @@ class propostaActions extends sfActions
         }
     }
 
-    public function executeUpdateStatus(sfWebRequest $request)
+    public function executeParecer(sfWebRequest $request)
     {
-        $proposta = Doctrine::getTable('Proposta')->find($request->getParameter('id'));
+        $this->form = new PropostaAvaliacaoForm();
+        $this->form->setDefaults(array(
+            'proposta_id' => $request->getParameter('id'),
+            'aprovada' => ($request->getParameter('acao') == 'aceitar') ? true : false
+        ));
 
-        if($request->getParameter('acao') == 'aceitar'){
-            $proposta->status = 1;
-            $this->getUser()->setFlash('success','Proposta aceita com sucesso!');
-        } else {
-            $proposta->status = 2;
-            $this->getUser()->setFlash('success','Proposta rejeitada com sucesso!');
+        if($request->isMethod(sfRequest::POST)){
+            $this->form->bind(
+                $request->getParameter($this->form->getName()),
+                $request->getFiles($this->form->getName())
+            );
+
+            if($this->form->isValid()){
+                $this->form->save();
+                if($request->getParameter('acao') == 'aceitar'){
+                    $this->getUser()->setFlash('success','Proposta aceita com sucesso!');
+                } else {
+                    $this->getUser()->setFlash('success','Proposta rejeitada com sucesso!');
+                }
+                $this->redirect('@proposta_list?filtro=aguardando');
+            } else {
+                $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
+                
+            }
         }
-        
-        $proposta->save();
-        $this->redirect('@proposta_list?filtro=aguardando');
-
     }
     
     public function executeNewComment(sfWebRequest $request)

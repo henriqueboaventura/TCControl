@@ -90,7 +90,7 @@ class artigoActions extends sfActions
             } 
         } else {
             $this->versaoFinal = $this->versaoInicial = $this->artigo;
-            if($versao != 1){
+            if($this->artigo->version != 1){
                 $reverted = clone($this->artigo);
                 $this->versaoFinal = $reverted->revert($this->artigo->version - 1);
             }
@@ -107,6 +107,20 @@ class artigoActions extends sfActions
         $renderer = new Text_Diff_Renderer_inline();
         
         $this->diff = $renderer->render($diff);
+    }
+
+    public function executeBackHistory(sfWebRequest $request)
+    {
+        $aluno = $this->getUser()->getAttribute('id', null, 'usuario');
+        $versao = $request->getParameter('versao', null);
+
+        $artigo = Doctrine_Core::getTable('Artigo')->findArtigoAluno($aluno, false);
+        $artigo->revert($versao);
+        $artigo->save();
+
+        $this->getUser()->setFlash('success', 'Artigo revertido para a versão ' . $versao);
+
+        $this->redirect('@artigo_history');
     }
 
     public function executeView(sfWebRequest $request)

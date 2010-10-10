@@ -269,11 +269,7 @@ Proposta:
       notnull: true
     objetivos:
       type: string
-      notnull: true
-    status:
-      type: enum
-      values: [0, 1, 2]
-      default: 0
+      notnull: true    
   relations:
     Aluno:
       local: aluno_id
@@ -288,6 +284,31 @@ Proposta:
       class: PropostaComentario
       local: id
       foreign: proposta_id
+    Avaliacao:
+      type: one
+      class: PropostaAvaliacao
+      local: id
+      foreign: proposta_id
+
+PropostaAvaliacao:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    proposta_id:
+      type: integer
+    aprovada:
+      type: boolean
+      notnull: true
+    parecer:
+      type: string
+  relations:
+    Proposta:
+      local: proposta_id
+      foreign: id
       
 PropostaComentario:
   options:

@@ -17,14 +17,29 @@ class PropostaTable extends Doctrine_Table
         return Doctrine_Core::getTable('Proposta');
     }
 
-    public function findPropostaByProfessor($professor, $status = array(0,1,2), $execute = true) {
+    public function findPropostaByProfessor($professor, $status = null, $execute = true) {
         $q = $this->createQuery()
            ->from('Proposta p')
            ->innerJoin('p.Aluno a')
            ->innerJoin('a.Orientacao o')
-           ->where('o.professor_id = ?', $professor)
-           ->andWhere('p.status IN (' . implode(',',$status) . ')');
-        
+           ->where('o.professor_id = ?', $professor);
+
+        switch($status){
+        case 'aguardando':
+            $q->leftJoin('p.Avaliacao aval');
+            $q->where('aval.id is null');
+
+            break;
+        case 'aprovado':
+            $q->innerJoin('p.Avaliacao aval WITH aval.aprovada = true');
+
+            break;
+        case 'rejeitado':
+            $q->innerJoin('p.Avaliacao aval WITH aval.aprovada = false');
+
+            break;
+        }
+
         if($execute){
             return $q->execute();
         } else {

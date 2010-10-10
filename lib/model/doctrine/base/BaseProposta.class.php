@@ -10,29 +10,29 @@
  * @property string $descricao_problema
  * @property string $descricao_solucao
  * @property string $objetivos
- * @property enum $status
  * @property Aluno $Aluno
  * @property Doctrine_Collection $Cronogramas
  * @property Doctrine_Collection $Comentarios
+ * @property PropostaAvaliacao $Avaliacao
  * 
  * @method integer             getAlunoId()            Returns the current record's "aluno_id" value
  * @method string              getTitulo()             Returns the current record's "titulo" value
  * @method string              getDescricaoProblema()  Returns the current record's "descricao_problema" value
  * @method string              getDescricaoSolucao()   Returns the current record's "descricao_solucao" value
  * @method string              getObjetivos()          Returns the current record's "objetivos" value
- * @method enum                getStatus()             Returns the current record's "status" value
  * @method Aluno               getAluno()              Returns the current record's "Aluno" value
  * @method Doctrine_Collection getCronogramas()        Returns the current record's "Cronogramas" collection
  * @method Doctrine_Collection getComentarios()        Returns the current record's "Comentarios" collection
+ * @method PropostaAvaliacao   getAvaliacao()          Returns the current record's "Avaliacao" value
  * @method Proposta            setAlunoId()            Sets the current record's "aluno_id" value
  * @method Proposta            setTitulo()             Sets the current record's "titulo" value
  * @method Proposta            setDescricaoProblema()  Sets the current record's "descricao_problema" value
  * @method Proposta            setDescricaoSolucao()   Sets the current record's "descricao_solucao" value
  * @method Proposta            setObjetivos()          Sets the current record's "objetivos" value
- * @method Proposta            setStatus()             Sets the current record's "status" value
  * @method Proposta            setAluno()              Sets the current record's "Aluno" value
  * @method Proposta            setCronogramas()        Sets the current record's "Cronogramas" collection
  * @method Proposta            setComentarios()        Sets the current record's "Comentarios" collection
+ * @method Proposta            setAvaliacao()          Sets the current record's "Avaliacao" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -65,16 +65,6 @@ abstract class BaseProposta extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              ));
-        $this->hasColumn('status', 'enum', null, array(
-             'type' => 'enum',
-             'values' => 
-             array(
-              0 => 0,
-              1 => 1,
-              2 => 2,
-             ),
-             'default' => 0,
-             ));
 
         $this->option('type', 'MyISAM');
         $this->option('collate', 'utf8_unicode_ci');
@@ -93,6 +83,10 @@ abstract class BaseProposta extends sfDoctrineRecord
              'foreign' => 'proposta_id'));
 
         $this->hasMany('PropostaComentario as Comentarios', array(
+             'local' => 'id',
+             'foreign' => 'proposta_id'));
+
+        $this->hasOne('PropostaAvaliacao as Avaliacao', array(
              'local' => 'id',
              'foreign' => 'proposta_id'));
 

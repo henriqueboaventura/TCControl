@@ -28,7 +28,7 @@
     </li>
     <li>Propostas
         <ul>
-            <li><?php echo link_to('Aguardando Aprovação(' . $propostasPendentes->count() . ')','@proposta_coordenador_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aguardando Avaliação(' . $propostasPendentes->count() . ')','@proposta_coordenador_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Aprovadas','@proposta_coordenador_list?filtro=aprovado');?></li>
             <li><?php echo link_to('Rejeitadas','@proposta_coordenador_list?filtro=rejeitado');?></li>
         </ul>

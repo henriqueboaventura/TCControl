@@ -451,6 +451,42 @@ ArtigoComentario:
       default: false
       notnull: true
   relations:
-    ARtigo:
+    Artigo:
       local: artigo_id
+      foreign: id
+
+Arquivo:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+    Versionable:
+      versionColumn: versao
+      className: %CLASS%Versao
+      auditLog: true
+  columns:
+    remetente_id:
+      type: integer
+    destinatario_id:
+      type: integer
+    nome:
+      type: string(100)
+      notnull: true
+    tipo:
+      type: enum
+      values: [modelagem, documento, imagem, outro]
+      notnull: true
+    path:
+      type: string(100)
+      notnull: true
+  relations:
+    Remetente:
+      class: Usuario
+      local: remetente_id
+      foreign: id
+    Destinatario:
+      class: Usuario
+      local: destinatario_id
       foreign: id

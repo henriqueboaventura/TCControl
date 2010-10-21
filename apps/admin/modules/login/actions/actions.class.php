@@ -65,9 +65,9 @@ class loginActions extends sfActions
     public function executeSignout($request) {
         $this->getUser()->signOut();
 
-        $signoutUrl = sfConfig::get('app_doAuth_signout_url', $request->getReferer());
+        //$signoutUrl = sfConfig::get('app_doAuth_signout_url', $request->getReferer());
 
-        $this->redirect('' != $signoutUrl ? $signoutUrl : '@homepage');
+        $this->redirect('@signin');
     }
 
     public function executeForgetPassword(sfWebRequest $request)

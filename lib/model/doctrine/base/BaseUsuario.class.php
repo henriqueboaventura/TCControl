@@ -15,6 +15,7 @@
  * @property string $fone_celular
  * @property integer $curso_id
  * @property Doctrine_Collection $Mensagem
+ * @property Doctrine_Collection $Arquivo
  * 
  * @method string              getNome()             Returns the current record's "nome" value
  * @method string              getEmail()            Returns the current record's "email" value
@@ -26,6 +27,7 @@
  * @method string              getFoneCelular()      Returns the current record's "fone_celular" value
  * @method integer             getCursoId()          Returns the current record's "curso_id" value
  * @method Doctrine_Collection getMensagem()         Returns the current record's "Mensagem" collection
+ * @method Doctrine_Collection getArquivo()          Returns the current record's "Arquivo" collection
  * @method Usuario             setNome()             Sets the current record's "nome" value
  * @method Usuario             setEmail()            Sets the current record's "email" value
  * @method Usuario             setSenha()            Sets the current record's "senha" value
@@ -36,6 +38,7 @@
  * @method Usuario             setFoneCelular()      Sets the current record's "fone_celular" value
  * @method Usuario             setCursoId()          Sets the current record's "curso_id" value
  * @method Usuario             setMensagem()         Sets the current record's "Mensagem" collection
+ * @method Usuario             setArquivo()          Sets the current record's "Arquivo" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -119,6 +122,10 @@ abstract class BaseUsuario extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('Mensagem', array(
+             'local' => 'id',
+             'foreign' => 'remetente_id'));
+
+        $this->hasMany('Arquivo', array(
              'local' => 'id',
              'foreign' => 'remetente_id'));
 

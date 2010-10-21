@@ -13,6 +13,7 @@ class AlunoTable extends AcademicoTable
     {
         $q = $this->createQuery()
            ->from('Orientacao o')
+           ->innerJoin('o.Professor p')
            ->where('o.aluno_id = ?', $aluno)
            ->fetchOne();
 

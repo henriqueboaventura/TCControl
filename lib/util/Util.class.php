@@ -31,6 +31,17 @@ class Util
         return $password;
     }
 
+    public static function generateSlug($phrase, $maxLength = 100)
+    {
+        $result = strtolower($phrase);
+
+        $result = preg_replace("/[^a-z0-9\s-]/", "", $result);
+        $result = trim(preg_replace("/[\s-]+/", " ", $result));
+        $result = trim(substr($result, 0, $maxLength));
+        $result = preg_replace("/\s/", "_", $result);
+
+        return $result;
+    }
 }
 
 ?>

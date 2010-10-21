@@ -48,6 +48,11 @@
             <li><?php echo link_to('Escolher Professor', '@orientador_list'); ?></li>
         </ul>
     </li>
+    <li>Arquivos
+        <ul>
+            <li><?php echo link_to('Gerenciar', 'arquivo/index'); ?></li>
+        </ul>
+    </li>
     <li>Plano de Trabalho
         <ul>
             <li><?php echo link_to('Definir Proposta', '@proposta'); ?></li>
@@ -78,11 +83,16 @@
             <li><?php echo link_to('Aprovados','@orientandos_list?filtro=aprovado');?></li>
         </ul>
     </li>
+    <li>Arquivos
+        <ul>
+            <li><?php echo link_to('Gerenciar', 'arquivo/index'); ?></li>
+        </ul>
+    </li>
     <li>Propostas
         <ul>
             <li><?php echo link_to('Acompanhar','@proposta_list?filtro=todas');?></li>
         </ul>
-    </li>
+    </li>    
     <li>Artigo
         <ul>
             <li><?php echo link_to('Acompanhar','@artigo_list?filtro=todas');?></li>

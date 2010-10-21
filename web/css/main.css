@@ -75,6 +75,7 @@ div#nav_menu{
 /* forms */
 input[type=text],
 input[type=password],
+input[type=file],
 select,
 textarea{
     border-radius:5px;
@@ -92,8 +93,15 @@ input[type=checkbox]{
     font-size:18px;
     padding:5px;
 }
+select{
+    padding:4px 5px;
+}
 textarea{
     width:auto;
+}
+div.file_field_download{
+    clear:both;
+    float:left;
 }
 label{
     clear:both;
@@ -102,6 +110,7 @@ label{
 }
 input[type=text].field_error,
 input[type=password].field_error,
+input[type=file].field_error,
 select.field_error,
 textarea.field_error{
     border-radius:5px 0px 0px 5px;    
@@ -196,6 +205,9 @@ table tbody tr td.actions{
     }
     table tbody tr td a.list_deny{
         background-image: url(/images/cross.png);
+    }
+    table tbody tr td a.list_document{
+        background-image: url(/images/page_go.png);
     }
     table tbody tr td a.user_delete{
         background-image: url(/images/user_delete.png);

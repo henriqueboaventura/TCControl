@@ -15,7 +15,7 @@
     </thead>
     <tfoot>
         <tr>
-            <td colspan="4" class="results"><?php echo $pager->getNbResults();?> <?php echo __('registro(s)');?></td>
+            <td colspan="5" class="results"><?php echo $pager->getNbResults();?> <?php echo __('registro(s)');?></td>
         </tr>
     </tfoot>
     <tbody>

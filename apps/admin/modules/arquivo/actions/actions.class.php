@@ -66,8 +66,6 @@ class arquivoActions extends sfActions
 
     public function executeDelete(sfWebRequest $request)
     {
-        $request->checkCSRFProtection();
-
         $this->forward404Unless($arquivo = Doctrine::getTable('Arquivo')->find(array($request->getParameter('id'))), sprintf('Object arquivo does not exist (%s).', $request->getParameter('id')));
         $arquivo->delete();
 

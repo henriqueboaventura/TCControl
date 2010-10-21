@@ -10,7 +10,28 @@
  */
 class MensagemForm extends BaseMensagemForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        unset(
+            $this['created_at'],
+            $this['updated_at'],
+            $this['original_id'],
+            $this['lido']
+        );
+        
+        $this->widgetSchema->setLabels(array(
+            'destinatario_id' => 'Destinatário',
+            'conteudo' => 'Conteúdo',
+        ));
+        
+        $this->widgetSchema['remetente_id'] = new sfWidgetFormInputHidden();
+        
+        $this->validatorSchema['destinatario_id'] = new sfValidatorDoctrineChoice(
+            array(
+                'model' => $this->getRelatedModelName('Destinatario'),
+                'required' => true
+            )
+        );
+    }
+    
 }

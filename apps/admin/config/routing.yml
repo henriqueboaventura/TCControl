@@ -17,6 +17,18 @@ forget_password:
   url: /esqueciSenha
   param: { module: login, action: forgetPassword }
 
+mensagem_delete:
+  url: /mensagem/delete/:id
+  param: { module: mensagem, action: delete }
+
+mensagem_view:
+  url: /mensagem/visualizar/:id
+  param: { module: mensagem, action: view }
+
+mensagens:
+  url: /mensagens
+  param: { module: mensagem, action: index }
+
 artigo:
   url: /artigo
   param: { module: artigo, action: edit }

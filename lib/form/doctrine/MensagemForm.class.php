@@ -15,23 +15,25 @@ class MensagemForm extends BaseMensagemForm
         unset(
             $this['created_at'],
             $this['updated_at'],
-            $this['original_id'],
             $this['lido']
-        );
-        
-        $this->widgetSchema->setLabels(array(
-            'destinatario_id' => 'Destinatário',
-            'conteudo' => 'Conteúdo',
-        ));
+        );           
         
         $this->widgetSchema['remetente_id'] = new sfWidgetFormInputHidden();
-        
+        $this->widgetSchema['conteudo'] = new sfWidgetFormCKEditor(sfConfig::get('app_ckeditor_default_config'));       
+        $this->widgetSchema['original_id'] = new sfWidgetFormInputHidden();
+
         $this->validatorSchema['destinatario_id'] = new sfValidatorDoctrineChoice(
             array(
                 'model' => $this->getRelatedModelName('Destinatario'),
                 'required' => true
             )
         );
+
+        $this->widgetSchema->setLabels(array(
+            'destinatario_id' => 'Destinatário',
+            'conteudo' => 'Conteúdo',
+        ));
     }
+
     
 }

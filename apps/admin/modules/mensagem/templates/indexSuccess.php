@@ -19,13 +19,13 @@
     </tfoot>
     <tbody>
     <?php foreach ($mensagens as $mensagem): ?>
-        <tr>
+        <tr class="<?php echo ($mensagem->lido) ? 'read' : 'unread'; ?>">
             <td><?php echo $mensagem->Remetente->nome; ?></td>
             <td><?php echo ((!is_null($mensagem->Original->id)) ? 'RE:' : '' ) . $mensagem->assunto; ?></td>
-            <td><?php echo format_date($mensagem->getCreatedAt(),'d/M/yy'); ?> às <?php echo format_date($mensagem->getCreatedAt(),'hh:mm:ss'); ?></td>
+            <td><?php echo format_date($mensagem->getCreatedAt(),'d/M/yy'); ?> às <?php echo format_date($mensagem->getCreatedAt(),'HH:mm:ss'); ?></td>
             <td class="actions">
                 <?php echo link_to(__('Visualizar'),'@mensagem_view?id=' . $mensagem->id, array('class' => 'list_view'));?>
-                <?php echo link_to(__('Excluir'),'@mensagem_delete?id=' . $mensagem->id, array('class' => 'list_delete'));?>
+                <?php //echo link_to(__('Excluir'),'@mensagem_delete?id=' . $mensagem->id, array('class' => 'list_delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

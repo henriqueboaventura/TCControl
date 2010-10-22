@@ -25,7 +25,10 @@ class ProfessorCoordenadorForm extends BaseProfessorForm
             $this['orientandos_list']
         );
 
-        $this->widgetSchema['curso_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true));
+        //$this->widgetSchema['curso_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true));
+
+        //adiciona um checkbox caso ele for coordenador
+        $this->widgetSchema['curso_id'] = new sfWidgetFormInputCheckbox(array(), array('value' => 1));
 
         $this->validatorSchema['curso_id'] = new sfValidatorInteger(
             array(

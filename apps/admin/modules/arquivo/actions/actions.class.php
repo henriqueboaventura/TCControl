@@ -67,7 +67,10 @@ class arquivoActions extends sfActions
     public function executeDelete(sfWebRequest $request)
     {
         $this->forward404Unless($arquivo = Doctrine::getTable('Arquivo')->find(array($request->getParameter('id'))), sprintf('Object arquivo does not exist (%s).', $request->getParameter('id')));
+        unlink(sfConfig::get('sf_upload_dir') . '/arquivo/' . $arquivo->path);
         $arquivo->delete();
+
+        $this->getUser()->setFlash('success', 'Arquivo excluído com sucesso!');
 
         $this->redirect('arquivo/index');
     }
@@ -78,7 +81,8 @@ class arquivoActions extends sfActions
         if ($form->isValid()){
             $arquivo = $form->save();
 
-            $this->redirect('arquivo/edit?id='.$arquivo->getId());
+            $this->getUser()->setFlash('success','Arquivo ' . ($form->isNew() ? 'incluído' : 'alterado') . ' com sucesso!');
+            $this->redirect('arquivo/index');
         }
     }
 }

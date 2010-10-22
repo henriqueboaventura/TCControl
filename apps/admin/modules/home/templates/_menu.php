@@ -5,7 +5,7 @@
     <li>Sistema
         <ul>
             <li><?php echo link_to('Configurações', 'configuracao/index'); ?></li>
-            <li><?php echo link_to('Cursos', 'curso/index'); ?></li>
+            <!--<li><?php //echo link_to('Cursos', 'curso/index'); ?></li>-->
             <li><?php echo link_to('Areas de Afinidade','areaAfinidade/index');?></li>
         </ul>
     </li>
@@ -13,7 +13,7 @@
     <li>Usuários
         <ul>
             <?php if($sf_user->hasCredential('administrador')): ?>
-            <li><?php echo link_to('Administradores', 'administrador/list'); ?></li>
+            <li><?php echo link_to('Administradores', 'administrador/index'); ?></li>
             <?php endif; ?>
             <li><?php echo link_to('Professores', 'professor/index'); ?></li>
             <li><?php echo link_to('Alunos', 'aluno/index'); ?></li>
@@ -36,10 +36,12 @@
     <?php endif; ?>
 </ul>
 <?php endif; ?>
+<?php if(!$sf_user->hasCredential('administrador')): ?>
 <h4>Mensagens</h4>
 <ul>
     <li><?php echo link_to('Caixa de Entrada', '@mensagens'); ?></li>
 </ul>
+<?php endif; ?>
 <?php if($sf_user->hasCredential('aluno')): ?>
 <h4>Definições</h4>
 <ul>

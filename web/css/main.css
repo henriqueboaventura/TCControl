@@ -140,6 +140,7 @@ span#actions_bar{
 }
     span#actions_bar a{
         float:left;
+        margin-right:10px;
     }
 fieldset span{
     clear:left;
@@ -308,6 +309,11 @@ div#content.artigo ol#versions{
         border-left: 5px solid #9FE1FF;
         padding-left:2px;
     }
+
+/* mensagem */
+div#content.mensagem table tbody tr.unread td{
+    font-weight:bold;
+}
 
 /* pager */
 div.pagination{

@@ -20,7 +20,8 @@ class AlunoForm extends BaseAlunoForm
             $this['orientador_list']
         );
         
-        $this->widgetSchema['curso_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true));
+        //$this->widgetSchema['curso_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Curso'), 'add_empty' => true));
+        $this->widgetSchema['curso_id'] = new sfWidgetFormInputHidden();
 
         $this->validatorSchema['curso_id'] = new sfValidatorInteger(
             array(
@@ -28,6 +29,9 @@ class AlunoForm extends BaseAlunoForm
             )
         );
 
-        $this->setDefault('type', 'aluno');
+        $this->setDefaults(array(
+            'type' => 'aluno',
+            'curso_id' => 1 //deixa como padrao o curso 1, ads
+        ));
     }
 }

@@ -17,9 +17,9 @@ forget_password:
   url: /esqueciSenha
   param: { module: login, action: forgetPassword }
 
-mensagem_delete:
-  url: /mensagem/delete/:id
-  param: { module: mensagem, action: delete }
+mensagem_responder:
+  url: /mensagem/responder/:id
+  param: { module: mensagem, action: reply }
 
 mensagem_view:
   url: /mensagem/visualizar/:id

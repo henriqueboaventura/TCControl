@@ -21,17 +21,44 @@ class mensagemActions extends sfActions
 
         $this->mensagens = $this->pager->getResults();
     }
-    
+
+    public function executeView(sfWebRequest $request)
+    {
+        $this->forward404Unless($this->mensagem = Doctrine::getTable('Mensagem')->find(array($request->getParameter('id'))), sprintf('Object mensagem does not exist (%s).', $request->getParameter('id')));
+        $this->mensagem->lido = true;
+        $this->mensagem->save();
+    }
+
+    public function executeReply(sfWebRequest $request)
+    {
+        $this->forward404Unless($this->mensagem = Doctrine::getTable('Mensagem')->find(array($request->getParameter('id'))), sprintf('Object mensagem does not exist (%s).', $request->getParameter('id')));
+
+        
+
+        $this->form = new MensagemReplyForm();
+        $this->form->setDefaults(array(
+            'original_id' => $this->mensagem->id,
+            'remetente_id' => $this->getUser()->getAttribute('id', null, 'usuario'),
+            'destinatario_id' => $this->mensagem->Remetente->id,
+            'assunto' => $this->mensagem->assunto,
+            'conteudo' => $this->mensagem->conteudo = '<br />-----------------------------------------------------------<br/ >' . $this->mensagem->conteudo
+        ));
+        if($request->isMethod(sfRequest::POST)){
+            $this->processForm($request, $this->form);
+        }
+    }
+
     public function executeNew(sfWebRequest $request)
     {
-        $this->form = new MensagemForm();
+        $this->form = ($this->getUser()->hasCredential('aluno')) ? new MensagemAlunoForm() : new MensagemProfessorForm();
+        $this->form->setDefault('remetente_id', $this->getUser()->getAttribute('id', null, 'usuario'));
     }
     
     public function executeCreate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST));
         
-        $this->form = new MensagemForm();
+        $this->form = ($this->getUser()->hasCredential('aluno')) ? new MensagemAlunoForm() : new MensagemProfessorForm();
         
         $this->processForm($request, $this->form);
         
@@ -48,7 +75,7 @@ class mensagemActions extends sfActions
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
         $this->forward404Unless($mensagem = Doctrine::getTable('Mensagem')->find(array($request->getParameter('id'))), sprintf('Object mensagem does not exist (%s).', $request->getParameter('id')));
-        $this->form = new MensagemForm($mensagem);
+        $this->form = ($this->getUser()->hasCredential('aluno')) ? new MensagemAlunoForm($mensagem) : new MensagemProfessorForm($mensagem);
         
         $this->processForm($request, $this->form);
         
@@ -70,8 +97,9 @@ class mensagemActions extends sfActions
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
         if ($form->isValid()){
             $mensagem = $form->save();
-        
-            $this->redirect('mensagem/edit?id='.$mensagem->getId());
+
+            $this->getUser()->setFlash('success','Mensagem enviada com sucesso!');
+            $this->redirect('@mensagens');
         }
     }
 }

@@ -33,12 +33,19 @@
             <li><?php echo link_to('Rejeitadas','@proposta_coordenador_list?filtro=rejeitado');?></li>
         </ul>
     </li>
+    <li>Artigos
+        <ul>
+            <li><?php echo link_to('Aguardando Avaliação(' . $propostasPendentes->count() . ')','@proposta_coordenador_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Avaliados','@proposta_coordenador_list?filtro=aprovado');?></li>
+        </ul>
+    </li>
     <?php endif; ?>
 </ul>
 <?php endif; ?>
 <?php if(!$sf_user->hasCredential('administrador')): ?>
 <h4>Mensagens</h4>
 <ul>
+    <li><?php echo link_to('Nova Mensagem', 'mensagem/new'); ?></li>
     <li><?php echo link_to('Caixa de Entrada', '@mensagens'); ?></li>
 </ul>
 <?php endif; ?>
@@ -61,12 +68,14 @@
             <li><?php echo link_to('Definir Cronograma', 'cronograma/index'); ?></li>                                    
         </ul>        
     </li>
+    <?php if($sf_user->getAttribute('semestre',false,'TCC2')): ?>
     <li>Artigo
         <ul>
             <li><?php echo link_to('Definir', '@artigo'); ?></li>
             <li><?php echo link_to('Histórico de versões', '@artigo_history');?></li>
         </ul>   
-    </li>    
+    </li>
+    <?php endif; ?>
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('professor')): ?>

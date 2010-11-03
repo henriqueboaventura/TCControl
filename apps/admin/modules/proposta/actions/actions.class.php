@@ -68,22 +68,42 @@ class propostaActions extends sfActions
     public function executeView(sfWebRequest $request)
     {
         $this->proposta = Doctrine::getTable('Proposta')->findPropostaCronogramas($request->getParameter('id'));
+        $this->avaliacao = $request->getParameter('avaliacao', false);
+
+        if($this->avaliacao == true){
+            $versao = $this->proposta->Avaliacao->versao_proposta;
+            $this->proposta->revert($versao);
+        }
 
         $this->etapa = array();
         foreach($this->proposta->Cronogramas as $cronograma){
             $this->etapa[$cronograma->etapa][] = $cronograma;
         }
+
+        
+    }
+
+    public function executeAvaliacao(sfWebRequest $request)
+    {
+        $proposta = Doctrine::getTable('Proposta')->find($request->getParameter('id'));
+
+        $propostaAvaliacao = new PropostaAvaliacao();
+        $propostaAvaliacao->versao_proposta = $proposta->version;
+
+        $proposta->Avaliacao = $propostaAvaliacao;
+        $proposta->save();
+
+        $this->getUser()->setFlash('success','Proposta enviada para avaliação!');
+        $this->redirect('@proposta');
     }
 
     public function executeParecer(sfWebRequest $request)
     {
-        $this->form = new PropostaAvaliacaoForm();
-        $this->form->setDefaults(array(
-            'proposta_id' => $request->getParameter('id'),
-            'aprovada' => ($request->getParameter('acao') == 'aceitar') ? true : false
-        ));
+        $this->propostaAvaliacao = Doctrine::getTable('PropostaAvaliacao')->findOneByPropostaId($request->getParameter('id'));
+        $this->form = new PropostaAvaliacaoForm($this->propostaAvaliacao);
+        $this->form->setDefault('aprovada', ($request->getParameter('acao') == 'aceitar') ? true : false);
 
-        if($request->isMethod(sfRequest::POST)){
+        if($request->isMethod(sfRequest::PUT)){
             $this->form->bind(
                 $request->getParameter($this->form->getName()),
                 $request->getFiles($this->form->getName())

@@ -10,17 +10,26 @@
  * @property string $telefone
  * @property integer $alunos_por_professor
  * @property string $url
+ * @property string $semestre_atual
+ * @property date $data_entrega_tcc1
+ * @property date $data_entrega_tcc2
  * 
  * @method string       getInstituicao()          Returns the current record's "instituicao" value
  * @method string       getEmail()                Returns the current record's "email" value
  * @method string       getTelefone()             Returns the current record's "telefone" value
  * @method integer      getAlunosPorProfessor()   Returns the current record's "alunos_por_professor" value
  * @method string       getUrl()                  Returns the current record's "url" value
+ * @method string       getSemestreAtual()        Returns the current record's "semestre_atual" value
+ * @method date         getDataEntregaTcc1()      Returns the current record's "data_entrega_tcc1" value
+ * @method date         getDataEntregaTcc2()      Returns the current record's "data_entrega_tcc2" value
  * @method Configuracao setInstituicao()          Sets the current record's "instituicao" value
  * @method Configuracao setEmail()                Sets the current record's "email" value
  * @method Configuracao setTelefone()             Sets the current record's "telefone" value
  * @method Configuracao setAlunosPorProfessor()   Sets the current record's "alunos_por_professor" value
  * @method Configuracao setUrl()                  Sets the current record's "url" value
+ * @method Configuracao setSemestreAtual()        Sets the current record's "semestre_atual" value
+ * @method Configuracao setDataEntregaTcc1()      Sets the current record's "data_entrega_tcc1" value
+ * @method Configuracao setDataEntregaTcc2()      Sets the current record's "data_entrega_tcc2" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -55,6 +64,19 @@ abstract class BaseConfiguracao extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 100,
+             ));
+        $this->hasColumn('semestre_atual', 'string', 6, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 6,
+             ));
+        $this->hasColumn('data_entrega_tcc1', 'date', null, array(
+             'type' => 'date',
+             'notnull' => true,
+             ));
+        $this->hasColumn('data_entrega_tcc2', 'date', null, array(
+             'type' => 'date',
+             'notnull' => true,
              ));
 
         $this->option('type', 'MyISAM');

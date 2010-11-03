@@ -73,6 +73,10 @@ proposta_parecer:
   url: /proposta/:id/parecer/:acao
   param: { module: proposta, action: parecer }
 
+proposta_avaliacao:
+  url: /proposta/:id/avaliacao
+  param: { module: proposta, action: avaliacao }
+
 proposta_comentario_read:
   url: /proposta/:proposta_id/comentario/:comentario_id/lido
   param: { module: proposta, action: markAsRead }
@@ -92,6 +96,10 @@ proposta_list:
 proposta_coordenador_list:
   url: /propostas/coordenador/:filtro
   param: { module: proposta, action: list, filtro: false, coordenador: true }
+
+proposta_avaliacao_view:
+  url: /proposta/avaliacao/visualizar/:id
+  param: { module: proposta, action: view, avaliacao: true }
 
 proposta_view:
   url: /proposta/visualizar/:id

@@ -15,9 +15,10 @@ class Proposta extends BaseProposta
     public function getStatusDescricao()
     {
         if(is_null($this->Avaliacao)){
+            return 'Em andamento';
+        } elseif(is_null($this->Avaliacao->aprovada)){
             return 'Aguardando Avaliação';
-        }
-        if(is_null($this->Avaliacao->aprovada)){
+        } elseif($this->Avaliacao->aprovada === true){
             return 'Aprovada';
         }
 

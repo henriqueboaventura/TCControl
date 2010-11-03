@@ -71,6 +71,15 @@ class alunoActions extends sfActions
             if($request->isMethod(sfRequest::POST)){
                 $senha = Util::generatePassword(8);
                 $aluno->senha = $senha;
+
+                //vincula o aluno a um TCC
+                if($request->isMethod(sfRequest::POST)){
+                    $tcc = new TCC();
+                    $tcc->etapa = 1;
+                    $tcc->semestre = $this->getUser()->getAttribute('semestre_atual', null, 'configuracao');
+                    $aluno->TCC = $tcc;
+                }
+
                 $aluno->save();
                 //envia a senha por e-mail
                 $email = new SenhaMail(
@@ -89,6 +98,18 @@ class alunoActions extends sfActions
         } else {
             $this->getUser()->setFlash('error', 'O formulário contém erros!',false);
         }
+    }
 
+    public function executeChangeEtapa(sfWebRequest $request)
+    {
+        $this->forward404Unless($aluno = Doctrine::getTable('Aluno')->find(array($request->getParameter('id'))), sprintf('Object aluno does not exist (%s).', $request->getParameter('id')));
+        $tcc = new TCC();
+        $tcc->etapa = 2;
+        $tcc->semestre = $this->getUser()->getAttribute('semestre_atual', null, 'configuracao');
+        $aluno->Etapas[] = $tcc;
+        $aluno->save();
+
+        $this->getUser()->setFlash('success','Aluno liberado para TCC 2!');
+        $this->redirect('aluno/index');
     }
 }

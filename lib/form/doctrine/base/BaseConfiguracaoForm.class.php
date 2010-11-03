@@ -21,6 +21,9 @@ abstract class BaseConfiguracaoForm extends BaseFormDoctrine
       'telefone'             => new sfWidgetFormInputText(),
       'alunos_por_professor' => new sfWidgetFormInputText(),
       'url'                  => new sfWidgetFormInputText(),
+      'semestre_atual'       => new sfWidgetFormInputText(),
+      'data_entrega_tcc1'    => new sfWidgetFormDate(),
+      'data_entrega_tcc2'    => new sfWidgetFormDate(),
       'created_at'           => new sfWidgetFormDateTime(),
       'updated_at'           => new sfWidgetFormDateTime(),
     ));
@@ -32,6 +35,9 @@ abstract class BaseConfiguracaoForm extends BaseFormDoctrine
       'telefone'             => new sfValidatorString(array('max_length' => 50)),
       'alunos_por_professor' => new sfValidatorInteger(),
       'url'                  => new sfValidatorString(array('max_length' => 100)),
+      'semestre_atual'       => new sfValidatorString(array('max_length' => 6)),
+      'data_entrega_tcc1'    => new sfValidatorDate(),
+      'data_entrega_tcc2'    => new sfValidatorDate(),
       'created_at'           => new sfValidatorDateTime(),
       'updated_at'           => new sfValidatorDateTime(),
     ));

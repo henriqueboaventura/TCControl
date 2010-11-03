@@ -21,7 +21,16 @@ Configuracao:
     url: 
       type: string(100)
       notnull: true
-
+    semestre_atual:
+      type: string(6)
+      notnull: true
+    data_entrega_tcc1:
+      type: date
+      notnull: true
+    data_entrega_tcc2:
+      type: date
+      notnull: true
+      
 Curso:
   options:
     type: MyISAM
@@ -218,6 +227,31 @@ Aluno:
     Artigo:
       local: id
       foreign: artigo_id
+    Etapas:
+      type: many
+      class: TCC
+      local: id
+      foreign: aluno_id
+
+TCC:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    etapa:
+      type: enum
+      notnull: true
+      values: [0, 1]
+    aluno_id:
+      type: integer
+    semestre:
+      type: string(6)
+      notnull: true
+  relations:
+    Aluno:
+      local: aluno_id
+      foreign: id
       
 Orientacao:
   options:
@@ -302,9 +336,12 @@ PropostaAvaliacao:
       type: integer
     aprovada:
       type: boolean
-      notnull: true
+      notnull: false
     parecer:
       type: string
+    versao_proposta:
+      type: integer
+      notnull: true
   relations:
     Proposta:
       local: proposta_id
@@ -432,6 +469,34 @@ Artigo:
       class: ArtigoComentario
       local: id
       foreign: artigo_id
+    Avaliacao:
+      type: one
+      class: ArtigoAvaliacao
+      local: id
+      foreign: artigo_id
+
+ArtigoAvaliacao:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs:
+    Timestampable: ~
+  columns:
+    artigo_id:
+      type: integer
+    aprovada:
+      type: boolean
+      notnull: false
+    parecer:
+      type: string
+    versao_proposta:
+      type: integer
+      notnull: true
+  relations:
+    Artigo:
+      local: artigo_id
+      foreign: id
 
 ArtigoComentario:
   options:

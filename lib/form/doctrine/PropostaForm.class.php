@@ -15,7 +15,8 @@ class PropostaForm extends BasePropostaForm
         unset(
             $this['created_at'],
             $this['updated_at'],
-            $this['status']
+            $this['status'],
+            $this['version']
         );
         
         $this->widgetSchema['aluno_id'] = new sfWidgetFormInputHidden();

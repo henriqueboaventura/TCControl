@@ -9,6 +9,13 @@ Aluno:
     fone_celular: 51 96799981
     Orientador: [Professor1]
     Curso: ADS
+    Etapas:
+      Etapa1:
+        etapa: 1
+        semestre: 2010/1
+      Etapa2:
+        etapa: 2
+        semestre: 2010/2
   Aluno2:
     nome: Charles Schneider
     email: charlesschneider@gmail.com.br
@@ -18,6 +25,10 @@ Aluno:
     fone_residencial: 51 30299971
     fone_celular: 51 96799981
     Curso: ADS
+    Etapas:
+      Etapa3:
+        etapa: 1
+        semestre: 2010/1
   Aluno3:
     nome: Jorge Martins
     email: jorge.martins@gmail.com.br
@@ -27,6 +38,10 @@ Aluno:
     fone_residencial: 51 30299971
     fone_celular: 51 96799981
     Curso: ADS
+    Etapas:
+      Etapa4:
+        etapa: 1
+        semestre: 2010/1
   Aluno4:
     nome: Carolina Alves Martins
     email: carol@litoralmania.com.br
@@ -37,3 +52,7 @@ Aluno:
     fone_celular: 51 96799981
     Orientador: [Professor1]
     Curso: ADS
+    Etapas:
+      Etapa5:
+        etapa: 1
+        semestre: 2010/1

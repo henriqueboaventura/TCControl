@@ -8,16 +8,19 @@
  * @property integer $proposta_id
  * @property boolean $aprovada
  * @property string $parecer
+ * @property integer $versao_proposta
  * @property Proposta $Proposta
  * 
- * @method integer           getPropostaId()  Returns the current record's "proposta_id" value
- * @method boolean           getAprovada()    Returns the current record's "aprovada" value
- * @method string            getParecer()     Returns the current record's "parecer" value
- * @method Proposta          getProposta()    Returns the current record's "Proposta" value
- * @method PropostaAvaliacao setPropostaId()  Sets the current record's "proposta_id" value
- * @method PropostaAvaliacao setAprovada()    Sets the current record's "aprovada" value
- * @method PropostaAvaliacao setParecer()     Sets the current record's "parecer" value
- * @method PropostaAvaliacao setProposta()    Sets the current record's "Proposta" value
+ * @method integer           getPropostaId()      Returns the current record's "proposta_id" value
+ * @method boolean           getAprovada()        Returns the current record's "aprovada" value
+ * @method string            getParecer()         Returns the current record's "parecer" value
+ * @method integer           getVersaoProposta()  Returns the current record's "versao_proposta" value
+ * @method Proposta          getProposta()        Returns the current record's "Proposta" value
+ * @method PropostaAvaliacao setPropostaId()      Sets the current record's "proposta_id" value
+ * @method PropostaAvaliacao setAprovada()        Sets the current record's "aprovada" value
+ * @method PropostaAvaliacao setParecer()         Sets the current record's "parecer" value
+ * @method PropostaAvaliacao setVersaoProposta()  Sets the current record's "versao_proposta" value
+ * @method PropostaAvaliacao setProposta()        Sets the current record's "Proposta" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -34,10 +37,14 @@ abstract class BasePropostaAvaliacao extends sfDoctrineRecord
              ));
         $this->hasColumn('aprovada', 'boolean', null, array(
              'type' => 'boolean',
-             'notnull' => true,
+             'notnull' => false,
              ));
         $this->hasColumn('parecer', 'string', null, array(
              'type' => 'string',
+             ));
+        $this->hasColumn('versao_proposta', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
              ));
 
         $this->option('type', 'MyISAM');

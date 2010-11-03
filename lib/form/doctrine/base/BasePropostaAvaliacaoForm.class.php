@@ -15,21 +15,23 @@ abstract class BasePropostaAvaliacaoForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'          => new sfWidgetFormInputHidden(),
-      'proposta_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Proposta'), 'add_empty' => true)),
-      'aprovada'    => new sfWidgetFormInputCheckbox(),
-      'parecer'     => new sfWidgetFormTextarea(),
-      'created_at'  => new sfWidgetFormDateTime(),
-      'updated_at'  => new sfWidgetFormDateTime(),
+      'id'              => new sfWidgetFormInputHidden(),
+      'proposta_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Proposta'), 'add_empty' => true)),
+      'aprovada'        => new sfWidgetFormInputCheckbox(),
+      'parecer'         => new sfWidgetFormTextarea(),
+      'versao_proposta' => new sfWidgetFormInputText(),
+      'created_at'      => new sfWidgetFormDateTime(),
+      'updated_at'      => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'proposta_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Proposta'), 'required' => false)),
-      'aprovada'    => new sfValidatorBoolean(),
-      'parecer'     => new sfValidatorString(array('required' => false)),
-      'created_at'  => new sfValidatorDateTime(),
-      'updated_at'  => new sfValidatorDateTime(),
+      'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'proposta_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Proposta'), 'required' => false)),
+      'aprovada'        => new sfValidatorBoolean(array('required' => false)),
+      'parecer'         => new sfValidatorString(array('required' => false)),
+      'versao_proposta' => new sfValidatorInteger(),
+      'created_at'      => new sfValidatorDateTime(),
+      'updated_at'      => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('proposta_avaliacao[%s]');

@@ -14,6 +14,11 @@ class myUser extends doAuthSecurityUser
                 $this->setAttribute('coordenador', (is_null($user->curso_id) ? false : true), 'professor');
             }
         }
+        if(strtolower(get_class($user)) == 'aluno'){
+            foreach($user->Etapas as $tcc){
+                $this->setAttribute('semestre', $tcc->semestre, 'TCC' . $tcc->etapa);
+            }
+        }
         $configuracao = Doctrine_Core::getTable('Configuracao')->findAll()->getFirst();
         foreach($configuracao as $field => $value){
             $this->setAttribute($field, $value, 'configuracao');
@@ -28,5 +33,7 @@ class myUser extends doAuthSecurityUser
         $this->getAttributeHolder()->removeNamespace('configuracao');
         $this->getAttributeHolder()->removeNamespace('professor');
         $this->getAttributeHolder()->removeNamespace('usuario');
+        $this->getAttributeHolder()->removeNamespace('TCC1');
+        $this->getAttributeHolder()->removeNamespace('TCC2');
     }
 }

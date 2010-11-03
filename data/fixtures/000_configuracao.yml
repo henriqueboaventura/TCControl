@@ -5,3 +5,6 @@ Configuracao:
     alunos_por_professor: 1
     telefone: (51) 3022-1044
     url: http://www.senacrs.com.br/tcctrl
+    semestre_atual: 2010/2
+    data_entrega_tcc1: "2010-06-20"
+    data_entrega_tcc2: "2010-11-22"

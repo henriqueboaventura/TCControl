@@ -18,8 +18,11 @@
             <td><?php echo $proposta->getStatusDescricao();?></td>
             <td class="actions">
                 <?php
-                    echo link_to(__('Visualizar Proposta'), '@proposta_view?id=' . $proposta->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
+                    if(!$coordenador){
+                        echo link_to(__('Visualizar Proposta'), '@proposta_view?id=' . $proposta->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
+                    }
                     if($coordenador AND $sf_request->getParameter('filtro') == 'aguardando'){
+                        echo link_to(__('Visualizar Proposta'), '@proposta_avaliacao_view?id=' . $proposta->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
                         echo link_to(__('Aprovar Proposta'),'@proposta_parecer?id=' . $proposta->getId() . '&acao=aceitar', array('class' => 'list_accept', 'title' => 'Aprovar Proposta'));
                         echo link_to(__('Rejeitar Proposta'),'@proposta_parecer?id=' . $proposta->getId()  . '&acao=rejeitar', array('class' => 'list_deny', 'title' => 'Rejeitar Proposta'));
                     }

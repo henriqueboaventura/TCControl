@@ -26,8 +26,8 @@ class PropostaTable extends Doctrine_Table
 
         switch($status){
         case 'aguardando':
-            $q->leftJoin('p.Avaliacao aval');
-            $q->where('aval.id is null');
+            $q->innerJoin('p.Avaliacao aval');
+            $q->where('aval.aprovada is null');
 
             break;
         case 'aprovado':

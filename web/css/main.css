@@ -120,6 +120,7 @@ textarea.field_error{
 }
 input.button{
     float:left;
+    margin-right:10px;
 }
 ul.error_list{
     background:#fbe3e4;
@@ -221,6 +222,9 @@ table tbody tr td.actions{
     }
     table tbody tr td a.user_orientacao_deny{
         background-image: url(/images/group_delete.png);
+    }
+    table tbody tr td a.user_step{
+        background-image: url(/images/user_go.png);
     }
     
     table tbody tr.over_limit{

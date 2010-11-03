@@ -14,7 +14,8 @@ class PropostaAvaliacaoForm extends BasePropostaAvaliacaoForm
     {
         unset(
             $this['created_at'],
-            $this['updated_at']
+            $this['updated_at'],
+            $this['versao_proposta']
         );
 
         $this->widgetSchema['proposta_id'] = new sfWidgetFormInputHidden();

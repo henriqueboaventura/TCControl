@@ -50,7 +50,7 @@ class widgetFormJQueryDate extends sfWidgetFormInput
 		}
 		use_helper('Date');
 		if($value != ''){
-			//$value = format_date($value,'dd/MM/yyyy');
+			$value = format_date($value,'dd/MM/yyyy');
 		}
 		return parent::render($name, $value, $attributes, $errors).
 		sprintf(<<<EOF

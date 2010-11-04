@@ -152,6 +152,20 @@ fieldset span{
         clear:none;
         float:left;
     }
+fieldset fieldset.date{
+    border:none;
+    clear:left;
+    float:left;    
+    margin-bottom:10px;
+    padding:0px;
+}
+    fieldset fieldset.date select{
+        float:none;
+        margin:0px 5px;
+    }
+    fieldset fieldset.date select:first-child{
+        margin-left:0px;
+    }
 
 span.cke_browser_gecko
 {

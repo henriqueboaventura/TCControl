@@ -118,7 +118,7 @@ class sfWidgetFormJQueryDate extends sfWidgetForm
       maxDate:    new Date(%s, 12 - 1, 31),
       beforeShow: wfd_%s_read_linked,
       onSelect:   wfd_%s_update_linked,
-      showOn:     "button"
+      showOn:     "select"
       %s
     }, jQuery.datepicker.regional["%s"], %s, {dateFormat: "yy-mm-dd"}));
     wfd_%s_check_linked_days();

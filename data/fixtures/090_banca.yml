@@ -1,0 +1,6 @@
+Banca:
+  Banca1:
+    Aluno: Aluno1
+    Avaliador1: Professor2
+    Avaliador2: Professor3
+    data_banca: "2010-11-29 21:00"

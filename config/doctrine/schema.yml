@@ -475,29 +475,6 @@ Artigo:
       local: id
       foreign: artigo_id
 
-ArtigoAvaliacao:
-  options:
-    type: MyISAM
-    collate: utf8_unicode_ci
-    charset: utf8
-  actAs:
-    Timestampable: ~
-  columns:
-    artigo_id:
-      type: integer
-    aprovada:
-      type: boolean
-      notnull: false
-    parecer:
-      type: string
-    versao_proposta:
-      type: integer
-      notnull: true
-  relations:
-    Artigo:
-      local: artigo_id
-      foreign: id
-
 ArtigoComentario:
   options:
     type: MyISAM
@@ -554,4 +531,71 @@ Arquivo:
     Destinatario:
       class: Usuario
       local: destinatario_id
+      foreign: id
+
+Banca:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    aluno_id:
+      type: integer
+      notnull: true
+    professor_id_1:
+      type: integer
+      notnull: true
+    professor_id_2:
+      type: integer
+      notnull: true
+    data_banca:
+      type: datetime
+      notnull: true
+  relations:
+    Aluno:
+      class: Aluno
+      local: aluno_id
+      foreign: id
+    Avaliador1:
+      class: Professor
+      local: professor_id_1
+      foreign: id
+    Avaliador2:
+      class: Professor
+      local: professor_id_2
+      foreign: id
+    Avaliacao:
+      type: one
+      class: BancaAvaliacao
+      local: id
+      foreign: banca_id
+
+BancaAvaliacao:
+  options:
+    type: MyISAM
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    banca_id:
+      type: integer
+      notnull: true
+    avaliacao_professor_1:
+      type: enum
+      values: [A,B,C,D]
+      notnull: true
+    avaliacao_professor_2:
+      type: enum
+      values: [A,B,C,D]
+      notnull: true
+    avaliacao_geral:
+      type: enum
+      values: [A,B,C,D]
+      notnull: true
+    parecer:
+      type: string
+      notnull: true
+  relations:
+    Banca:
+      class: Banca
+      local: banca_id
       foreign: id

@@ -11,6 +11,7 @@
  * @property Artigo $Artigo
  * @property Doctrine_Collection $Etapas
  * @property Doctrine_Collection $Orientacao
+ * @property Doctrine_Collection $Banca
  * 
  * @method Proposta            getProposta()   Returns the current record's "Proposta" value
  * @method Curso               getCurso()      Returns the current record's "Curso" value
@@ -18,12 +19,14 @@
  * @method Artigo              getArtigo()     Returns the current record's "Artigo" value
  * @method Doctrine_Collection getEtapas()     Returns the current record's "Etapas" collection
  * @method Doctrine_Collection getOrientacao() Returns the current record's "Orientacao" collection
+ * @method Doctrine_Collection getBanca()      Returns the current record's "Banca" collection
  * @method Aluno               setProposta()   Sets the current record's "Proposta" value
  * @method Aluno               setCurso()      Sets the current record's "Curso" value
  * @method Aluno               setOrientador() Sets the current record's "Orientador" collection
  * @method Aluno               setArtigo()     Sets the current record's "Artigo" value
  * @method Aluno               setEtapas()     Sets the current record's "Etapas" collection
  * @method Aluno               setOrientacao() Sets the current record's "Orientacao" collection
+ * @method Aluno               setBanca()      Sets the current record's "Banca" collection
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -57,6 +60,10 @@ abstract class BaseAluno extends Academico
              'foreign' => 'aluno_id'));
 
         $this->hasMany('Orientacao', array(
+             'local' => 'id',
+             'foreign' => 'aluno_id'));
+
+        $this->hasMany('Banca', array(
              'local' => 'id',
              'foreign' => 'aluno_id'));
     }

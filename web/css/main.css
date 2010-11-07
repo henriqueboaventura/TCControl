@@ -225,6 +225,9 @@ table tbody tr td.actions{
     table tbody tr td a.list_document{
         background-image: url(/images/page_go.png);
     }
+    table tbody tr td a.list_rate{
+        background-image: url(/images/award_star.png);
+    }
     table tbody tr td a.user_delete{
         background-image: url(/images/user_delete.png);
     }

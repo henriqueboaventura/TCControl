@@ -10,20 +10,17 @@
  * @property enum $status
  * @property Aluno $Aluno
  * @property Doctrine_Collection $Comentarios
- * @property ArtigoAvaliacao $Avaliacao
  * 
  * @method integer             getAlunoId()     Returns the current record's "aluno_id" value
  * @method clob                getConteudo()    Returns the current record's "conteudo" value
  * @method enum                getStatus()      Returns the current record's "status" value
  * @method Aluno               getAluno()       Returns the current record's "Aluno" value
  * @method Doctrine_Collection getComentarios() Returns the current record's "Comentarios" collection
- * @method ArtigoAvaliacao     getAvaliacao()   Returns the current record's "Avaliacao" value
  * @method Artigo              setAlunoId()     Sets the current record's "aluno_id" value
  * @method Artigo              setConteudo()    Sets the current record's "conteudo" value
  * @method Artigo              setStatus()      Sets the current record's "status" value
  * @method Artigo              setAluno()       Sets the current record's "Aluno" value
  * @method Artigo              setComentarios() Sets the current record's "Comentarios" collection
- * @method Artigo              setAvaliacao()   Sets the current record's "Avaliacao" value
  * 
  * @package    TCCtrl
  * @subpackage model
@@ -66,10 +63,6 @@ abstract class BaseArtigo extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $this->hasMany('ArtigoComentario as Comentarios', array(
-             'local' => 'id',
-             'foreign' => 'artigo_id'));
-
-        $this->hasOne('ArtigoAvaliacao as Avaliacao', array(
              'local' => 'id',
              'foreign' => 'artigo_id'));
 

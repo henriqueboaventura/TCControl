@@ -17,6 +17,18 @@ forget_password:
   url: /esqueciSenha
   param: { module: login, action: forgetPassword }
 
+bancas_avaliacao:
+  url: /bancas/avaliacao
+  param: { module: banca, action: listAvaliacao }
+
+bancas:
+  url: /bancas
+  param: { module: banca, action: index }
+
+banca_agendar:
+  url: /banca/agendar
+  param: { module: banca, action: new }
+
 mensagem_responder:
   url: /mensagem/responder/:id
   param: { module: mensagem, action: reply }

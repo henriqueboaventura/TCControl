@@ -33,12 +33,19 @@
             <li><?php echo link_to('Rejeitadas','@proposta_coordenador_list?filtro=rejeitado');?></li>
         </ul>
     </li>
-    <li>Artigos
+    <li>Banca
+        <ul>
+            <li><?php echo link_to('Agendar','@banca_agendar');?></li>
+            <li><?php echo link_to('Listar','@bancas');?></li>
+            <li><?php echo link_to('Registrar Avaliação','@bancas_avaliacao');?></li>
+        </ul>
+    </li>
+    <!--<li>Artigos
         <ul>
             <li><?php echo link_to('Aguardando Avaliação(' . $propostasPendentes->count() . ')','@proposta_coordenador_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Avaliados','@proposta_coordenador_list?filtro=aprovado');?></li>
         </ul>
-    </li>
+    </li>-->
     <?php endif; ?>
 </ul>
 <?php endif; ?>

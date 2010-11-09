@@ -7,7 +7,7 @@
             'form' => $form,
             'module' => $sf_context->getModuleName(),
             'action' => 'escolherOrientador?aluno_id=' . $sf_request->getParameter('aluno_id'),
-            'back_list' => true
+            'back_list' => '@sem_orientador_list'
         )
     );
 ?>

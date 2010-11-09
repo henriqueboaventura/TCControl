@@ -28,7 +28,7 @@
             echo $form->renderHiddenFields(false);
         ?>
         <span id="actions_bar">
-            <?php echo (isset($back_list) AND $back_list == false) ? '' : link_to(__('Voltar para a lista'), url_for($module . '/index')); ?>
+            <?php echo (isset($back_list) AND $back_list === false) ? '' : link_to(__('Voltar para a lista'), (($back_list === true) ? url_for($module . '/index') : url_for($back_list))); ?>
             <input type="submit" value="<?php echo __('Enviar');?>" class="button" />            
         </span>
     </fieldset>

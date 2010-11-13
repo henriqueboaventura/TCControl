@@ -24,6 +24,7 @@
                 <ul>
                     <li><?php echo $banca->Avaliador1->nome ?></li>
                     <li><?php echo $banca->Avaliador2->nome ?></li>
+                    <li><?php echo $banca->Avaliador3->nome ?></li>
                 </ul>
 
             </td>

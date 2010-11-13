@@ -19,7 +19,11 @@ class artigoActions extends sfActions
     {                
         $aluno = $this->getUser()->getAttribute('id', null, 'usuario');
 
-        $this->artigo = Doctrine_Core::getTable('Artigo')->findArtigoAluno($aluno,false);
+        if(!($this->artigo = Doctrine_Core::getTable('Artigo')->findArtigoAluno($aluno,false))){
+            $this->artigo = new Artigo();
+            $this->artigo->Aluno = Doctrine::getTable('Aluno')->find($aluno);
+            $this->artigo->save();
+        }
                 
         if($this->artigo){
             $this->form = new ArtigoForm($this->artigo);

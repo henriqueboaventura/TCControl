@@ -19,6 +19,7 @@ abstract class BaseBancaForm extends BaseFormDoctrine
       'aluno_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Aluno'), 'add_empty' => false)),
       'professor_id_1' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Avaliador1'), 'add_empty' => false)),
       'professor_id_2' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Avaliador2'), 'add_empty' => false)),
+      'professor_id_3' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Avaliador3'), 'add_empty' => false)),
       'data_banca'     => new sfWidgetFormInputText(),
     ));
 
@@ -27,6 +28,7 @@ abstract class BaseBancaForm extends BaseFormDoctrine
       'aluno_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Aluno'))),
       'professor_id_1' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Avaliador1'))),
       'professor_id_2' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Avaliador2'))),
+      'professor_id_3' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Avaliador3'))),
       'data_banca'     => new sfValidatorPass(),
     ));
 

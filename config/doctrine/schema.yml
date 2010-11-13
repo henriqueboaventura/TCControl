@@ -548,6 +548,9 @@ Banca:
     professor_id_2:
       type: integer
       notnull: true
+    professor_id_3:
+      type: integer
+      notnull: true
     data_banca:
       type: datetime
       notnull: true
@@ -563,6 +566,10 @@ Banca:
     Avaliador2:
       class: Professor
       local: professor_id_2
+      foreign: id
+    Avaliador3:
+      class: Professor
+      local: professor_id_3
       foreign: id
     Avaliacao:
       type: one
@@ -584,6 +591,10 @@ BancaAvaliacao:
       values: [A,B,C,D]
       notnull: true
     avaliacao_professor_2:
+      type: enum
+      values: [A,B,C,D]
+      notnull: true
+    avaliacao_professor_3:
       type: enum
       values: [A,B,C,D]
       notnull: true

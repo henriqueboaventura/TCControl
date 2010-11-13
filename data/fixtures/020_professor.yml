@@ -29,16 +29,25 @@ Professor:
     AreasAfinidade: [Redes, Projetos]
   Professor4:
     nome: Guilherme Bertoni
-    email: guilherme.bertoni@gmail.com
+    email: gb.machado@sinprors.org.br
     senha: 123456
     matricula: 630810195
     endereco: dunno
     fone_residencial: 51 555 5555
     fone_celular: 51 555 5555
-    AreasAfinidade: [SI]
-  Professor4:
+    AreasAfinidade: [SD]
+  Professor5:
     nome: Roberto Zanoni
     email: roberto.zanoni@gmail.com
+    senha: 123456
+    matricula: 630810194
+    endereco: dunno
+    fone_residencial: 51 555 5555
+    fone_celular: 51 555 5555
+    AreasAfinidade: [UML, Projetos]
+  Professor6:
+    nome: Luciano Zanuz
+    email: senac.qs@zanuz.com
     senha: 123456
     matricula: 630810194
     endereco: dunno

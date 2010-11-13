@@ -8,6 +8,7 @@
  * @property integer $banca_id
  * @property enum $avaliacao_professor_1
  * @property enum $avaliacao_professor_2
+ * @property enum $avaliacao_professor_3
  * @property enum $avaliacao_geral
  * @property string $parecer
  * @property Banca $Banca
@@ -15,12 +16,14 @@
  * @method integer        getBancaId()               Returns the current record's "banca_id" value
  * @method enum           getAvaliacaoProfessor1()   Returns the current record's "avaliacao_professor_1" value
  * @method enum           getAvaliacaoProfessor2()   Returns the current record's "avaliacao_professor_2" value
+ * @method enum           getAvaliacaoProfessor3()   Returns the current record's "avaliacao_professor_3" value
  * @method enum           getAvaliacaoGeral()        Returns the current record's "avaliacao_geral" value
  * @method string         getParecer()               Returns the current record's "parecer" value
  * @method Banca          getBanca()                 Returns the current record's "Banca" value
  * @method BancaAvaliacao setBancaId()               Sets the current record's "banca_id" value
  * @method BancaAvaliacao setAvaliacaoProfessor1()   Sets the current record's "avaliacao_professor_1" value
  * @method BancaAvaliacao setAvaliacaoProfessor2()   Sets the current record's "avaliacao_professor_2" value
+ * @method BancaAvaliacao setAvaliacaoProfessor3()   Sets the current record's "avaliacao_professor_3" value
  * @method BancaAvaliacao setAvaliacaoGeral()        Sets the current record's "avaliacao_geral" value
  * @method BancaAvaliacao setParecer()               Sets the current record's "parecer" value
  * @method BancaAvaliacao setBanca()                 Sets the current record's "Banca" value
@@ -51,6 +54,17 @@ abstract class BaseBancaAvaliacao extends sfDoctrineRecord
              'notnull' => true,
              ));
         $this->hasColumn('avaliacao_professor_2', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 'A',
+              1 => 'B',
+              2 => 'C',
+              3 => 'D',
+             ),
+             'notnull' => true,
+             ));
+        $this->hasColumn('avaliacao_professor_3', 'enum', null, array(
              'type' => 'enum',
              'values' => 
              array(

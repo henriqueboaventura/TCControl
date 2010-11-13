@@ -19,7 +19,11 @@ class propostaActions extends sfActions
     {                
         $aluno = $this->getUser()->getAttribute('id', null, 'usuario');
 
-        $this->proposta = Doctrine_Core::getTable('Proposta')->findPropostaAluno($aluno,false);
+        if(!($this->proposta = Doctrine_Core::getTable('Proposta')->findPropostaAluno($aluno,false))){
+            $this->proposta = new Proposta();
+            $this->proposta->Aluno = Doctrine::getTable('Aluno')->find($aluno);
+            $this->proposta->save();
+        }
         
         $comentarios = array();
         foreach($this->proposta->Comentarios as $comentario){
@@ -75,7 +79,10 @@ class propostaActions extends sfActions
             $this->proposta->revert($versao);
         }
 
-        $this->etapa = array();
+        $this->etapa = array(
+            1 => array(),
+            2 => array()
+        );
         foreach($this->proposta->Cronogramas as $cronograma){
             $this->etapa[$cronograma->etapa][] = $cronograma;
         }

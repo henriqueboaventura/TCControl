@@ -19,6 +19,7 @@ abstract class BaseBancaAvaliacaoForm extends BaseFormDoctrine
       'banca_id'              => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Banca'), 'add_empty' => false)),
       'avaliacao_professor_1' => new sfWidgetFormChoice(array('choices' => array('A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D'))),
       'avaliacao_professor_2' => new sfWidgetFormChoice(array('choices' => array('A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D'))),
+      'avaliacao_professor_3' => new sfWidgetFormChoice(array('choices' => array('A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D'))),
       'avaliacao_geral'       => new sfWidgetFormChoice(array('choices' => array('A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D'))),
       'parecer'               => new sfWidgetFormTextarea(),
     ));
@@ -28,6 +29,7 @@ abstract class BaseBancaAvaliacaoForm extends BaseFormDoctrine
       'banca_id'              => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Banca'))),
       'avaliacao_professor_1' => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'C', 3 => 'D'))),
       'avaliacao_professor_2' => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'C', 3 => 'D'))),
+      'avaliacao_professor_3' => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'C', 3 => 'D'))),
       'avaliacao_geral'       => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'C', 3 => 'D'))),
       'parecer'               => new sfValidatorString(),
     ));

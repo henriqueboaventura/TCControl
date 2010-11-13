@@ -77,7 +77,7 @@ class alunoActions extends sfActions
                     $tcc = new TCC();
                     $tcc->etapa = 1;
                     $tcc->semestre = $this->getUser()->getAttribute('semestre_atual', null, 'configuracao');
-                    $aluno->TCC = $tcc;
+                    $aluno->Etapas[] = $tcc;
                 }
 
                 $aluno->save();

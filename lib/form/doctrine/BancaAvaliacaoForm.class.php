@@ -18,6 +18,7 @@ class BancaAvaliacaoForm extends BaseBancaAvaliacaoForm
 
         $this->widgetSchema['avaliacao_professor_1'] = new sfWidgetFormChoice(array('choices' => array('' => '', 'A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D')));
         $this->widgetSchema['avaliacao_professor_2'] = new sfWidgetFormChoice(array('choices' => array('' => '', 'A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D')));
+        $this->widgetSchema['avaliacao_professor_3'] = new sfWidgetFormChoice(array('choices' => array('' => '', 'A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D')));
         $this->widgetSchema['avaliacao_geral'] = new sfWidgetFormChoice(array('choices' => array('' => '', 'A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D')));
 
         $this->widgetSchema->setLabels(array(

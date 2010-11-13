@@ -40,7 +40,7 @@ class bancaActions extends sfActions {
     }
 
     public function executeNew(sfWebRequest $request)
-    {
+    {      
         $this->form = new BancaForm();
     }
 
@@ -88,6 +88,7 @@ class bancaActions extends sfActions {
         $this->form->setDefault('banca_id', $this->banca->id);
         $this->form->setLabelProfessor(1, $this->banca->Avaliador1->nome);
         $this->form->setLabelProfessor(2, $this->banca->Avaliador2->nome);
+        $this->form->setLabelProfessor(3, $this->banca->Avaliador3->nome);
 
         if($request->isMethod(sfRequest::POST)){
             $this->form->bind($request->getParameter($this->form->getName()));

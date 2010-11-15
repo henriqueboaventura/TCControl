@@ -23,12 +23,12 @@
     <li>Orientandos
         <ul>
             <li><?php echo link_to('Sem Orientador','@sem_orientador_list');?></li>
-            <li><?php echo link_to('Aguardando Aprovação(' . $orientacoesExtraPendentes->count() . ')','@orientandos_coordenador_list');?></li>
+            <li><?php echo link_to('Aguardando Aprovação<span>(' . $orientacoesExtraPendentes->count() . ')</span>','@orientandos_coordenador_list');?></li>
         </ul>
     </li>
     <li>Propostas
         <ul>
-            <li><?php echo link_to('Aguardando Avaliação(' . $propostasPendentes->count() . ')','@proposta_coordenador_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aguardando Avaliação<span>(' . $propostasPendentes->count() . ')</span>','@proposta_coordenador_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Aprovadas','@proposta_coordenador_list?filtro=aprovado');?></li>
             <li><?php echo link_to('Rejeitadas','@proposta_coordenador_list?filtro=rejeitado');?></li>
         </ul>
@@ -42,7 +42,7 @@
     </li>
     <!--<li>Artigos
         <ul>
-            <li><?php echo link_to('Aguardando Avaliação(' . $propostasPendentes->count() . ')','@proposta_coordenador_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aguardando Avaliação<span>(' . $propostasPendentes->count() . ')</span>','@proposta_coordenador_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Avaliados','@proposta_coordenador_list?filtro=aprovado');?></li>
         </ul>
     </li>-->
@@ -51,9 +51,10 @@
 <?php endif; ?>
 <?php if(!$sf_user->hasCredential('administrador')): ?>
 <h4>Mensagens</h4>
-<ul>
+<ul id="mensagens">
     <li><?php echo link_to('Nova Mensagem', 'mensagem/new'); ?></li>
     <li><?php echo link_to('Caixa de Entrada', '@mensagens'); ?></li>
+    <li><?php echo link_to('Caixa de Saida', '@mensagens_enviadas'); ?></li>
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('aluno')): ?>
@@ -97,7 +98,7 @@
     <li>Orientandos
         <ul>            
             
-            <li><?php echo link_to('Aguardando Aceitação(' . $orientacoesPendentes->count() . ')','@orientandos_list?filtro=aguardando');?></li>
+            <li><?php echo link_to('Aguardando Aceitação<span>(' . $orientacoesPendentes->count() . ')</span>','@orientandos_list?filtro=aguardando');?></li>
             <li><?php echo link_to('Aprovados','@orientandos_list?filtro=aprovado');?></li>
         </ul>
     </li>

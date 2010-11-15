@@ -11,5 +11,5 @@
 </dl>
 <span id="actions_bar">
     <?php echo link_to(__('Voltar para a lista'), url_for('@mensagens')); ?>
-    <?php echo link_to(__('Responder'), url_for('@mensagem_responder?id=' . $mensagem->id)); ?>
+    <?php echo ($mensagem->Remetente->id != $sf_user->getAttribute('id',null,'usuario')) ? link_to(__('Responder'), url_for('@mensagem_responder?id=' . $mensagem->id)) : ''; ?>
 </span>

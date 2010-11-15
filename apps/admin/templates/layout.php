@@ -10,9 +10,9 @@
     </head>
     <body>
         <div class="container">
-            <header class="clear">
-                <h1><?php echo link_to('TCCtrl','@home');?></h1>
-                <small>Sistema de Controle e Gerenciamento de TCC</small>
+            <header class="span-24 clear">
+                <h1><?php echo link_to(image_tag('/images/logo.png',array('alt'=>'TCCtrl')),'@home');?></h1>
+                <small>Sistema de Controle e Gerenciamento de <span>TCC</span></small>
             </header>
             <div id="content" class="span-24">
             <?php echo $sf_content ?>

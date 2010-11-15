@@ -10,16 +10,16 @@
     </head>
     <body>
         <div class="container">
-            <header class="clear">
-                <h1><?php echo link_to('TCCtrl','@home');?></h1>
-                <small>Sistema de Controle e Gerenciamento de TCC</small>
+            <header class="span-24 clear">
+                <h1><?php echo link_to(image_tag('/images/logo.png',array('alt'=>'TCCtrl')),'@home');?></h1>
+                <small>Sistema de Controle e Gerenciamento de <span>TCC</span></small>
                 <div id="tool_box">
                     Olá, <span class="name"><?php echo $sf_user->getAttribute('nome','John Doe','usuario');?></span>
                     <?php echo image_tag('/images/cog.png');?>
                     <ul>
                         <li><?php echo link_to('Alterar Dados Pessoais','profile/atualizar');?></li>
                         <li><?php echo link_to('Alterar Senha','profile/senha');?></li>
-                        <li><?php echo link_to('Preferências','@homepage');?></li>
+                        <!--<li><?php echo link_to('Preferências','@homepage');?></li>-->
                         <li><?php echo link_to('Sair','@signout');?></li>
                     </ul>
                 </div>

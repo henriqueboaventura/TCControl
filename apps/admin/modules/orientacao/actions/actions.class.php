@@ -12,6 +12,7 @@ class orientacaoActions extends sfActions
 {
     public function executeOrientadorList(sfWebRequest $request)
     {
+        
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
         $query = Doctrine_Core::getTable('Professor')->createQuery('a');
         $this->pager = new sfDoctrinePager('Professor',sfConfig::get('app_registers_per_page'));
@@ -20,6 +21,17 @@ class orientacaoActions extends sfActions
         $this->pager->init();
 
         $this->professors= $this->pager->getResults();
+        
+        $aluno = Doctrine::getTable('Aluno')->find($this->getUser()->getAttribute('id',null,'usuario'));
+        if($aluno->Orientacao[0]->Professor->id != null){
+            if($aluno->Orientacao[0]->status == 0){
+                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' está aguardando aprovação');
+            } else if($aluno->Orientacao[0]->status == 1) {
+                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' foi aprovada');
+            } else if($aluno->Orientacao[0]->status == 2) {
+                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' foi rejeitada');
+            }
+        }        
     }
 
     public function executeSemOrientadorList(sfWebRequest $request)

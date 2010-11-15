@@ -15,7 +15,13 @@ if($sf_user->hasFlash('error')){
         'success',
         $sf_user->getFlash('success')
     );
+} else if ($sf_user->hasFlash('info')){
+    $message = array(
+        'info',
+        $sf_user->getFlash('info')
+    );
 }
+
 
 if(count($message) > 0 AND $message[1] != ''){
     echo vsprintf('<p class="%s">%s</p>',$message);

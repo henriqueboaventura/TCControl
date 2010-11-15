@@ -35,5 +35,6 @@
 <?php
     include_partial('global/pager',array(
         'pager' => $pager,
+        'action' => 'list?filtro=' . $sf_request->getParameter('filtro')
     ));
 ?>

@@ -33,5 +33,6 @@
 <?php
     include_partial('global/pager',array(
         'pager' => $pager,
+        'action' => 'list'
     ));
 ?>

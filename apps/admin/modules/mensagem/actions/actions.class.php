@@ -21,6 +21,18 @@ class mensagemActions extends sfActions
 
         $this->mensagens = $this->pager->getResults();
     }
+    
+    public function executeEnviadas(sfWebRequest $request)
+    {
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        $query = Doctrine_Core::getTable('Mensagem')->findMensagensEnviadas($this->getUser()->getAttribute('id', null, 'usuario'), true);
+        $this->pager = new sfDoctrinePager('Mensagem', sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
+
+        $this->mensagens = $this->pager->getResults();
+    }
 
     public function executeView(sfWebRequest $request)
     {

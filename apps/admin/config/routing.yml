@@ -29,6 +29,10 @@ banca_agendar:
   url: /banca/agendar
   param: { module: banca, action: new }
 
+mensagens_enviadas:
+  url: /mensagens/enviadas
+  param: { module: mensagem, action: enviadas }
+
 mensagem_responder:
   url: /mensagem/responder/:id
   param: { module: mensagem, action: reply }
@@ -102,11 +106,11 @@ proposta_add_comment:
   param: { module: proposta, action: newComment }
 
 proposta_list:
-  url: /propostas/:filtro
+  url: /propostas/:filtro/*
   param: { module: proposta, action: list, filtro: false }
 
 proposta_coordenador_list:
-  url: /propostas/coordenador/:filtro
+  url: /propostas/coordenador/:filtro/*
   param: { module: proposta, action: list, filtro: false, coordenador: true }
 
 proposta_avaliacao_view:
@@ -134,7 +138,7 @@ orientandos_coordenador_list:
   param: { module: orientacao, action: orientandosCoordenadorList }
     
 orientandos_list:
-  url: /orientacao/orientandos/:filtro
+  url: /orientacao/orientandos/:filtro/*
   param: { module: orientacao, action: orientandosList, filtro: false }
   
 orientacao_action:

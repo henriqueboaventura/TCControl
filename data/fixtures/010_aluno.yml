@@ -77,3 +77,71 @@ Aluno:
       Etapa9:
         etapa: 2
         semestre: 2010/2
+  Aluno6:
+    nome: Aluno Teste Cesar Loureiro
+    email: alunocesar@gmail.com
+    senha: 123456
+    matricula: 630810196
+    endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
+    fone_residencial: 51 30299971
+    fone_celular: 51 96799981
+    Curso: ADS
+    Orientador: [Professor3]
+    Etapas:
+      Etapa8:
+        etapa: 1
+        semestre: 2010/1
+      Etapa9:
+        etapa: 2
+        semestre: 2010/2
+  Aluno7:
+    nome: Aluno Teste Guilherme Bertoni
+    email: alunoguilherme@gmail.com
+    senha: 123456
+    matricula: 630810196
+    endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
+    fone_residencial: 51 30299971
+    fone_celular: 51 96799981
+    Curso: ADS
+    Orientador: [Professor4]
+    Etapas:
+      Etapa8:
+        etapa: 1
+        semestre: 2010/1
+      Etapa9:
+        etapa: 2
+        semestre: 2010/2
+  Aluno8:
+    nome: Aluno Teste Adriana
+    email: alunoadriana@gmail.com
+    senha: 123456
+    matricula: 630810196
+    endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
+    fone_residencial: 51 30299971
+    fone_celular: 51 96799981
+    Curso: ADS
+    Orientador: [Professor2]
+    Etapas:
+      Etapa8:
+        etapa: 1
+        semestre: 2010/1
+      Etapa9:
+        etapa: 2
+        semestre: 2010/2
+  Aluno9:
+    nome: Aluno Teste Zanuz
+    email: alunozanuz@gmail.com
+    senha: 123456
+    matricula: 630810196
+    endereco: Rua Botafogo 631 Apt. 202, Bairro Menino Deus, Porto Alegre/RS, CEP 90150-051
+    fone_residencial: 51 30299971
+    fone_celular: 51 96799981
+    Curso: ADS
+    Orientador: [Professor6]
+    Etapas:
+      Etapa8:
+        etapa: 1
+        semestre: 2010/1
+      Etapa9:
+        etapa: 2
+        semestre: 2010/2

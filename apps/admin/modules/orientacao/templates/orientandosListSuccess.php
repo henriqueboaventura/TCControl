@@ -36,5 +36,6 @@
 <?php
     include_partial('global/pager',array(
         'pager' => $pager,
+        'action' => 'orientandosList?filtro=' . $sf_request->getParameter('filtro')
     ));
 ?>

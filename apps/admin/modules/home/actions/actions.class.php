@@ -17,5 +17,12 @@ class homeActions extends sfActions
      */
     public function executeIndex(sfWebRequest $request)
     {
+        
+        if(!$this->getUser()->hasCredential('administrador')){
+            $this->setTemplate('dashboard');
+            $this->aluno = ($this->getUser()->hasCredential('aluno')) ? $this->aluno = Doctrine::getTable('Aluno')->find($this->getUser()->getAttribute('id', null, 'usuario')) : false;
+            $this->mensagens = Doctrine::getTable('Mensagem')->findMensagens($this->getUser()->getAttribute('id', null, 'usuario'), false);
+            $this->arquivos = Doctrine::getTable('Arquivo')->findArquivos($this->getUser()->getAttribute('id', null, 'usuario'), false);
+        }
     }
 }

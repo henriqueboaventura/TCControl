@@ -24,4 +24,20 @@ class MensagemTable extends Doctrine_Table
 
         return $q->execute();;
     }
+    
+    public function findMensagensEnviadas($usuario, $returnQuery = false)
+    {
+        $q = $this->createQuery()
+           ->from('Mensagem m')
+           ->leftJoin('m.Remetente r')
+           ->leftJoin('m.Destinatario d')
+           ->where('r.id = ?', $usuario);
+
+
+        if($returnQuery){
+            return $q;
+        }
+
+        return $q->execute();;
+    }
 }

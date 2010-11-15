@@ -1,7 +1,7 @@
 <h2><?php echo __('Banca');?></h2>
 <h3><?php echo ($avaliacao) ? __('Aguardando Avaliação') : __('Listagem');?></h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
-<?php echo ($avaliacao) ? '' : link_to(__('Nova'),url_for('banca/new'));?>
+<?php echo ($avaliacao) ? '' : link_to(__('Nova'),url_for('banca/new'),array('class' => 'new_register'));?>
 <table>
     <thead>
         <tr>

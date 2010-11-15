@@ -2,7 +2,7 @@
 <h2><?php echo __('Mensagens Recebidas');?></h2>
 <h3><?php echo __('Listagem');?></h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
-<?php echo link_to(__('Nova'),url_for('mensagem/new'));?>
+<?php echo link_to(__('Nova'),url_for('mensagem/new'),array('class' => 'new_register'));?>
 <table>
     <thead>
         <tr>

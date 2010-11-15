@@ -25,11 +25,11 @@ class orientacaoActions extends sfActions
         $aluno = Doctrine::getTable('Aluno')->find($this->getUser()->getAttribute('id',null,'usuario'));
         if($aluno->Orientacao[0]->Professor->id != null){
             if($aluno->Orientacao[0]->status == 0){
-                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' está aguardando aprovação');
+                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' está aguardando aprovação',false);
             } else if($aluno->Orientacao[0]->status == 1) {
-                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' foi aprovada');
+                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' foi aprovada',false);
             } else if($aluno->Orientacao[0]->status == 2) {
-                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' foi rejeitada');
+                $this->getUser()->setFlash('info','Sua solicitação de orientação do professor(a) ' . $aluno->Orientacao[0]->Professor->nome . ' foi rejeitada',false);
             }
         }        
     }

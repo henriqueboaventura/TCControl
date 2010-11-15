@@ -81,7 +81,7 @@ header{
                 width:170px;
                 -moz-border-radius: 10px;
                 -webkit-border-radius: 10px;
-            }
+bém            }
             header div#tool_box ul.show{
                 display:block;                
             }
@@ -264,10 +264,35 @@ fieldset fieldset.date{
 
 span.cke_browser_gecko
 {
-    width:700px!important;    
+    width:660px!important;    
 }
 table.cke_editor{
-    width:690px!important;
+    width:650px!important;
+}
+
+a.new_register{
+    color:#666;
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+    text-decoration:none;
+}
+a.new_register:hover,
+a.new_register:focus{
+    text-decoration:underline;
+}
+
+span#actions_bar a{
+    color:#666;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:6px;
+    text-decoration:none;
+}
+span#actions_bar a:hover,
+span#actions_bar a:focus{
+    text-decoration:underline;
 }
 
 /* login */
@@ -375,11 +400,16 @@ div#content.last{
     padding:0px 20px;
     width:710px;
 }
+    div#content h2,
+    div#content h3{
+        margin-bottom:10px;
+    }
 
 /* proposta */
 div#content.proposta{
 
 }
+    
     div#content.proposta h4, div#content.proposta h5{
         clear:both;
         float:left; 

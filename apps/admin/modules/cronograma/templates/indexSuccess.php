@@ -2,9 +2,9 @@
 <h2><?php echo __('Cronograma');?></h2>
 <h3><?php echo __('Listagem');?></h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
-<?php echo link_to(__('Novo'),url_for('cronograma/new'));?>
-<h4>TCC 1</h4>
+<?php echo link_to(__('Novo'),url_for('cronograma/new'),array('class' => 'new_register'));?>
 <table>
+    <caption>TCC <span>1</span></caption>
     <thead>
         <tr>
             <th><?php echo __('Atividade');?></th>
@@ -29,8 +29,8 @@
     <?php endforeach; ?>
     </tbody>
 </table>
-<h4>TCC 2</h4>
 <table>
+    <caption>TCC <span>2</span></caption>
     <thead>
         <tr>
             <th><?php echo __('Atividade');?></th>

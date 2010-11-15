@@ -1,7 +1,7 @@
 <h2><?php echo __('Área de Afinidade');?></h2>
 <h3><?php echo __('Listagem');?></h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
-<?php echo link_to(__('Novo'),url_for('areaAfinidade/new'));?>
+<?php echo link_to(__('Novo'),url_for('areaAfinidade/new'),array('class' => 'new_register'));?>
 <table>
     <thead>
         <tr>

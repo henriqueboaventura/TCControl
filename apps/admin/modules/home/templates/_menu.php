@@ -1,3 +1,11 @@
+<?php if(!$sf_user->hasCredential('administrador')): ?>
+<h4>Mensagens</h4>
+<ul id="mensagens">
+    <li><?php echo link_to('Nova Mensagem', 'mensagem/new'); ?></li>
+    <li><?php echo link_to('Caixa de Entrada', '@mensagens'); ?></li>
+    <li><?php echo link_to('Caixa de Saida', '@mensagens_enviadas'); ?></li>
+</ul>
+<?php endif; ?>
 <?php if($sf_user->hasCredential('administrador') OR ($sf_user->hasCredential('professor') AND $sf_user->getAttribute('coordenador',false,'professor'))): ?>
 <h4>Administração</h4>
 <ul>
@@ -47,14 +55,6 @@
         </ul>
     </li>-->
     <?php endif; ?>
-</ul>
-<?php endif; ?>
-<?php if(!$sf_user->hasCredential('administrador')): ?>
-<h4>Mensagens</h4>
-<ul id="mensagens">
-    <li><?php echo link_to('Nova Mensagem', 'mensagem/new'); ?></li>
-    <li><?php echo link_to('Caixa de Entrada', '@mensagens'); ?></li>
-    <li><?php echo link_to('Caixa de Saida', '@mensagens_enviadas'); ?></li>
 </ul>
 <?php endif; ?>
 <?php if($sf_user->hasCredential('aluno')): ?>

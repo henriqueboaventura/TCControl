@@ -4,6 +4,9 @@
 # default values
 all:
   registers_per_page : 10
+  doAuth:
+    signin:
+      url: home/index    
   ckeditor:
     basePath:         /js/ckeditor/
     default_config: 

@@ -17,6 +17,10 @@ forget_password:
   url: /esqueciSenha
   param: { module: login, action: forgetPassword }
 
+relatorio:
+  url: /relatorio/:tipo/*
+  param: { module: relatorio, action: generate }
+
 bancas_avaliacao:
   url: /bancas/avaliacao
   param: { module: banca, action: listAvaliacao }

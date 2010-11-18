@@ -48,6 +48,16 @@
             <li><?php echo link_to('Registrar Avaliação','@bancas_avaliacao');?></li>
         </ul>
     </li>
+    <li>Relatórios
+        <ul>
+            <li><?php echo link_to('Alunos matriculados','@relatorio?tipo=alunosMatriculados');?></li>
+            <li><?php echo link_to('Alunos com seu Orientador','@relatorio?tipo=alunosOrientador');?></li>
+            <li><?php echo link_to('Orientador e Alunos','@relatorio?tipo=orientadorAlunos');?></li>
+            <li><?php echo link_to('Propostas','@relatorio?tipo=propostas');?></li>
+            <li><?php echo link_to('Horário das Bancas','@relatorio?tipo=horarioBancas');?></li>
+            <li><?php echo link_to('Resultado das Bancas','@relatorio?tipo=resultadoBancas');?></li>
+        </ul>
+    </li>
     <!--<li>Artigos
         <ul>
             <li><?php echo link_to('Aguardando Avaliação<span>(' . $propostasPendentes->count() . ')</span>','@proposta_coordenador_list?filtro=aguardando');?></li>

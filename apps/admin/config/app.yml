@@ -4,6 +4,8 @@
 # default values
 all:
   registers_per_page : 10
+  document:
+    savepath: %SF_WEB_DIR%/uploads/relatorios/
   doAuth:
     signin:
       url: home/index    

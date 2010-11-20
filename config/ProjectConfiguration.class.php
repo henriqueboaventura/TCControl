@@ -17,7 +17,8 @@ class ProjectConfiguration extends sfProjectConfiguration
         $this->enablePlugins('doAuthPlugin');
         $this->enablePlugins('sfCKEditorPlugin');
         $this->enablePlugins('sfFormExtraPlugin');
-    }   
+      $this->enablePlugins('sfTCPDFPlugin');
+  }   
     
     static public function registerZend()
     {

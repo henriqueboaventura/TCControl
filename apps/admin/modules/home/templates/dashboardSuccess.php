@@ -1,13 +1,18 @@
-<?php if($aluno): ?>
+<?php
+    use_helper('Date');
+    if($aluno):
+?>
 <div id="proposta_box" class="dashboard_box span-6">
     <h3>Proposta</h3>
     <?php echo link_to('Definir Proposta', '@proposta',array('class' => 'proposta', 'title' => 'Definir Proposta')); ?>
     <?php echo link_to('Definir Cronograma', 'cronograma/index',array('class' => 'cronograma', 'title' => 'Definir Cronograma')); ?>
+    <span class="date">Data de entrega: <?php echo format_date($sf_user->getAttribute('data_entrega_tcc1', null, 'configuracao')); ?></span>
 </div>
 <div id="artigo_box" class="dashboard_box span-6">
     <h3>Artigo</h3>
     <?php echo link_to('Definir Artigo', '@artigo',array('class' => 'artigo', 'title' => 'Definir Artigo')); ?>
     <?php //echo link_to('Comentarios', '@artigo',array('class' => 'artigo')); ?>
+    <span class="date">Data de entrega: <?php echo format_date($sf_user->getAttribute('data_entrega_tcc2', null, 'configuracao')); ?></span>
 </div>
 <div id="orientador_box" class="dashboard_box span-6 last">
     <h3>Orientador</h3>

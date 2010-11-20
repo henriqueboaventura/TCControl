@@ -16,7 +16,7 @@ class myUser extends doAuthSecurityUser
         }
         if(strtolower(get_class($user)) == 'aluno'){
             foreach($user->Etapas as $tcc){
-                $this->setAttribute('semestre', $tcc->semestre, 'TCC' . $tcc->etapa);
+                $this->setAttribute('semestre', $tcc->semestre, 'TCC' . $tcc->etapa, 'aluno');
             }
         }
         $configuracao = Doctrine_Core::getTable('Configuracao')->findAll()->getFirst();

@@ -39,6 +39,10 @@ class propostaActions extends sfActions
             $this->form->setDefault('aluno_id', $aluno);
         }
         
+        $dataEntregaTCC1 = new \DateTime($this->getUser()->getAttribute('data_entrega_tcc1', null, 'configuracao'));
+        $dataNow = new \DateTime();
+        $this->canPublish = ($dataNow <= $dataEntregaTCC1) ?: false;
+        
         if($request->isMethod(sfRequest::POST) OR $request->isMethod(sfRequest::PUT)){
             $this->form->bind(
                 $request->getParameter($this->form->getName()), 
@@ -92,15 +96,22 @@ class propostaActions extends sfActions
 
     public function executeAvaliacao(sfWebRequest $request)
     {
-        $proposta = Doctrine::getTable('Proposta')->find($request->getParameter('id'));
+        $dataEntregaTCC1 = new \DateTime($this->getUser()->getAttribute('data_entrega_tcc1', null, 'configuracao'));
+        $dataNow = new \DateTime();
+        $canPublish = ($dataNow <= $dataEntregaTCC1) ?: false;
+        if($canPublish){
+            $proposta = Doctrine::getTable('Proposta')->find($request->getParameter('id'));
 
-        $propostaAvaliacao = new PropostaAvaliacao();
-        $propostaAvaliacao->versao_proposta = $proposta->version;
+            $propostaAvaliacao = new PropostaAvaliacao();
+            $propostaAvaliacao->versao_proposta = $proposta->version;
 
-        $proposta->Avaliacao = $propostaAvaliacao;
-        $proposta->save();
+            $proposta->Avaliacao = $propostaAvaliacao;
+            $proposta->save();
 
-        $this->getUser()->setFlash('success','Proposta enviada para avaliação!');
+            $this->getUser()->setFlash('success','Proposta enviada para avaliação!');
+        } else {
+            $this->getUser()->setFlash('error','A data para publicar a proposta para avaliação já expirou!');
+        }
         $this->redirect('@proposta');
     }
 

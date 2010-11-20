@@ -6,6 +6,17 @@ body{
 a{
     outline:none;
 }
+div#content a{
+    color:#666;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+    text-decoration:none;
+}
+div#content a:hover,
+div#content a:focus{
+    text-decoration:underline;
+}
 
 ul, ol {
     list-style-position: inside;
@@ -81,7 +92,7 @@ header{
                 width:170px;
                 -moz-border-radius: 10px;
                 -webkit-border-radius: 10px;
-bém            }
+            }
             header div#tool_box ul.show{
                 display:block;                
             }
@@ -439,7 +450,7 @@ div#content.proposta{
                 float:left;
             }
     div#content.proposta ul.comentarios,
-    div#content.artigo ul.comentarios,{
+    div#content.artigo ul.comentarios{
         clear:both;
         float:left;
         width:100%;
@@ -469,11 +480,15 @@ div#content.artigo ol#versions{
     height:80px;
     list-style:none;
     overflow: auto;    
-    width:460px;
+    width:500px;
 }
     div#content.artigo ol#versions li{
         padding:1px 7px;
     }
+        div#content.artigo ol#versions li a{
+            display:inline;
+            font-size:12px;
+        }
         div#content.artigo ol#versions li a.voltar_versao{
             display:none;
         }
@@ -496,11 +511,11 @@ div#content.home{
     div#content.home div.dashboard_box{
         background-color:#EAEAEA;
         border-radius:10px;
-        height:108px;
+        height:134px;
         margin-bottom:20px;
         -moz-border-radius:10px;
         -webkit-border-radius:10px;
-    }
+    }        
         div#content.home div.dashboard_box h3{
             background-color:#888;
             border-radius:10px 10px 0px 0px;
@@ -512,17 +527,30 @@ div#content.home{
             -moz-border-radius:10px 10px 0px 0px;
             -webkit-border-radius:10px 10px 0px 0px;
         }
-    div#content.home div.dashboard_box a{
-        background:transparent url(/images/ico_artigo.png) no-repeat top left;
-        float:left;
-        height:60px;
-        margin:10px;
-        width:60px;
-        text-indent:-1999em;
-    }
-    div#content.home div.dashboard_box a.cronograma{
-        background-image:url(/images/ico_relogio.png);
-    }
+        div#content.home div.dashboard_box span.date{
+            background-color:#B2C6E9;
+            border-radius:0px 0px 10px 10px;
+            clear:both;
+            color: #000;
+            float:left;
+            font-size:14px;
+            padding:2px 0px;
+            text-align:center;
+            width:100%;
+            -moz-border-radius:0px 0px 10px 10px;
+            -webkit-border-radius:0px 0px 10px 10px;
+        }
+        div#content.home div.dashboard_box a{
+            background:transparent url(/images/ico_artigo.png) no-repeat top left;
+            float:left;
+            height:60px;
+            margin:10px;
+            width:60px;
+            text-indent:-1999em;
+        }
+        div#content.home div.dashboard_box a.cronograma{
+            background-image:url(/images/ico_relogio.png);
+        }
     div#content.home div#orientador_box p{
         font-size:16px;
         margin-top:10px;
@@ -540,6 +568,10 @@ div.pagination{
     text-align:center;
     
 }
+    div.pagination a{
+        font-size:12px!important;
+        font-weight:normal!important;
+    }
     div.pagination img{
         vertical-align:middle;
     }

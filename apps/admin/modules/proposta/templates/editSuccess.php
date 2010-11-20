@@ -31,7 +31,11 @@
         ?>
         <span id="actions_bar">            
             <input type="submit" value="<?php echo __('Salvar');?>" class="button" />
-            <?php echo link_to('Enviar para avaliação','@proposta_avaliacao?id=' . $proposta->id);?>
+            <?php
+                if($canPublish){
+                    echo link_to('Enviar para avaliação','@proposta_avaliacao?id=' . $proposta->id);
+                }
+            ?>
         </span>
     </fieldset>
 </form>

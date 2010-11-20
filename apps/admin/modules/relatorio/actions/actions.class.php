@@ -18,6 +18,6 @@ class relatorioActions extends sfActions
     public function executeGenerate(sfWebRequest $request)
     {
         $documento = new AlunosMatriculadosDoc();
-        $documento->save();
+        $documento->process();
     }
 }

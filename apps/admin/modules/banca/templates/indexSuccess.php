@@ -35,7 +35,7 @@
                         echo link_to(__('Avaliar'),'banca/avaliar?id=' . $banca->id, array('class' => 'list_rate'));
                     } else {
                         echo link_to(__('Alterar'),'banca/edit?id=' . $banca->id, array('class' => 'list_edit'));
-                        echo link_to(__('Excluir'),'banca/delete?id=' . $banca->id, array('class' => 'list_delete'));
+                        echo link_to(__('Excluir'),'banca/delete?id=' . $banca->id, array('class' => 'list_delete delete'));
                     }
                 ?>
             </td>

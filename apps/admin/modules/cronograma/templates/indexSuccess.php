@@ -23,7 +23,7 @@
             <td><?php echo $cronograma->getDetalhamento() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'cronograma/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'cronograma/delete?id=' . $cronograma->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Excluir'),'cronograma/delete?id=' . $cronograma->getId(), array('class' => 'list_delete delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>
@@ -49,7 +49,7 @@
             <td><?php echo $cronograma->getDetalhamento() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'cronograma/edit?id=' . $cronograma->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'cronograma/delete?id=' . $cronograma->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Excluir'),'cronograma/delete?id=' . $cronograma->getId(), array('class' => 'list_delete delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

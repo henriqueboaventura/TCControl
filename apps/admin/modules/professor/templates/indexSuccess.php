@@ -26,7 +26,7 @@
             <td><?php echo !is_null($professor->Curso->id) ? 'Sim' : 'Não' ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'professor/edit?id=' . $professor->getId(), array('class' => 'user_edit'));?>
-                <?php echo link_to(__('Excluir'),'professor/delete?id=' . $professor->getId(), array('class' => 'user_delete'));?>
+                <?php echo link_to(__('Excluir'),'professor/delete?id=' . $professor->getId(), array('class' => 'user_delete delete'));?>
             </td>
         </tr>
         <?php endforeach; ?>

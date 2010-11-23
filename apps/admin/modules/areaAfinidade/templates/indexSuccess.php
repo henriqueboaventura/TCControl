@@ -20,7 +20,7 @@
             <td><?php echo $areaAfinidade->getNome() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'areaAfinidade/edit?id=' . $areaAfinidade->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'areaAfinidade/delete?id=' . $areaAfinidade->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Excluir'),'areaAfinidade/delete?id=' . $areaAfinidade->getId(), array('class' => 'list_delete delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

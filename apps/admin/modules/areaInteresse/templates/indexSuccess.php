@@ -20,7 +20,7 @@
             <td><?php echo $areaInteresse->getNome() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'areaInteresse/edit?id=' . $areaInteresse->getId(), array('class' => 'list_edit'));?>
-                <?php echo link_to(__('Excluir'),'areaInteresse/delete?id=' . $areaInteresse->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Excluir'),'areaInteresse/delete?id=' . $areaInteresse->getId(), array('class' => 'list_delete delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

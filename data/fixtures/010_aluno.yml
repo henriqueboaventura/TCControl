@@ -88,10 +88,10 @@ Aluno:
     Curso: ADS
     Orientador: [Professor3]
     Etapas:
-      Etapa8:
+      Etapa9:
         etapa: 1
         semestre: 2010/1
-      Etapa9:
+      Etapa10:
         etapa: 2
         semestre: 2010/2
   Aluno7:
@@ -105,10 +105,10 @@ Aluno:
     Curso: ADS
     Orientador: [Professor4]
     Etapas:
-      Etapa8:
+      Etapa11:
         etapa: 1
         semestre: 2010/1
-      Etapa9:
+      Etapa12:
         etapa: 2
         semestre: 2010/2
   Aluno8:
@@ -122,10 +122,10 @@ Aluno:
     Curso: ADS
     Orientador: [Professor2]
     Etapas:
-      Etapa8:
+      Etapa13:
         etapa: 1
         semestre: 2010/1
-      Etapa9:
+      Etapa14:
         etapa: 2
         semestre: 2010/2
   Aluno9:
@@ -139,9 +139,9 @@ Aluno:
     Curso: ADS
     Orientador: [Professor6]
     Etapas:
-      Etapa8:
+      Etapa15:
         etapa: 1
         semestre: 2010/1
-      Etapa9:
+      Etapa16:
         etapa: 2
         semestre: 2010/2

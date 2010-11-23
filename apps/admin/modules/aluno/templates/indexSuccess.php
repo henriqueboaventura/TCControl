@@ -27,7 +27,7 @@
             <td class="actions">
                 <?php echo ($aluno->Etapas->getLast()->etapa == 1) ? link_to(__('Incluir em TCC 2'),'aluno/changeEtapa?id=' . $aluno->getId(), array('class' => 'user_step', 'title' => 'Incluir o Aluno em TCC 2')) : '';?>
                 <?php echo link_to(__('Alterar'),'aluno/edit?id=' . $aluno->getId(), array('class' => 'user_edit'));?>
-                <?php echo link_to(__('Excluir'),'aluno/delete?id=' . $aluno->getId(), array('class' => 'user_delete'));?>
+                <?php echo link_to(__('Excluir'),'aluno/delete?id=' . $aluno->getId(), array('class' => 'user_delete delete'));?>
             </td>
         </tr>
         <?php endforeach; ?>

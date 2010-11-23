@@ -28,7 +28,7 @@
             <td class="actions">
                 <?php echo link_to(__('Download'),'/uploads/arquivo/' . $arquivo->getPath(), array('class' => 'list_document'));?>
                 <?php echo ($arquivo->Remetente->id == $sf_user->getAttribute('id', null, 'usuario')) ? link_to(__('Alterar'),'arquivo/edit?id=' . $arquivo->getId(), array('class' => 'list_edit')) : '';?>
-                <?php echo link_to(__('Excluir'),'arquivo/delete?id=' . $arquivo->getId(), array('class' => 'list_delete'));?>
+                <?php echo link_to(__('Excluir'),'arquivo/delete?id=' . $arquivo->getId(), array('class' => 'list_delete delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

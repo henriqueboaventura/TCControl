@@ -22,7 +22,7 @@
             <td><?php echo $administrador->getEmail() ?></td>
             <td class="actions">
                 <?php echo link_to(__('Alterar'),'administrador/edit?id=' . $administrador->getId(), array('class' => 'user_edit'));?>
-                <?php echo link_to(__('Excluir'),'administrador/delete?id=' . $administrador->getId(), array('class' => 'user_delete'));?>
+                <?php echo link_to(__('Excluir'),'administrador/delete?id=' . $administrador->getId(), array('class' => 'user_delete delete'));?>
             </td>
         </tr>
     <?php endforeach; ?>

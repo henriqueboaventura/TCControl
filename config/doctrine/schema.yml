@@ -232,6 +232,9 @@ Aluno:
       class: TCC
       local: id
       foreign: aluno_id
+    Banca:
+      local: id
+      foreign: aluno_id
 
 TCC:
   options:

@@ -19,7 +19,7 @@ forget_password:
 
 relatorio:
   url: /relatorio/:tipo/*
-  param: { module: relatorio, action: generate }
+  param: { module: relatorio, action: index }
 
 bancas_avaliacao:
   url: /bancas/avaliacao

@@ -32,4 +32,34 @@ class AlunoTable extends AcademicoTable
            
         return $q;
     }
+    
+    public function findAlunosMatriculados($execute = true) 
+    {
+        $q = $this->createQuery()
+           ->from('Aluno a')
+           ->innerJoin('a.Etapas et');
+        
+        if($execute){
+            $q->execute();
+        }
+           
+        return $q;
+    }
+    
+    public function findAlunosBanca($execute = true) 
+    {
+        $q = $this->createQuery()
+           ->from('Aluno a')
+           ->innerJoin('a.Banca b')
+           ->innerJoin('b.Avaliador1 av1')
+           ->innerJoin('b.Avaliador2 av2')
+           ->innerJoin('b.Avaliador3 av3')
+           ->leftJoin('b.Avaliacao av');
+        
+        if($execute){
+            $q->execute();
+        }
+           
+        return $q;
+    }
 }

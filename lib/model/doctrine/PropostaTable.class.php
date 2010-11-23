@@ -82,4 +82,18 @@ class PropostaTable extends Doctrine_Table
 
         return $q->fetchOne();
     }
+    
+    public function findPropostasAlunos($execute = true) 
+    {
+        $q = $this->createQuery()
+           ->from('Proposta p')
+           ->innerJoin('p.Aluno a')
+           ->leftJoin('p.Avaliacao av');
+        
+        if($execute){
+            $q->execute();
+        }
+           
+        return $q;
+    }
 }

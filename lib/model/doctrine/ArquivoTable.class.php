@@ -24,4 +24,18 @@ class ArquivoTable extends Doctrine_Table
 
         return $q->execute();;
     }
+    
+    public function findTodosArquivos($returnQuery = false)
+    {
+        $q = $this->createQuery()
+           ->from('Arquivo a')
+           ->leftJoin('a.Remetente r')
+           ->leftJoin('a.Destinatario d');
+
+        if($returnQuery){
+            return $q;
+        }
+
+        return $q->execute();;
+    }
 }

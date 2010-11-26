@@ -68,7 +68,11 @@ class artigoActions extends sfActions
         }
 
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine::getTable('Artigo')->findArtigoByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$status,false);
+        if($request->getParameter('filtro', false)){
+            $query = Doctrine::getTable('Artigo')->findArtigoByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$status,false);
+        } else {
+            $query = Doctrine::getTable('Artigo')->createQuery('a');
+        }
         $this->pager = new sfDoctrinePager('Proposta',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);

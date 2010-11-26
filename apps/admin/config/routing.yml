@@ -13,6 +13,10 @@ signout:
   url: /signout
   param: { module: login, action: signout }
 
+arquivos:
+  url: /arquivos/*
+  param: { module: arquivo, action: all }
+
 forget_password:
   url: /esqueciSenha
   param: { module: login, action: forgetPassword }
@@ -49,6 +53,10 @@ mensagens:
   url: /mensagens
   param: { module: mensagem, action: index }
 
+artigos:
+  url: /artigos
+  param: { module: artigo, action: list, filtro: false }
+  
 artigo:
   url: /artigo
   param: { module: artigo, action: edit }
@@ -108,6 +116,10 @@ proposta_view_comment:
 proposta_add_comment:
   url: /proposta/:proposta_id/comentario/:local/
   param: { module: proposta, action: newComment }
+
+propostas:
+  url: /propostas
+  param: { module: proposta, action: list, filtro: false }
 
 proposta_list:
   url: /propostas/:filtro/*

@@ -62,7 +62,12 @@ class propostaActions extends sfActions
     public function executeList(sfWebRequest $request)
     {
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$request->getParameter('filtro'),false);
+        if($request->getParameter('filtro',false)){
+            $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$request->getParameter('filtro'),false);    
+        } else {
+            $query = Doctrine::getTable('Proposta')->createQuery('p');
+        }
+        
         $this->pager = new sfDoctrinePager('Proposta',sfConfig::get('app_registers_per_page'));
         $this->pager->setQuery($query);
         $this->pager->setPage($page);

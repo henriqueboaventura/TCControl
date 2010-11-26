@@ -5,6 +5,9 @@
     <thead>
         <tr>
             <th>Aluno</th>
+            <?php if($sf_user->getAttribute('coordenador', false, 'professor')) : ?>
+            <th>Orientador</th>
+            <?php endif; ?>
             <th>Titulo</th>
             <th>Status</th>
             <th class="actions">Ações</th>
@@ -14,6 +17,9 @@
         <?php foreach ($propostas as $proposta): ?>
         <tr>
             <td><?php echo $proposta->Aluno->getNome() ?></td>
+            <?php if($sf_user->getAttribute('coordenador', false, 'professor')) : ?>
+            <td><?php echo $proposta->Aluno->Orientador[0]->nome; ?></td>
+            <?php endif; ?>
             <td><?php echo $proposta->getTitulo();?></td>
             <td><?php echo $proposta->getStatusDescricao();?></td>
             <td class="actions">

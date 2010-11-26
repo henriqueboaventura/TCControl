@@ -21,6 +21,18 @@ class arquivoActions extends sfActions
 
         $this->arquivos = $this->pager->getResults();
     }
+    
+    public function executeAll(sfWebRequest $request)
+    {
+        $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
+        $query = Doctrine_Core::getTable('Arquivo')->findTodosArquivos(true);
+        $this->pager = new sfDoctrinePager('Arquivo', sfConfig::get('app_registers_per_page'));
+        $this->pager->setQuery($query);
+        $this->pager->setPage($page);
+        $this->pager->init();
+
+        $this->arquivos = $this->pager->getResults();
+    }
 
     public function executeNew(sfWebRequest $request)
     {

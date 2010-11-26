@@ -115,16 +115,25 @@
     <li>Arquivos
         <ul>
             <li><?php echo link_to('Gerenciar', 'arquivo/index'); ?></li>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')) :  ?>
+            <li><?php echo link_to('Visualizar todos','@arquivos');?></li>
+            <?php endif; ?>
         </ul>
     </li>
     <li>Propostas
         <ul>
             <li><?php echo link_to('Acompanhar','@proposta_list?filtro=todas');?></li>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')) :  ?>
+            <li><?php echo link_to('Acompanhar Todas','@propostas');?></li>
+            <?php endif; ?>
         </ul>
     </li>    
     <li>Artigo
         <ul>
             <li><?php echo link_to('Acompanhar','@artigo_list?filtro=todas');?></li>
+            <?php if($sf_user->getAttribute('coordenador',false,'professor')) :  ?>
+            <li><?php echo link_to('Acompanhar Todos','@artigos');?></li>
+            <?php endif; ?>
         </ul>
     </li>
 </ul>

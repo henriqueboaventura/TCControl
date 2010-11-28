@@ -1,0 +1,18 @@
+- Aluno
+    - Solicitar Orientação
+    - Adicionar/Alterar Proposta
+    - Adicionar/Alterar Artigo
+    - Voltar versão do artigo
+    - Enviar mensagem
+    - Enviar arquivo
+- Professor
+    - Aceitar/rejeitar solicitação de orientação
+    - Visualizar/Comentar proposta
+    - Passar o Aluno para TCC2
+    - Visualizar/Comentar artigo
+    - Enviar mensagem
+    - Enviar arquivo
+- Coordenador
+    - Aprovar/recusar proposta
+    - Agendar Banca
+    - Registrar resultado da banca

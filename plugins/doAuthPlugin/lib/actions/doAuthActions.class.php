@@ -24,7 +24,8 @@ class doAuthActions extends sfActions {
         // or to the homepage
         $signinUrl = sfConfig::get('app_doAuth_signin_url', $user->getReferer($request->getReferer()));
 
-        return $this->redirect('' != $signinUrl ? $signinUrl : '@homepage');
+        //return $this->redirect('' != $signinUrl ? $signinUrl : '@homepage');
+        return $this->redirect('@homepage');
       }
     }
     else {
@@ -82,7 +83,8 @@ class doAuthActions extends sfActions {
           list($module, $action) = $params;
           $this->forward($module, $action);
         }
-        $this->redirect(sfConfig::get('app_doAuth_register_redirect','@homepage'));
+        //$this->redirect(sfConfig::get('app_doAuth_register_redirect','@homepage'));
+        $this->redirect('@homepage');
       }
     }
   }

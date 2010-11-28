@@ -62,7 +62,7 @@ class propostaActions extends sfActions
     public function executeList(sfWebRequest $request)
     {
         $page = ($request->getParameter('page') != '') ? $request->getParameter('page') : 1;
-        if($request->getParameter('filtro',false)){
+        if($request->getParameter('filtro') != ''){
             $query = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),$request->getParameter('filtro'),false);    
         } else {
             $query = Doctrine::getTable('Proposta')->createQuery('p');
@@ -75,7 +75,8 @@ class propostaActions extends sfActions
 
         $this->propostas = $this->pager->getResults();
 
-        $this->coordenador = $request->getParameter('coordenador', false);
+        $this->coordenador = $this->getUser()->getAttribute('coordenador', false, 'professor');
+        $this->filtro = $request->getParameter('filtro');
     }
 
     public function executeView(sfWebRequest $request)

@@ -15,6 +15,7 @@ class MensagemTable extends Doctrine_Table
            ->from('Mensagem m')
            ->leftJoin('m.Remetente r')
            ->leftJoin('m.Destinatario d')
+           ->orderBy('m.created_at','desc')
            ->where('d.id = ?', $usuario);
 
 
@@ -31,6 +32,7 @@ class MensagemTable extends Doctrine_Table
            ->from('Mensagem m')
            ->leftJoin('m.Remetente r')
            ->leftJoin('m.Destinatario d')
+           ->orderBy('m.created_at','desc')
            ->where('r.id = ?', $usuario);
 
 

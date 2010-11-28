@@ -18,15 +18,15 @@ Professor:
     fone_residencial: 51 555 5555
     fone_celular: 51 555 5555
     AreasAfinidade: [UML, Projetos]
-  Professor3:
-    nome: César Loureiro
-    email: cesar.loureiro@gmail.com
-    senha: 123456
-    matricula: 630810196
-    endereco: dunno
-    fone_residencial: 51 555 5555
-    fone_celular: 51 555 5555
-    AreasAfinidade: [Redes, Projetos]
+#  Professor3:
+#    nome: César Loureiro
+#    email: cesar.loureiro@gmail.com
+#    senha: 123456
+#    matricula: 630810196
+#    endereco: dunno
+#    fone_residencial: 51 555 5555
+#    fone_celular: 51 555 5555
+#    AreasAfinidade: [Redes, Projetos]
   Professor4:
     nome: Guilherme Bertoni
     email: gb.machado@sinprors.org.br
@@ -36,21 +36,21 @@ Professor:
     fone_residencial: 51 555 5555
     fone_celular: 51 555 5555
     AreasAfinidade: [SD]
-  Professor5:
-    nome: Roberto Zanoni
-    email: roberto.zanoni@gmail.com
-    senha: 123456
-    matricula: 630810194
-    endereco: dunno
-    fone_residencial: 51 555 5555
-    fone_celular: 51 555 5555
-    AreasAfinidade: [UML, Projetos]
-  Professor6:
-    nome: Luciano Zanuz
-    email: senac.qs@zanuz.com
-    senha: 123456
-    matricula: 630810194
-    endereco: dunno
-    fone_residencial: 51 555 5555
-    fone_celular: 51 555 5555
-    AreasAfinidade: [UML, Projetos]
+#  Professor5:
+#    nome: Roberto Zanoni
+#    email: roberto.zanoni@gmail.com
+#    senha: 123456
+#    matricula: 630810194
+#    endereco: dunno
+#    fone_residencial: 51 555 5555
+#    fone_celular: 51 555 5555
+#    AreasAfinidade: [UML, Projetos]
+#  Professor6:
+#    nome: Luciano Zanuz
+#    email: senac.qs@zanuz.com
+#    senha: 123456
+#    matricula: 630810194
+#    endereco: dunno
+#    fone_residencial: 51 555 5555
+#    fone_celular: 51 555 5555
+#    AreasAfinidade: [UML, Projetos]

@@ -13,5 +13,10 @@ class homeComponents extends sfComponents
             );
             $this->propostasPendentes = Doctrine::getTable('Proposta')->findPropostaByProfessor($this->getUser()->getAttribute('id',null,'usuario'),'aguardando',true);
         }
+        
+        if($this->getuser()->hasCredential('aluno')){
+            $tcc = Doctrine::getTable('TCC')->findByAluno($this->getUser()->getAttribute('id',null,'usuario'));
+            $this->etapa = $tcc->getLast()->etapa;
+        }
     }
 }

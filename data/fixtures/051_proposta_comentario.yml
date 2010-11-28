@@ -1,17 +1,17 @@
-PropostaComentario:
-  PropostaComentario1:
-    Proposta: Proposta1
-    conteudo: Teste de um comentário de titulo
-    local: titulo
-  PropostaComentario2:
-    Proposta: Proposta1
-    conteudo: Teste de um comentário de descrição do problema
-    local: descricao_problema
-  PropostaComentario3:
-    Proposta: Proposta1
-    conteudo: Teste de um comentário de descrição da solução
-    local: descricao_solucao
-  PropostaComentario4:
-    Proposta: Proposta1
-    conteudo: Teste de um comentário de objetivo
-    local: objetivos
+#PropostaComentario:
+#  PropostaComentario1:
+#    Proposta: Proposta1
+#    conteudo: Teste de um comentário de titulo
+#    local: titulo
+#  PropostaComentario2:
+#    Proposta: Proposta1
+#    conteudo: Teste de um comentário de descrição do problema
+#    local: descricao_problema
+#  PropostaComentario3:
+#    Proposta: Proposta1
+#    conteudo: Teste de um comentário de descrição da solução
+#    local: descricao_solucao
+#  PropostaComentario4:
+#    Proposta: Proposta1
+#    conteudo: Teste de um comentário de objetivo
+#    local: objetivos

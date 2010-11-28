@@ -86,7 +86,7 @@
             <li><?php echo link_to('Definir Cronograma', 'cronograma/index'); ?></li>                                    
         </ul>        
     </li>
-    <?php if($sf_user->getAttribute('semestre',false,'TCC2')): ?>
+    <?php if($etapa == 2): ?>
     <li>Artigo
         <ul>
             <li><?php echo link_to('Definir', '@artigo'); ?></li>

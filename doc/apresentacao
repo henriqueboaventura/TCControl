@@ -1,0 +1,34 @@
+- O Problema    
+O problema levantado foi que no curso de ADS, não existe uma padronização do processo de desenvolvimento de TCCs nem uma centralização do conteúdo. Esse processo, é repleto de variáveis como documentação, reviões, avaliações e bancas, que o tornam muito complexo e extenso. Além disso, as informações gerados pelos alunos e professores não é acessível ao Coordenador, impedindo ele de acompanhar o processo.
+    
+- Solução Proposta
+Foi proposto, então, uma sistema de gerenciamento de TCCs online (chamado TCCtrl), que permita que todo o processo seja controlado pelas pessoas envolvidas no mesmo. Com ele, as informações geradas no processo são disponibilizadas em tempo real e de qualquer computador com acesso a internet, facilitando o processo. 
+   
+- Metodologia (Tecnologia)
+     Dentre as  tecnologias, a linguagem de programação escolhida foi o PHP por ser livre, de código aberto e de fácil instalação e manutenção. Juntamente com a escolha do PHP, foi definido o Symfony como framework, por ter uma curva de aprendizado relativamente pequena e por implementae a arquitetura MVC e se basear em configuração sobre convenção, tornando muito flexível e ideal para a aplicação. Para tornar o sistema independente de banco de dados, foi utilizado o Mapeador Objeto-Relacional Doctrine, que possibita a rápida e fácil consulta de dados no banco utilizando a linguagem DQL. Como o sistema precisa de um banco de dados, foi escolhido o MySQL por ser o mais rápido entre os SGBDs existentes.
+ 
+- Metodologia - Scrum
+    O scrum foi escolhido pela flexibilidade, fácil adequação a mudanças de escopo e de equipes. No sistema foi aplicado na forma de um scrum team formado por mim e um Scrum master, o prof. Franz. O scrum master gerou as histórias de usuário, baseado nelas, o scrum team desenvolveu o sistema em ciclos incrementais (sprints), sempre finalizando o ciclo com um recurso novo. A única desvantagem encontrada no uso do scrum foi a adaptação da metodologia a quantidade de pessoas envolvidas no processo (2).
+    
+- Fluxo do sistema (Apresentação do sistema)
+
+- Validação
+O sistema foi validado usando a escala likert, que mede a satisfação da pessoa, utiliza 5 possíves respostas: Concordo totalmente, concordo parcialmente, indiferente, discordo parcialmente e discordo totalmente. 8 pessoas, dentre elas, 1 coordenador, 3 professores e 4 alunos participarando do processo, num período de 1 semana, do dia 13 ao dia 20 de novembro.
+- Validação Resultados
+    Dentre as perguntas feitas às pessoas que validaram o sistema, destaco as seguintes questões:
+    - A maneira que o sistema se apresenta, tem um fluxo lógico?
+        - 5 Concordo parcialmente
+        - 3 Concordo totalmente
+    - Do ponto de vista da usabilidade, o sistema é fácil de usar?
+        - 1 Indiferente
+        - 4 Concordo parcialmente
+        - 3 Concordo totalmente
+    Essas perguntas foram feitas para todos os usuários, independente de perfil. 
+       
+- Considerações Finais
+    Com essas informações, concluímos que a existência de um sistema de controle online de TCCs é fundamental para o processo porque trás como beneficio a centralização das informações geradas e agilidade ao processo. Além disso a disponibilidade das informações a todos os envolvidos e a facilidade de troca de informações enriquece a interação e permite que cada etapa seja bem clara e definida.
+    E para finalizar, os trabalhos futuros que podem ser acrescentados ao sistema seriam:
+        - Tópico do trabalho ao solicitar orientação
+        - Sala de bate-papo entre Orientador/Aluno
+        - Consulta a Trabalhos de Conclusão
+        - Controle multi curso

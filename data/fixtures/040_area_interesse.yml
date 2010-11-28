@@ -5,6 +5,6 @@ AreaInteresse:
   AreaInteresse2:
     nome: Realidade Aumentada para Celulares
     Professor: Professor1
-  AreaInteresse3:
-    nome: Banco de Dados distribuido
-    Professor: Professor2
+#  AreaInteresse3:
+#    nome: Banco de Dados distribuido
+#    Professor: Professor2

@@ -1,1 +1,49 @@
 TCCctrl - Sistema de controle e gerenciamento de trabalhos de conclusão
+=======================================================================
+
+Instalação
+----------
+O processo de instalação do sistema é simples, e ainda pode ser iniciado 
+de duas maneiras:
+
+Via Git
+~~~~~~~
+Se você já tem o **git**  instalado na sua máquina, basicamente você deve 
+fazer os seguintes comandos::
+
+    git clone https://github.com/kidh0/TCControl
+    
+Feito isso, é necessário inicializar o submodulo do symfony (basicamente 
+ele vai fazer um clone do repositório do framework symfony)::
+    
+    git submodule init && git submodule update
+
+Via Pacote
+~~~~~~~~~~
+Escolha o tipo de pacote no `github`_ e descompacte ele no seu 
+diretório, vou usar o pacote tar.gz como exemplo::
+    
+    tar -xzvf tcctrl.tar.gz 
+
+Feito isso, precisamos baixar o pacote do symfony (lembrando que a versão
+deve ser a 1.4, ao fazer este documento, era a versão 1.4.8), para isso, 
+acesse o site do symfony_, baixe o pacote e siga os seguintes passos a 
+partir da raiz do seu projeto::
+
+        cd lib
+        wget http://www.symfony-project.org/get/symfony-1.4.8.zip && unzip symfony-1.4.8.zip
+        mv symfony-1.4.8 vendor
+
+Passado a etapa de download, precisamos dois diretórios, que são 
+obrigatórios na estrutura do symfony::
+
+    mkdir cache log && chmod 777 cache log -R
+
+Agora é necessário rodar o comando para criar o banco de dados e gerar os dados 
+básicos e o usuário administrador, na raiz do projeto, digite::
+    
+    ./symfony doctrine:build --all --and-load
+
+Agora o sistema está instalado.
+.. _github: https://github.com/kidh0/TCControl/archives/master
+.. _symfony: http://www.symfony-project.org/installation/1_4

@@ -1,4 +1,4 @@
-<h2><?php echo __('Artigo');?></h2>
+<h2><?php echo __('Documento');?></h2>
 <h3><?php echo __('Comentários');?></h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <ul class="comentarios">
@@ -9,4 +9,4 @@
     </li>
     <?php endforeach;?>
 </ul>
-<?php echo link_to(__('Voltar para o artigo'), url_for('@artigo')); ?>
+<?php echo link_to(__('Voltar para o documento'), url_for('@artigo')); ?>

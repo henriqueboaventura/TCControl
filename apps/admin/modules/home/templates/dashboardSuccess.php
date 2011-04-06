@@ -9,8 +9,8 @@
     <span class="date">Data de entrega: <?php echo format_date($sf_user->getAttribute('data_entrega_tcc1', null, 'configuracao')); ?></span>
 </div>
 <div id="artigo_box" class="dashboard_box span-6">
-    <h3>Artigo</h3>
-    <?php echo link_to('Definir Artigo', '@artigo',array('class' => 'artigo', 'title' => 'Definir Artigo')); ?>
+    <h3>Documento</h3>
+    <?php echo link_to('Definir Documento', '@artigo',array('class' => 'artigo', 'title' => 'Definir Documento')); ?>
     <?php //echo link_to('Comentarios', '@artigo',array('class' => 'artigo')); ?>
     <span class="date">Data de entrega: <?php echo format_date($sf_user->getAttribute('data_entrega_tcc2', null, 'configuracao')); ?></span>
 </div>

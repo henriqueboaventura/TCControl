@@ -1,4 +1,4 @@
-<h2><?php echo __('Artigos');?></h2>
+<h2><?php echo __('Documentos');?></h2>
 <h3><?php echo __('Histórico de Versões');?></h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <ol id="versions">

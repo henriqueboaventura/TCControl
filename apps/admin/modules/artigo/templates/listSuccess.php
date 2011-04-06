@@ -1,4 +1,4 @@
-<h2>Artigo</h2>
+<h2>Documento</h2>
 <h3>Listagem</h3>
 <?php include_partial('global/message',array('sf_user',$sf_user)); ?>
 <table>
@@ -24,7 +24,7 @@
             <td><?php echo $artigo->getStatusDescricao();?></td>
             <td class="actions">
                 <?php
-                    echo link_to(__('Visualizar Artigo'), '@artigo_view?id=' . $artigo->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
+                    echo link_to(__('Visualizar Documento'), '@artigo_view?id=' . $artigo->getId(),array('class' => 'list_view', 'title' => 'Visualizar'));
                     if($coordenador){
                         //echo link_to(__('Aprovar Proposta'),'@artigo_action?id=' . $artigo->getId() . '&acao=aceitar', array('class' => 'list_accept', 'title' => 'Aprovar Proposta'));
                         //echo link_to(__('Rejeitar Proposta'),'@artigo_action?id=' . $artigo->getId()  . '&acao=rejeitar', array('class' => 'list_deny', 'title' => 'Rejeitar Proposta'));

@@ -1,0 +1,86 @@
+Cronograma:
+  Cronograma1:
+    Proposta: Proposta1
+    etapa: 1
+    atividade: Levantamento de Requisitos 
+    produto: Documento
+    data_entrega: '2011-04-01 00:00'
+    detalhamento:  
+  Cronograma2:
+    Proposta: Proposta1
+    etapa: 1
+    atividade: Modelagem do Banco (MER) 
+    produto: Modelo MER 
+    data_entrega: '2011-04-01 00:00'
+    detalhamento:
+  Cronograma3:
+    Proposta: Proposta1
+    etapa: 1
+    atividade: Diagrama de Casos de Uso   
+    produto: Diagrama 
+    data_entrega: '2011-04-01 00:00'
+    detalhamento:
+  Cronograma4:
+    Proposta: Proposta1
+    etapa: 1
+    atividade: Diagrama de Classes 
+    produto: Diagrama 
+    data_entrega: '2011-05-01 00:00'
+    detalhamento:
+  Cronograma5:
+    Proposta: Proposta1
+    etapa: 1
+    atividade: Cadastro de Usuários 
+    produto: Código 
+    data_entrega: '2011-05-01 00:00'
+    detalhamento: Tela de cadastro de usuários que participaram do sistema 
+  Cronograma6:
+    Proposta: Proposta1
+    etapa: 1
+    atividade: Controle de Acesso de Usuário 
+    produto: Código 
+    data_entrega: '2011-06-01 00:00'
+    detalhamento: Filtrar o que cada usuário do sistema terá acesso e poderá visualizar 
+    
+  Cronograma7:
+    Proposta: Proposta1
+    etapa: 2
+    atividade: Desenvolvimento dos Módulos: Gerenciamento de TCC, Orientação de TCC 
+    produto: Código
+    data_entrega: '2011-07-01 00:00'
+    detalhamento:  
+  Cronograma8:
+    Proposta: Proposta1
+    etapa: 2
+    atividade: Artigo 
+    produto: Documento 
+    data_entrega: '2011-10-01 00:00'
+    detalhamento:
+  Cronograma9:
+    Proposta: Proposta1
+    etapa: 2
+    atividade: Seminário de Andamento 
+    produto: Documento 
+    data_entrega: '2011-10-01 00:00'
+    detalhamento:
+  Cronograma10:
+    Proposta: Proposta1
+    etapa: 2
+    atividade: Testes e Validação do Sistema 
+    produto: Resultados 
+    data_entrega: '2011-11-01 00:00'
+    detalhamento:
+  Cronograma11:
+    Proposta: Proposta1
+    etapa: 2
+    atividade: Versão final do Artigo 
+    produto: Documento 
+    data_entrega: '2011-11-01 00:00'
+    detalhamento: Tela de cadastro de usuários que participaram do sistema 
+  Cronograma12:
+    Proposta: Proposta1
+    etapa: 2
+    atividade: Apresentação para a Banca
+    produto: Sistema e Apresentação 
+    data_entrega: '2011-11-01 00:00'
+    detalhamento: Filtrar o que cada usuário do sistema terá acesso e poderá visualizar 

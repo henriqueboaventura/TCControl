@@ -87,7 +87,7 @@
         </ul>        
     </li>
     <?php if($etapa == 2): ?>
-    <li>Artigo
+    <li>Documento
         <ul>
             <li><?php echo link_to('Definir', '@artigo'); ?></li>
             <li><?php echo link_to('Histórico de versões', '@artigo_history');?></li>
@@ -128,7 +128,7 @@
             <?php endif; ?>
         </ul>
     </li>    
-    <li>Artigo
+    <li>Documento
         <ul>
             <li><?php echo link_to('Acompanhar','@artigo_list?filtro=todas');?></li>
             <?php if($sf_user->getAttribute('coordenador',false,'professor')) :  ?>

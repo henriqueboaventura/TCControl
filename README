@@ -1,6 +1,17 @@
 TCCctrl - Sistema de controle e gerenciamento de trabalhos de conclusão
 =======================================================================
 
+Infraestrutura
+--------------
+É recomendado o uso de servidores linux. Os testes do sistema foram feitos todos
+na distribuição Ubuntu 10.10 32 bits.
+É necessário para rodar a aplicação os seguintes aplicativos:
+- Apache 2
+    - mod_rewrite
+- MySQL >= 5(banco utilizado por padrão, mas pode ser alterado para qualquer outro
+suportado pelo Doctrine)
+- PHP >= 5.3
+
 Instalação
 ----------
 O processo de instalação do sistema é simples, e ainda pode ser iniciado 
